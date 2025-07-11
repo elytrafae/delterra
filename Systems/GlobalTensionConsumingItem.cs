@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Delterra.Content;
 using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using YetToBeNamed.Content;
 
-namespace YetToBeNamed.Systems {
+namespace Delterra.Systems {
     public class GlobalTensionConsumingItem : GlobalItem {
 
         private static string PLACE_COST_AFTER = "UseMana";

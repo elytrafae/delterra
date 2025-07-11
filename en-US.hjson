@@ -1,0 +1,15 @@
+Mods: {
+	Delterra: {
+		Items: {
+			HealPrayer: {
+				DisplayName: Heal Prayer
+				Tooltip: ""
+			}
+
+			TensionBit: {
+				DisplayName: Tension Bit
+				Tooltip: ""
+			}
+		}
+	}
+}

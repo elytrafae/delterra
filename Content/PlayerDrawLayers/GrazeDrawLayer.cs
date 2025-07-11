@@ -1,11 +1,11 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Delterra.Systems;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ModLoader;
-using YetToBeNamed.Systems;
 
-namespace YetToBeNamed.Content.PlayerDrawLayers {
+namespace Delterra.Content.PlayerDrawLayers {
     internal class GrazeDrawLayer : PlayerDrawLayer {
         public override Position GetDefaultPosition() {
             return Terraria.DataStructures.PlayerDrawLayers.BeforeFirstVanillaLayer;

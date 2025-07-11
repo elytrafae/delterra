@@ -7,7 +7,7 @@ using Terraria.Chat;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace YetToBeNamed.Systems {
+namespace Delterra.Systems {
     public class GrazingPlayer : ModPlayer, IFaeModPlayer {
 
         private int _TP = 0;
@@ -57,7 +57,7 @@ namespace YetToBeNamed.Systems {
                 }
 
                 foreach (NPC npc in Main.ActiveNPCs) {
-                    if ((!(npc.friendly || npc.CountsAsACritter || Main.npcCatchable[npc.type])) && grazeArea.Intersects(npc.Hitbox)) {
+                    if (!(npc.friendly || npc.CountsAsACritter || Main.npcCatchable[npc.type]) && grazeArea.Intersects(npc.Hitbox)) {
                         GrazingNPC modNPC = GrazingNPC.Get(npc);
                         if (!modNPC.wasGrazedBefore) {
                             modNPC.wasGrazedBefore = true;
@@ -89,13 +89,13 @@ namespace YetToBeNamed.Systems {
         /// <returns>true if this player is allowed to get TP by grazing</returns>
         public bool IsAllowedToGetTPByGrazing() { // I *may* clean this up AFTER the contest.
             return (immuneAllowedToGatherTP > 0 || 
-                (Player.immuneTime <= 0 && 
+                Player.immuneTime <= 0 && 
                 Player.hurtCooldowns[0] <= 0 && 
                 Player.hurtCooldowns[1] <= 0 && 
                 Player.hurtCooldowns[2] <= 0 &&
                 Player.hurtCooldowns[3] <= 0 &&
-                Player.hurtCooldowns[4] <= 0)
-                ) && (!Player.shimmering) && (!Player.dead);
+                Player.hurtCooldowns[4] <= 0
+                ) && !Player.shimmering && !Player.dead;
         }
 
         public float GrazeAreaAlpha() {

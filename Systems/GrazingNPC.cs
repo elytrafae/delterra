@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace YetToBeNamed.Systems {
+namespace Delterra.Systems {
     public class GrazingNPC : GlobalNPC {
         public override bool InstancePerEntity => true;
 

@@ -5,12 +5,10 @@ using Terraria.GameContent.UI.Elements;
 using Terraria.ModLoader;
 using Terraria.UI;
 using Terraria;
-using rail;
 using System;
-using static System.Net.Mime.MediaTypeNames;
-using YetToBeNamed.Content;
+using Delterra.Content;
 
-namespace YetToBeNamed.Systems.UI {
+namespace Delterra.Systems.UI {
     
     internal class TensionBar : UIState {
         private UIElement area;
@@ -34,7 +32,7 @@ namespace YetToBeNamed.Systems.UI {
         private Color HoverFillingColor = new Color(255, 255, 255);
         private Color HoverFillingNotEnoughColor = Color.Black * 0.4f;
 
-        private const string SpritePrefix = nameof(YetToBeNamed) + "/Assets/MiscSprites/";
+        private const string SpritePrefix = nameof(Delterra) + "/Assets/MiscSprites/";
 
         public override void OnInitialize() {
             area = new UIElement();
@@ -238,7 +236,7 @@ namespace YetToBeNamed.Systems.UI {
             int resourceBarIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Resource Bars"));
             if (resourceBarIndex != -1) {
                 layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
-                    nameof(YetToBeNamed) + ": Tension Bar",
+                    nameof(Delterra) + ": Tension Bar",
                     delegate {
                         TensionBarUserInterface.Draw(Main.spriteBatch, new GameTime());
                         return true;

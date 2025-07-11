@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 
-namespace YetToBeNamed.Content {
+namespace Delterra.Content {
     public interface ITensionConsumingItem {
 
         public abstract int GetBaseTPCost(Player player);

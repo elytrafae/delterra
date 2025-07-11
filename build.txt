@@ -1,4 +1,4 @@
-displayName = [INSERT DISPLAY NAME HERE]
+displayName = Delterra
 author = elytrafae, jteoh, JaimeezNuts
 version = 0.1
 includeSource = true

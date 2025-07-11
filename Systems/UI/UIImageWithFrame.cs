@@ -9,7 +9,7 @@ using ReLogic.Content;
 using Terraria;
 using Terraria.UI;
 
-namespace YetToBeNamed.Systems.UI {
+namespace Delterra.Systems.UI {
     public class UIImageWithFrame : UIElement {
         private Asset<Texture2D> _texture;
         public float ImageScale = 1f;

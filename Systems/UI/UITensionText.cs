@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria.UI;
 
-namespace YetToBeNamed.Systems.UI {
+namespace Delterra.Systems.UI {
     // because OFC adding custom fonts is hard
     public class UITensionText : UIElement {
 

@@ -1,24 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ID;
+﻿using Terraria.ID;
 using Terraria;
-using YetToBeNamed.Systems;
 using Terraria.ModLoader;
 
-namespace YetToBeNamed.Content.Items {
+namespace Delterra.Content.Items.Spells {
     public class HealPrayer : ModItem, ITensionConsumingItem {
 
         public override void SetDefaults() {
             Item.UseSound = SoundID.Item100;
             Item.useStyle = ItemUseStyleID.HoldUp;
             Item.useTurn = true;
-            Item.useAnimation = (Item.useTime = 60);
+            Item.useAnimation = Item.useTime = 60;
             Item.maxStack = 1;
             Item.rare = ItemRarityID.Blue;
-            Item.value = Terraria.Item.buyPrice(0, 1, 0);
+            Item.value = Item.buyPrice(0, 1, 0);
         }
 
         public override bool? UseItem(Player player) {

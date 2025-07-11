@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria.Audio;
 
-namespace YetToBeNamed.Systems {
+namespace Delterra.Systems {
     public class MySoundStyles {
 
         // To anyone who wants to help me add sound effects,
@@ -19,15 +19,15 @@ namespace YetToBeNamed.Systems {
 
 
         private static SoundStyle RegisterSound(string name) { 
-            return new SoundStyle(nameof(YetToBeNamed) + "/Assets/SoundEffects/" + name, SoundType.Sound);
+            return new SoundStyle(nameof(Delterra) + "/Assets/SoundEffects/" + name, SoundType.Sound);
         }
 
         private static SoundStyle RegisterMusic(string name) {
-            return new SoundStyle(nameof(YetToBeNamed) + "/Assets/Music/" + name, SoundType.Music);
+            return new SoundStyle(nameof(Delterra) + "/Assets/Music/" + name, SoundType.Music);
         }
 
         private static SoundStyle RegisterAmbient(string name) {
-            return new SoundStyle(nameof(YetToBeNamed) + "/Assets/AmbientSounds/" + name, SoundType.Ambient);
+            return new SoundStyle(nameof(Delterra) + "/Assets/AmbientSounds/" + name, SoundType.Ambient);
         }
 
     }
