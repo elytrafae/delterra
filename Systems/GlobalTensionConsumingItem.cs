@@ -16,6 +16,10 @@ namespace Delterra.Systems {
 
         public static LocalizedText TensionCostText { get; private set; }
 
+        public override void SetStaticDefaults() {
+            TensionCostText = Mod.GetLocalization("TensionCostText");
+        }
+
         public override bool AppliesToEntity(Item entity, bool lateInstantiation) {
             return entity.ModItem is ITensionConsumingItem;
         }

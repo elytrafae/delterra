@@ -16,6 +16,7 @@
 	  <Folder Include="Assets\AmbientSounds\" />
 	  <Folder Include="Assets\Music\" />
 	  <Folder Include="Assets\SoundEffects\" />
+	  <Folder Include="Localization\" />
 	</ItemGroup>
 
 	<!-- References -->
