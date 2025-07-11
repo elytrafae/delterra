@@ -10,8 +10,11 @@ namespace YetToBeNamed.Systems {
 
         // To anyone who wants to help me add sound effects,
         // all you have to do is copy the following line and change "SoundNameInCode" and 
-        // "sound_filename" for the name of the sound file inside the SoundEffects folder (without .ogg!)
+        // "sound_filename" (etc.) for the name of the sound file inside the SoundEffects folder (without .ogg!)
         // public static readonly SoundStyle SoundNameInCode = RegisterSound("sound_filename"); 
+        // public static readonly SoundStyle MusicNameInCode = RegisterMusic("music_filename"); 
+        // public static readonly SoundStyle AmbientNameInCode = RegisterAmbient("ambient_filename"); 
+
 
 
 
