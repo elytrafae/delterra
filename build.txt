@@ -1,0 +1,5 @@
+displayName = [INSERT DISPLAY NAME HERE]
+author = elytrafae, jteoh, JaimeezNuts
+version = 0.1
+includeSource = true
+modReferences = FaeLibrary

@@ -1,0 +1,202 @@
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
+using Terraria.GameContent.UI.Elements;
+using Terraria.ModLoader;
+using Terraria.UI;
+using Terraria;
+using rail;
+using System;
+using static System.Net.Mime.MediaTypeNames;
+
+namespace YetToBeNamed.Systems.UI {
+    
+    internal class TensionBar : UIState {
+        private UIElement area;
+        private UIImage logo;
+        private UIImage backing;
+        private UIImageWithFrame background_filling;
+        private UIImageWithFrame main_filling;
+        private UIImageWithFrame hover_filling;
+        private UIImage marker;
+        private UIText text;
+
+        private int currentDisplayedTP = 0;
+        private int currentDisplayedRedTP = 0;
+        private const int MAX_TP_SCROLL_SPEED_PER_TICK = 50;
+        private const int MAX_RED_TP_SCROLL_SPEED_PER_TICK = 35;
+
+        private Color BackgroundFillingColor = new Color(255, 0, 0);
+        private Color MainFillingColor = new Color(255, 127, 39);
+        private Color HoverFillingColor = new Color(255, 255, 255);
+
+        private const string SpritePrefix = nameof(YetToBeNamed) + "/Assets/MiscSprites/";
+
+        public override void OnInitialize() {
+            area = new UIElement();
+            area.Width.Set(60, 0f);
+            area.Height.Set(200, 0f);
+            area.Top.Set(17, 0f);
+            area.Left.Set(-area.Width.Pixels - 300, 1f);
+
+            logo = new UIImage(ModContent.Request<Texture2D>(SpritePrefix + "tension_logo"));
+            logo.Left.Set(0, 0f);
+            logo.Top.Set(30, 0f);
+            logo.Width.Set(22, 0f);
+            logo.Height.Set(44, 0f);
+            area.Append(logo);
+
+            backing = new UIImage(ModContent.Request<Texture2D>(SpritePrefix + "tension_backing"));
+            backing.Left.Set(35, 0f);
+            backing.Top.Set(0, 0f);
+            backing.Width.Set(25, 0f);
+            backing.Height.Set(196, 0f);
+            area.Append(backing);
+
+            background_filling = new UIImageWithFrame(ModContent.Request<Texture2D>(SpritePrefix + "tension_filling"));
+            background_filling.Color = BackgroundFillingColor;
+            background_filling.Left.Set(35, 0f);
+            background_filling.Top.Set(0, 0f);
+            background_filling.Width.Set(25, 0f);
+            background_filling.Height.Set(196, 0f);
+            area.Append(background_filling);
+
+            main_filling = new UIImageWithFrame(ModContent.Request<Texture2D>(SpritePrefix + "tension_filling"));
+            main_filling.Color = MainFillingColor;
+            main_filling.Left.Set(35, 0f);
+            main_filling.Top.Set(0, 0f);
+            main_filling.Width.Set(25, 0f);
+            main_filling.Height.Set(196, 0f);
+            area.Append(main_filling);
+
+            hover_filling = new UIImageWithFrame(ModContent.Request<Texture2D>(SpritePrefix + "tension_filling"));
+            hover_filling.Color = HoverFillingColor;
+            hover_filling.Left.Set(35, 0f);
+            hover_filling.Top.Set(0, 0f);
+            hover_filling.Width.Set(25, 0f);
+            hover_filling.Height.Set(196, 0f);
+            area.Append(hover_filling);
+
+            marker = new UIImage(ModContent.Request<Texture2D>(SpritePrefix + "tension_marker"));
+            marker.Left.Set(38, 0f);
+            marker.Top.Set(30, 0f);
+            marker.Width.Set(19, 0f);
+            marker.Height.Set(2, 0f);
+            area.Append(marker);
+
+            text = new UIText("0\n%", 2.2f);
+            text.Width.Set(30, 0f);
+            text.Height.Set(80, 0f);
+            text.Top.Set(40, 0f);
+            text.Left.Set(5, 0f);
+            area.Append(text);
+
+            Append(area);
+        }
+
+        public override void Draw(SpriteBatch spriteBatch) {
+            // Add draw condition here, if ever relevant
+            base.Draw(spriteBatch);
+        }
+
+        // Here we draw our UI
+        protected override void DrawSelf(SpriteBatch spriteBatch) {
+            base.DrawSelf(spriteBatch);
+            /*
+            var modPlayer = Main.LocalPlayer.GetModPlayer<ExampleResourcePlayer>();
+            // Calculate quotient
+            float quotient = (float)modPlayer.exampleResourceCurrent / modPlayer.exampleResourceMax2; // Creating a quotient that represents the difference of your currentResource vs your maximumResource, resulting in a float of 0-1f.
+            quotient = Utils.Clamp(quotient, 0f, 1f); // Clamping it to 0-1f so it doesn't go over that.
+
+            // Here we get the screen dimensions of the barFrame element, then tweak the resulting rectangle to arrive at a rectangle within the barFrame texture that we will draw the gradient. These values were measured in a drawing program.
+            Rectangle hitbox = barFrame.GetInnerDimensions().ToRectangle();
+            hitbox.X += 12;
+            hitbox.Width -= 24;
+            hitbox.Y += 8;
+            hitbox.Height -= 16;
+
+            // Now, using this hitbox, we draw a gradient by drawing vertical lines while slowly interpolating between the 2 colors.
+            int left = hitbox.Left;
+            int right = hitbox.Right;
+            int steps = (int)((right - left) * quotient);
+            for (int i = 0; i < steps; i += 1) {
+                // float percent = (float)i / steps; // Alternate Gradient Approach
+                float percent = (float)i / (right - left);
+                spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height), Color.Lerp(gradientA, gradientB, percent));
+            }
+            */
+        }
+
+        public override void Update(GameTime gameTime) {
+            /*
+            var modPlayer = Main.LocalPlayer.GetModPlayer<ExampleResourcePlayer>();
+            // Setting the text per tick to update and show our resource values.
+            text.SetText(ExampleResourceUISystem.ExampleResourceText.Format(modPlayer.exampleResourceCurrent, modPlayer.exampleResourceMax2));
+            */
+            GrazingPlayer modPlayer = GrazingPlayer.Get(Main.LocalPlayer);
+            if (currentDisplayedTP != modPlayer.TP) {
+                if (Math.Abs(currentDisplayedTP - modPlayer.TP) < MAX_TP_SCROLL_SPEED_PER_TICK) {
+                    currentDisplayedTP = modPlayer.TP;
+                } else if (currentDisplayedTP < modPlayer.TP) {
+                    currentDisplayedTP += MAX_TP_SCROLL_SPEED_PER_TICK;
+                } else {
+                    currentDisplayedTP -= MAX_TP_SCROLL_SPEED_PER_TICK;
+                }
+            }
+            if (currentDisplayedRedTP != currentDisplayedTP) {
+                if (currentDisplayedRedTP < currentDisplayedTP) {
+                    currentDisplayedRedTP = currentDisplayedTP;
+                } else {
+                    currentDisplayedRedTP -= MAX_RED_TP_SCROLL_SPEED_PER_TICK;
+                }
+            }
+            UpdateBar(background_filling, currentDisplayedRedTP);
+            UpdateBar(main_filling, currentDisplayedTP);
+            marker.Top.Set(196 - (int)((float)currentDisplayedTP / GrazingPlayer.MAXTP * 196) -2, 0f);
+            hover_filling.Color = new Color(0, 0, 0, 0); // Temporary
+            base.Update(gameTime);
+        }
+
+        private void UpdateBar(UIImageWithFrame image, int topTP, int bottomTP = 0) {
+            int pixelsOffBottom = (int)((float)bottomTP / GrazingPlayer.MAXTP * 196);
+            int pixelsOffTop = 196 - (int)((float)topTP / GrazingPlayer.MAXTP * 196);
+            int height = 196 - pixelsOffBottom - pixelsOffTop;
+            int y = pixelsOffTop;
+
+            image.sourceRectangle = new Rectangle(0, y, 25, height);
+            image.Top.Set(y, 0f);
+        }
+    }
+
+    // This class will only be autoloaded/registered if we're not loading on a server
+    [Autoload(Side = ModSide.Client)]
+    internal class ExampleResourceUISystem : ModSystem {
+        private UserInterface TensionBarUserInterface;
+
+        internal TensionBar TensionBar;
+
+        public override void Load() {
+            TensionBar = new();
+            TensionBarUserInterface = new();
+            TensionBarUserInterface.SetState(TensionBar);
+        }
+
+        public override void UpdateUI(GameTime gameTime) {
+            TensionBarUserInterface?.Update(gameTime);
+        }
+
+        public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers) {
+            int resourceBarIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Resource Bars"));
+            if (resourceBarIndex != -1) {
+                layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+                    nameof(YetToBeNamed) + ": Tension Bar",
+                    delegate {
+                        TensionBarUserInterface.Draw(Main.spriteBatch, new GameTime());
+                        return true;
+                    },
+                    InterfaceScaleType.UI)
+                );
+            }
+        }
+    }
+}
