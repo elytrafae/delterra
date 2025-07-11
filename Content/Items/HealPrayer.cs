@@ -21,12 +21,7 @@ namespace YetToBeNamed.Content.Items {
             Item.value = Terraria.Item.buyPrice(0, 1, 0);
         }
 
-        public override bool CanUseItem(Player player) {
-            return GrazingPlayer.Get(player).TP >= GetBaseTPCost(player);
-        }
-
         public override bool? UseItem(Player player) {
-            GrazingPlayer.Get(player).TP -= GetBaseTPCost(player);
             player.Heal(60);
             return true;
         }

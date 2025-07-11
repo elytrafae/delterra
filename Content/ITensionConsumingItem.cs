@@ -10,5 +10,9 @@ namespace YetToBeNamed.Content {
 
         public abstract int GetBaseTPCost(Player player);
 
+        public virtual bool IsTPConsumedOnUse(Player player) {
+            return true;
+        }
+
     }
 }

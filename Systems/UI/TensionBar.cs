@@ -32,7 +32,7 @@ namespace YetToBeNamed.Systems.UI {
         private Color BackgroundFillingColor = new Color(255, 0, 0);
         private Color MainFillingColor = new Color(255, 127, 39);
         private Color HoverFillingColor = new Color(255, 255, 255);
-        private Color HoverFillingNotEnoughColor = Color.Black * 0.3f;
+        private Color HoverFillingNotEnoughColor = Color.Black * 0.4f;
 
         private const string SpritePrefix = nameof(YetToBeNamed) + "/Assets/MiscSprites/";
 
@@ -167,7 +167,7 @@ namespace YetToBeNamed.Systems.UI {
             UpdateBar(main_filling, currentDisplayedTP);
             if (currentDisplayedTP < GrazingPlayer.MAXTP) {
                 marker.Color = Color.White;
-                marker.Top.Set(196 - (int)((float)currentDisplayedTP / GrazingPlayer.MAXTP * 196) - 1, 0f);
+                marker.Top.Set(196 - (int)((float)currentDisplayedTP / GrazingPlayer.MAXTP * 196) - 2, 0f);
             } else {
                 marker.Color = Color.Transparent;
             }
