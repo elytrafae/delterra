@@ -24,8 +24,7 @@ namespace YetToBeNamed.Content.Items {
             Item.value = Terraria.Item.buyPrice(0, 0, 20);
         }
 
-        public override bool ConsumeItem(Player player) {
-            Console.WriteLine("Attempting to eat Tension Bit!");
+        public override bool CanUseItem(Player player) {
             return !player.HasBuff(BuffID.PotionSickness);
         }
 

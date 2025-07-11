@@ -19,6 +19,7 @@ namespace YetToBeNamed.Systems.UI {
         private UIImageWithFrame main_filling;
         private UIImageWithFrame hover_filling;
         private UIImage marker;
+        private UIImage cover;
         private UIText text;
 
         private int currentDisplayedTP = 0;
@@ -83,6 +84,14 @@ namespace YetToBeNamed.Systems.UI {
             marker.Width.Set(19, 0f);
             marker.Height.Set(2, 0f);
             area.Append(marker);
+
+            cover = new UIImage(ModContent.Request<Texture2D>(SpritePrefix + "tension_cover_of_shame"));
+            cover.Color = HoverFillingColor;
+            cover.Left.Set(35, 0f);
+            cover.Top.Set(0, 0f);
+            cover.Width.Set(25, 0f);
+            cover.Height.Set(196, 0f);
+            area.Append(cover);
 
             text = new UIText("0\n%", 2.2f);
             text.Width.Set(30, 0f);
@@ -152,7 +161,7 @@ namespace YetToBeNamed.Systems.UI {
             }
             UpdateBar(background_filling, currentDisplayedRedTP);
             UpdateBar(main_filling, currentDisplayedTP);
-            marker.Top.Set(196 - (int)((float)currentDisplayedTP / GrazingPlayer.MAXTP * 196) -2, 0f);
+            marker.Top.Set(196 - (int)((float)currentDisplayedTP / GrazingPlayer.MAXTP * 196) -2, 0f); // TODO: Mask the marker, somehow...
             hover_filling.Color = new Color(0, 0, 0, 0); // Temporary
             base.Update(gameTime);
         }

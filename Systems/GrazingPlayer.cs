@@ -35,7 +35,7 @@ namespace YetToBeNamed.Systems {
         public override void PostUpdate() {
             // Everyone handles their own TP and grazing locally!
             // This is why the NPC/Projectile variables are not synced. They only apply to the current player.
-            if (Main.myPlayer == Player.whoAmI && IsAllowedToGetTPByGrazing()) { // TODO: Make a system that allows you to get TP while immune from Dodges, but not allow you to do so while immune from getting hit or shimmering
+            if (Main.myPlayer == Player.whoAmI && IsAllowedToGetTPByGrazing()) {
                 Rectangle grazeArea = GetGrazeRectangle();
                 foreach (Projectile projectile in Main.ActiveProjectiles) {
                     if (projectile.hostile && grazeArea.Intersects(projectile.Hitbox)) {
@@ -69,7 +69,7 @@ namespace YetToBeNamed.Systems {
                 dangerTime--;
             }
 
-            ChatHelper.DisplayMessage(NetworkText.FromLiteral("TP: " + TP / 100f + "%"), Color.Pink, 255);
+            //ChatHelper.DisplayMessage(NetworkText.FromLiteral("TP: " + TP / 100f + "%"), Color.Pink, 255);
         }
 
         void IFaeModPlayer.OnDodge(Player.HurtInfo info, DodgeType dodgeType) {
