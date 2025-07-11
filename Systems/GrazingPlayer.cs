@@ -22,6 +22,13 @@ namespace YetToBeNamed.Systems {
                 _TP = Math.Clamp(value, 0, MAXTP);
             }
         }
+
+        public float TPPercent {
+            get {
+                return _TP * 100f / MAXTP;
+            }
+        }
+
         public const int MAXTP = 10000;
         public const int BASE_GRAZE_WIDTH = 64;
         public const int BASE_GRAZE_HEIGHT = 96;

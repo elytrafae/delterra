@@ -20,7 +20,7 @@ namespace YetToBeNamed.Systems.UI {
         private UIImageWithFrame hover_filling;
         private UIImage marker;
         private UIImage cover;
-        private UIText text;
+        private UITensionText text;
 
         private int currentDisplayedTP = 0;
         private int currentDisplayedRedTP = 0;
@@ -93,11 +93,11 @@ namespace YetToBeNamed.Systems.UI {
             cover.Height.Set(196, 0f);
             area.Append(cover);
 
-            text = new UIText("0\n%", 2.2f);
+            text = new UITensionText(ModContent.Request<Texture2D>(SpritePrefix + "tension_font"));
             text.Width.Set(30, 0f);
             text.Height.Set(80, 0f);
-            text.Top.Set(40, 0f);
-            text.Left.Set(5, 0f);
+            text.Top.Set(80, 0f);
+            text.Left.Set(2, 0f);
             area.Append(text);
 
             Append(area);
@@ -161,7 +161,14 @@ namespace YetToBeNamed.Systems.UI {
             }
             UpdateBar(background_filling, currentDisplayedRedTP);
             UpdateBar(main_filling, currentDisplayedTP);
-            marker.Top.Set(196 - (int)((float)currentDisplayedTP / GrazingPlayer.MAXTP * 196) -2, 0f); // TODO: Mask the marker, somehow...
+            if (currentDisplayedTP < GrazingPlayer.MAXTP) {
+                marker.Color = Color.White;
+                marker.Top.Set(196 - (int)((float)currentDisplayedTP / GrazingPlayer.MAXTP * 196) - 1, 0f);
+            } else {
+                marker.Color = Color.Transparent;
+            }
+
+            text.Number = (int)modPlayer.TPPercent;
             hover_filling.Color = new Color(0, 0, 0, 0); // Temporary
             base.Update(gameTime);
         }
