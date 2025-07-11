@@ -12,6 +12,11 @@
 	    <HintPath>..\..\ModReader\FaeLibrary\FaeLibrary.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Assets\AmbientSounds\" />
+	  <Folder Include="Assets\Music\" />
+	  <Folder Include="Assets\SoundEffects\" />
+	</ItemGroup>
 
 	<!-- References -->
 

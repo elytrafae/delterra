@@ -22,10 +22,8 @@ namespace YetToBeNamed.Content.Items {
             Item.consumable = true;
             Item.rare = ItemRarityID.Blue;
             Item.value = Terraria.Item.buyPrice(0, 0, 20);
-        }
-
-        public override bool CanUseItem(Player player) {
-            return !player.HasBuff(BuffID.PotionSickness);
+            Item.width = 32;
+            Item.height = 32;
         }
 
         public override void OnConsumeItem(Player player) {
