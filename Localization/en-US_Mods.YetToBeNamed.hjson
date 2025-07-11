@@ -3,4 +3,9 @@ Items: {
 		DisplayName: Tension Bit
 		Tooltip: ""
 	}
+
+	HealPrayer: {
+		DisplayName: Heal Prayer
+		Tooltip: ""
+	}
 }

@@ -12,9 +12,6 @@
 	    <HintPath>..\..\ModReader\FaeLibrary\FaeLibrary.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Assets\Fonts\" />
-	</ItemGroup>
 
 	<!-- References -->
 

@@ -8,6 +8,7 @@ using Terraria;
 using rail;
 using System;
 using static System.Net.Mime.MediaTypeNames;
+using YetToBeNamed.Content;
 
 namespace YetToBeNamed.Systems.UI {
     
@@ -24,12 +25,14 @@ namespace YetToBeNamed.Systems.UI {
 
         private int currentDisplayedTP = 0;
         private int currentDisplayedRedTP = 0;
+        private int hoverBlinkTime = 0;
         private const int MAX_TP_SCROLL_SPEED_PER_TICK = 50;
         private const int MAX_RED_TP_SCROLL_SPEED_PER_TICK = 35;
 
         private Color BackgroundFillingColor = new Color(255, 0, 0);
         private Color MainFillingColor = new Color(255, 127, 39);
         private Color HoverFillingColor = new Color(255, 255, 255);
+        private Color HoverFillingNotEnoughColor = Color.Black * 0.3f;
 
         private const string SpritePrefix = nameof(YetToBeNamed) + "/Assets/MiscSprites/";
 
@@ -71,7 +74,7 @@ namespace YetToBeNamed.Systems.UI {
             area.Append(main_filling);
 
             hover_filling = new UIImageWithFrame(ModContent.Request<Texture2D>(SpritePrefix + "tension_filling"));
-            hover_filling.Color = HoverFillingColor;
+            hover_filling.Color = Color.Transparent;
             hover_filling.Left.Set(35, 0f);
             hover_filling.Top.Set(0, 0f);
             hover_filling.Width.Set(25, 0f);
@@ -159,6 +162,7 @@ namespace YetToBeNamed.Systems.UI {
                     currentDisplayedRedTP -= MAX_RED_TP_SCROLL_SPEED_PER_TICK;
                 }
             }
+            // TODO: Add white thingy when the TP bar fills up quickly
             UpdateBar(background_filling, currentDisplayedRedTP);
             UpdateBar(main_filling, currentDisplayedTP);
             if (currentDisplayedTP < GrazingPlayer.MAXTP) {
@@ -169,8 +173,37 @@ namespace YetToBeNamed.Systems.UI {
             }
 
             text.Number = (int)modPlayer.TPPercent;
-            hover_filling.Color = new Color(0, 0, 0, 0); // Temporary
+            
+            hoverBlinkTime += 3;
+            if (hoverBlinkTime >= 360) {
+                hoverBlinkTime -= 360;
+            }
+            int heldTPCost = HeldItemTPCost(Main.LocalPlayer);
+            if (heldTPCost > 0) {
+                if (heldTPCost > modPlayer.TP) {
+                    UpdateBar(hover_filling, currentDisplayedTP, 0);
+                    hover_filling.Color = HoverFillingNotEnoughColor;
+                } else {
+                    UpdateBar(hover_filling, modPlayer.TP, modPlayer.TP - heldTPCost);
+                    hover_filling.Color = HoverFillingColor * (float)(Math.Sin(MathHelper.ToRadians(hoverBlinkTime)) / 2 + 0.5);
+                }
+            } else {
+                hover_filling.Color = Color.Transparent;
+            }
             base.Update(gameTime);
+        }
+
+        private int HeldItemTPCost(Player player) {
+            if (player.HeldItem == null || player.HeldItem.IsAir) {
+                return 0;
+            }
+            if (player.HeldItem.ModItem == null) {
+                return 0;
+            }
+            if (player.HeldItem.ModItem is ITensionConsumingItem tensionItem) {
+                return tensionItem.GetBaseTPCost(player);
+            }
+            return 0;
         }
 
         private void UpdateBar(UIImageWithFrame image, int topTP, int bottomTP = 0) {
