@@ -34,8 +34,8 @@ namespace Delterra.Systems {
 
         public const int TP_PER_PERCENT = 100;
         public const int MAXTP = TP_PER_PERCENT*100;
-        public const int BASE_GRAZE_WIDTH = 64;
-        public const int BASE_GRAZE_HEIGHT = 96;
+        public const int BASE_GRAZE_WIDTH = 100;
+        public const int BASE_GRAZE_HEIGHT = 100;
 
         public const int TP_BURST_PER_BULLET = 100; // 1%
         public const int TP_PER_TICK_PER_BULLET = 1; // 0.01%

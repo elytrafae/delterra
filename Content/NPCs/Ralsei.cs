@@ -162,24 +162,22 @@ namespace Delterra.Content.NPCs {
             chat.Add(this.GetLocalizedValue("Dialogue.Random2"));
             chat.Add(this.GetLocalizedValue("Dialogue.Random3"));
 
+            string partytext = "";
+
             if (Condition.BirthdayParty.IsMet()) {
-                string partytext = this.GetLocalizedValue("Dialogue.PartyNoItems");
+                partytext = this.GetLocalizedValue("Dialogue.PartyNoItems");
                 if (Main.hardMode) {
                     partytext = this.GetLocalizedValue("Dialogue.PartyCakeTea");
-                    Main.npcChatCornerItem = Main.rand.NextBool(2) ? ItemID.SliceOfCake : ItemID.Teacup;
+                    
                 }
                 chat.Add(partytext, 6);
             }
 
             string chosenChat = chat; // chat is implicitly cast to a string. This is where the random choice is made.
 
-            /*
-            // Here is some additional logic based on the chosen chat line. In this case, we want to display an item in the corner for StandardDialogue4.
-            if (chosenChat == Language.GetTextValue("Mods.ExampleMod.Dialogue.ExamplePerson.StandardDialogue4")) {
-                // Main.npcChatCornerItem shows a single item in the corner, like the Angler Quest chat.
-                Main.npcChatCornerItem = ItemID.HiveBackpack;
+            if (chosenChat == partytext && Main.hardMode) {
+                Main.npcChatCornerItem = Main.rand.NextBool(2) ? ItemID.SliceOfCake : ItemID.Teacup;
             }
-            */
 
             return chosenChat;
         }
