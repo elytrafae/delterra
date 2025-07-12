@@ -61,7 +61,7 @@ namespace Delterra.Content.Projectiles {
         public override void OnKill(int timeLeft) {
             if (timeLeft > 0) {
                 SoundEngine.PlaySound(MySoundStyles.RudeBusterHit, Projectile.Center);
-                // Create additional gore for the hit effects... ;_;
+                // TODO: Create additional gore for the hit effects... ;_;
             }
         }
 

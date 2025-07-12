@@ -27,27 +27,9 @@ namespace Delterra.Content.Scenes {
                         }
                     }
                 }
-                
             }
             return npcSlots > 2f && ralFound;
         }
-
-        /*
-        public override bool IsSceneEffectActive(Player player) {
-            if (player.townNPCs <= 2f) {
-                return false;
-            }
-            int ralIndex = NPC.FindFirstNPC(ModContent.NPCType<Ralsei>());
-            if (ralIndex < 0) {
-                return false;
-            }
-            NPC ral = Main.npc[ralIndex];
-            int townWidth = NPC.sWidth + 20;
-            int townHeight = NPC.sHeight + 20;
-            Rectangle rect = new Rectangle((int)(ral.position.X + (ral.width / 2) - townWidth), (int)(ral.position.Y + (ral.height / 2) - townHeight), townWidth * 2, townHeight * 2);
-            return rect.Intersects(player.Hitbox);
-        }
-        */
 
     }
 }

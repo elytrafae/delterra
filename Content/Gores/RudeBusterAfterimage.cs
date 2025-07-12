@@ -19,6 +19,7 @@ namespace Delterra.Content.Gores {
                 if (parentSource.Entity is Projectile proj) {
                     gore.rotation = proj.rotation;
                     float mirrorRot = proj.rotation;
+                    // TODO: Find the math formula for this
                     gore.position = proj.position - new Vector2((float)Math.Sin(mirrorRot) * RudeBuster.ACTUAL_WIDTH, (float)Math.Cos(mirrorRot) * RudeBuster.ACTUAL_HEIGHT)/2;
                 }
             }
