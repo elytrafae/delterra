@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Delterra.Content.Projectiles {
@@ -13,6 +14,7 @@ namespace Delterra.Content.Projectiles {
 
         public const int ACTUAL_WIDTH = 80;
         public const int ACTUAL_HEIGHT = 80;
+        public static readonly Vector3 LIGHT = new Vector3(0.8f, 0, 0.76f);
 
         public override void SetDefaults() {
             Projectile.friendly = true;
@@ -33,9 +35,14 @@ namespace Delterra.Content.Projectiles {
             if (Timer == 1) {
                 SoundEngine.PlaySound(MySoundStyles.RudeBusterSwing, Projectile.Center);
             }
-            if (Timer % 10 == 0) {
-                Gore.NewGore(Projectile.GetSource_FromAI(), Projectile.Center - new Vector2(ACTUAL_WIDTH / 2, ACTUAL_HEIGHT / 2), Vector2.Zero, ModContent.GoreType<RudeBusterAfterimage>());
+            Vector2 visualPosition = Projectile.Center - new Vector2(ACTUAL_WIDTH / 2, ACTUAL_HEIGHT / 2);
+            if (Timer % 3 == 0) {
+                Gore.NewGore(Projectile.GetSource_FromAI(), visualPosition, Vector2.Zero, ModContent.GoreType<RudeBusterAfterimage>());
             }
+            for (int i = 0; i < 1; i++) {
+                Dust.NewDust(visualPosition, ACTUAL_WIDTH, ACTUAL_HEIGHT, DustID.ShimmerSpark);
+            }
+            Lighting.AddLight(Projectile.Center, LIGHT);
         }
 
         public override bool PreDraw(ref Color lightColor) {
