@@ -56,5 +56,9 @@ namespace Delterra.Content.Projectiles {
             }
         }
 
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers) {
+            modifiers.SetCrit();
+        }
+
     }
 }

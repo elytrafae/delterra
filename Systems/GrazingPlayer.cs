@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Media;
+using Delterra.Content.Buffs;
 using FaeLibrary.API;
 using FaeLibrary.API.Enums;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.Chat;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -39,10 +42,12 @@ namespace Delterra.Systems {
 
         private int immuneAllowedToGatherTP = 0;
         private int dangerTime = 0;
+        private int grazeNoiseCooldown = 0;
 
         public override void PostUpdate() {
             // Everyone handles their own TP and grazing locally!
             // This is why the NPC/Projectile variables are not synced. They only apply to the current player.
+            bool weGrazedThisTick = false;
             if (Main.myPlayer == Player.whoAmI && IsAllowedToGetTPByGrazing()) {
                 Rectangle grazeArea = GetGrazeRectangle();
                 foreach (Projectile projectile in Main.ActiveProjectiles) {
@@ -54,6 +59,7 @@ namespace Delterra.Systems {
                         } else {
                             TriggerTPPerTick();
                         }
+                        weGrazedThisTick = true;
                     }
                 }
 
@@ -66,8 +72,13 @@ namespace Delterra.Systems {
                         } else {
                             TriggerTPPerTick();
                         }
+                        weGrazedThisTick = true;
                     }
                 }
+            }
+
+            if (weGrazedThisTick && grazeNoiseCooldown > 0) {
+                grazeNoiseCooldown--;
             }
 
             if (immuneAllowedToGatherTP > 0) {
@@ -109,13 +120,16 @@ namespace Delterra.Systems {
         public void TriggerTPBurst() {
             TP += TP_BURST_PER_BULLET;
             dangerTime = 60;
-            // TODO: Add effects and sound
+            SoundEngine.PlaySound(MySoundStyles.Graze, Player.Center);
         }
 
         public void TriggerTPPerTick() {
             TP += TP_PER_TICK_PER_BULLET;
             dangerTime = 60;
-            // TODO: Add effects and sound (occasionally)
+            if (grazeNoiseCooldown <= 0) {
+                grazeNoiseCooldown = 40;
+                SoundEngine.PlaySound(MySoundStyles.Graze, Player.Center);
+            }
         }
 
         public Rectangle GetGrazeRectangle() {
@@ -130,6 +144,10 @@ namespace Delterra.Systems {
         }
         public static GrazingPlayer Get(Player player) {
             return player.GetModPlayer<GrazingPlayer>();
+        }
+
+        public override void OnHitAnything(float x, float y, Entity victim) {
+            Player.AddBuff(ModContent.BuffType<Attacking>(), 60);
         }
 
     }

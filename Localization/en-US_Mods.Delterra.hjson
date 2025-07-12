@@ -31,6 +31,27 @@ Items: {
 		DisplayName: Mane Ax
 		Tooltip: ""
 	}
+
+	DefensiveCharm: {
+		DisplayName: Defensive Charm
+		Tooltip: 
+			'''
+			Enter a defensive state and gain [c/FF7F27:TP]
+			You can't use items for the duration
+			'''
+	}
 }
 
 Projectiles.RudeBuster.DisplayName: Rude Buster
+
+Buffs: {
+	Attacking: {
+		DisplayName: Attacking
+		Description: Your violence is generating [c/FF7F27:TP]
+	}
+
+	Defending: {
+		DisplayName: Defending
+		Description: "+{0}% Damage Reduction, +{1} Defense and +{2} [c/FF7F27:TP] per second, but you cannot use items"
+	}
+}
