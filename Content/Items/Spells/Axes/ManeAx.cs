@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Delterra.Content.Projectiles;
 using Delterra.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -20,8 +21,8 @@ namespace Delterra.Content.Items.Spells.Axes {
             Item.useTime = (Item.useAnimation = 50);
             Item.useStyle = ItemUseStyleID.Swing;
             Item.UseSound = SoundID.Item1;
-            Item.shoot = ProjectileID.FrostburnArrow; // TODO: Swap to real Rude Buster projectile
-            Item.shootSpeed = 8;
+            Item.shoot = ModContent.ProjectileType<RudeBuster>();
+            Item.shootSpeed = 7;
         }
 
         public override bool CanUseItem(Player player) {

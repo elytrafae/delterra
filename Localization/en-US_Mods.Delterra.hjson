@@ -32,3 +32,5 @@ Items: {
 		Tooltip: ""
 	}
 }
+
+Projectiles.RudeBuster.DisplayName: Rude Buster
