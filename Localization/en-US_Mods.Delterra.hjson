@@ -34,10 +34,32 @@ Items: {
 
 	DefensiveCharm: {
 		DisplayName: Defensive Charm
-		Tooltip: 
+		Tooltip:
 			'''
 			Enter a defensive state and gain [c/FF7F27:TP]
 			You can't use items for the duration
+			'''
+	}
+
+	IronShackle: {
+		DisplayName: Iron Shackle
+		Tooltip: "+1% Damage"
+	}
+
+	PinkRibbon: {
+		DisplayName: Pink Ribbon
+		Tooltip: 
+			'''
+			Increased graze area
+			'''
+	}
+
+	WhiteRibbon: {
+		DisplayName: White Ribbon
+		Tooltip: 
+			'''
+			Reduced Potion Sickness when 
+			using TP recovery items
 			'''
 	}
 }
@@ -52,6 +74,27 @@ Buffs: {
 
 	Defending: {
 		DisplayName: Defending
-		Description: "+{0}% Damage Reduction, +{1} Defense and +{2} [c/FF7F27:TP] per second, but you cannot use items"
+		Description: +{0}% Damage Reduction, +{1} Defense and +{2} [c/FF7F27:TP] per second, but you cannot use items
+	}
+}
+
+Emotes.RalseiEmote.Command: ralseiemote
+
+NPCs: {
+	Ralsei: {
+		DisplayName: Ralsei
+
+		TownNPCMood: {
+			Content: I am content.
+			NoHome: I hate not having a home.
+			FarFromHome: I am too far from home.
+			LoveSpace: I love having so much space.
+			DislikeCrowded: I dislike how crowded I am.
+			HateCrowded: I hate how crowded I am.
+			LikeBiome: I like {BiomeName}.
+			DislikeBiome: I dislike {BiomeName}.
+			LikeNPC_Princess: I like {NPCName}.
+			Princess_LovesNPC: I like {NPCName}.
+		}
 	}
 }
