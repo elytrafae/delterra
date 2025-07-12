@@ -14,7 +14,7 @@ namespace Delterra.Content.Items {
 
         public override void SetDefaults() {
             Item.maxStack = Terraria.Item.CommonMaxStack;
-            Item.value = Terraria.Item.buyPrice(gold: 5);
+            Item.value = Terraria.Item.buyPrice(gold: 3);
             Item.rare = ItemRarityID.Orange;
         }
 
