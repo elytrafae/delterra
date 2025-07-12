@@ -1,4 +1,5 @@
-﻿using Delterra.Content.Gores;
+﻿using System;
+using Delterra.Content.Gores;
 using Delterra.Systems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -27,6 +28,7 @@ namespace Delterra.Content.Projectiles {
         }
 
         public override void AI() {
+            Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X);
             Timer++;
             if (Timer == 1) {
                 SoundEngine.PlaySound(MySoundStyles.RudeBusterSwing, Projectile.Center);
@@ -37,8 +39,8 @@ namespace Delterra.Content.Projectiles {
         }
 
         public override bool PreDraw(ref Color lightColor) {
-            Vector2 drawPos = Projectile.Center - new Vector2(ACTUAL_WIDTH/2, ACTUAL_HEIGHT/2) - Main.screenPosition;
-            Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, drawPos, null, lightColor, Projectile.rotation, Vector2.Zero, 1f, SpriteEffects.None);
+            Vector2 drawPos = Projectile.Center - Main.screenPosition;
+            Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, drawPos, null, lightColor, Projectile.rotation, new Vector2(ACTUAL_WIDTH / 2, ACTUAL_HEIGHT / 2), 1f, SpriteEffects.None);
             return false;
         }
 

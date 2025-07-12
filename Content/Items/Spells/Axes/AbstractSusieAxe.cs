@@ -10,9 +10,13 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
+using Terraria.Localization;
 
 namespace Delterra.Content.Items.Spells.Axes {
     public abstract class AbstractSusieAxe : ModItem, ITensionConsumingItem {
+
+        public LocalizedText RudeBusterTooltip => Language.GetOrRegister("Mods." + nameof(Delterra) + ".RudeBusterTooltip");
+        public override LocalizedText Tooltip => RudeBusterTooltip.WithFormatArgs(base.Tooltip);
 
         public override void SetDefaults() {
             Item.DamageType = DamageClass.Melee;

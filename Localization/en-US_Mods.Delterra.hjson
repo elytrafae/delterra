@@ -5,6 +5,11 @@ TPRestoreText:
 	{1} seconds of Potion Sickness
 	{2}
 	'''
+RudeBusterTooltip:
+	'''
+	Right-click to cast Rude Buster!
+	{0}
+	'''
 
 Items: {
 	HealPrayer: {
