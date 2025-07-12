@@ -116,26 +116,20 @@ namespace Delterra.Content.NPCs {
 
             // Create gore when the NPC is killed.
             if (Main.netMode != NetmodeID.Server && NPC.life <= 0) {
-                // Retrieve the gore types. This NPC has shimmer and party variants for head, arm, and leg gore. (12 total gores)
-                string variant = "";
-                if (NPC.IsShimmerVariant)
-                    variant += "_Shimmer";
-                if (NPC.altTexture == 1)
-                    variant += "_Party";
+                // Ralsei does not use traditional gore. Maybe a Scarf and Hat gore will be added later, but for now I'll just use smoke + party hat
                 int hatGore = NPC.GetPartyHatGore();
-                int headGore = Mod.Find<ModGore>($"{Name}_Gore{variant}_Head").Type;
-                int armGore = Mod.Find<ModGore>($"{Name}_Gore{variant}_Arm").Type;
-                int legGore = Mod.Find<ModGore>($"{Name}_Gore{variant}_Leg").Type;
 
                 // Spawn the gores. The positions of the arms and legs are lowered for a more natural look.
                 if (hatGore > 0) {
                     Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, hatGore);
                 }
-                Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, headGore, 1f);
-                Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 20), NPC.velocity, armGore);
-                Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 20), NPC.velocity, armGore);
-                Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 34), NPC.velocity, legGore);
-                Gore.NewGore(NPC.GetSource_Death(), NPC.position + new Vector2(0, 34), NPC.velocity, legGore);
+
+                for (int i = 0; i < 6; i++) {
+                    Vector2 pos = NPC.position + new Vector2(Main.rand.Next(-10, 11), Main.rand.Next(-10, 11));
+                    Vector2 vel = NPC.velocity + new Vector2(Main.rand.NextFloat()-0.5f, Main.rand.NextFloat()-0.20f);
+                    Gore.NewGore(NPC.GetSource_Death(), pos, NPC.velocity, 11 + Main.rand.Next(3));
+                }
+                
             }
         }
 
