@@ -15,7 +15,16 @@ namespace Delterra.Systems {
         // public static readonly SoundStyle MusicNameInCode = RegisterMusic("music_filename"); 
         // public static readonly SoundStyle AmbientNameInCode = RegisterAmbient("ambient_filename"); 
 
-
+        public static readonly SoundStyle Graze = RegisterSound("Graze");
+        public static readonly SoundStyle Heal = RegisterSound("Heal");
+        public static readonly SoundStyle Iceshock = RegisterSound("Iceshock");
+        public static readonly SoundStyle Pacify = RegisterSound("Pacify");
+        public static readonly SoundStyle Petrify = RegisterSound("Petrify");
+        public static readonly SoundStyle Rudebuster_Hit = RegisterSound("Rudebuster_Hit");
+        public static readonly SoundStyle Rudebuster_Swing = RegisterSound("Rudebuster_Swing");
+        public static readonly SoundStyle Snowgrave_Bell = RegisterSound("Snowgrave_Bell");
+        public static readonly SoundStyle Snowgrave_Cast = RegisterSound("Snowgrave_Cast");
+        public static readonly SoundStyle Tension = RegisterSound("Tension");
 
 
         private static SoundStyle RegisterSound(string name) { 
