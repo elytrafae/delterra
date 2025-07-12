@@ -14,10 +14,10 @@ namespace Delterra.Content.Items.Spells {
             Item.maxStack = 1;
             Item.rare = ItemRarityID.Blue;
             Item.value = Item.buyPrice(0, 1, 0);
+            Item.healLife = 60;
         }
 
         public override bool? UseItem(Player player) {
-            player.Heal(60);
             return true;
         }
 

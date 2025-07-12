@@ -9,7 +9,7 @@ TPRestoreText:
 Items: {
 	HealPrayer: {
 		DisplayName: Heal Prayer
-		Tooltip: Restores 80 Health
+		Tooltip: ""
 	}
 
 	TensionBit: {
@@ -56,7 +56,31 @@ Items: {
 		Tooltip:
 			'''
 			Reduced Potion Sickness when 
-			using TP recovery items
+			using [c/FF7F27:TP] recovery items
+			'''
+	}
+
+	BlueRibbon: {
+		DisplayName: Blue Ribbon
+		Tooltip: ""
+	}
+
+	TwinRibbon: {
+		DisplayName: Twin Ribbon
+		Tooltip:
+			'''
+			Increased graze area
+			Reduced Potion Sickness when 
+			using [c/FF7F27:TP] recovery items
+			'''
+	}
+
+	MaliusHammer: {
+		DisplayName: Malius' Single Use Hammer
+		Tooltip:
+			'''
+			"In case of Malius getting sick,
+			  use this to fuse items." - Malius
 			'''
 	}
 }
@@ -92,7 +116,7 @@ NPCs: {
 			DislikeBiome: The {BiomeName} has so much light! It hurts >~<
 			LikeNPC_Princess: "{NPCName} is so sweet and polite ^^"
 			Princess_LovesNPC: "{NPCName} offered me tea and cake just now"
-			LikeNPC: I like {NPCName}.
+			LikeNPC: "{NPCName} is great company."
 		}
 
 		Dialogue: {

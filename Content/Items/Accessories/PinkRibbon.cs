@@ -17,8 +17,8 @@ namespace Delterra.Content.Items.Accessories {
 
         public override void SetDefaults() {
             Item.DefaultToAccessory();
-            Item.rare = ItemRarityID.White;
-            Item.value = Terraria.Item.sellPrice(0, 0, 1, 0);
+            Item.rare = ItemRarityID.Green;
+            Item.value = Terraria.Item.sellPrice(0, 0, 10, 0);
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual) {
