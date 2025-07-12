@@ -43,20 +43,17 @@ Items: {
 
 	IronShackle: {
 		DisplayName: Iron Shackle
-		Tooltip: "+1% Damage"
+		Tooltip: +1% Damage
 	}
 
 	PinkRibbon: {
 		DisplayName: Pink Ribbon
-		Tooltip: 
-			'''
-			Increased graze area
-			'''
+		Tooltip: Increased graze area
 	}
 
 	WhiteRibbon: {
 		DisplayName: White Ribbon
-		Tooltip: 
+		Tooltip:
 			'''
 			Reduced Potion Sickness when 
 			using TP recovery items
@@ -82,19 +79,29 @@ Emotes.RalseiEmote.Command: ralseiemote
 
 NPCs: {
 	Ralsei: {
-		DisplayName: Ralsei
+		DisplayName: Dark Prince
 
 		TownNPCMood: {
-			Content: I am content.
-			NoHome: I hate not having a home.
-			FarFromHome: I am too far from home.
-			LoveSpace: I love having so much space.
-			DislikeCrowded: I dislike how crowded I am.
-			HateCrowded: I hate how crowded I am.
-			LikeBiome: I like {BiomeName}.
-			DislikeBiome: I dislike {BiomeName}.
-			LikeNPC_Princess: I like {NPCName}.
-			Princess_LovesNPC: I like {NPCName}.
+			Content: I am content, thank you.
+			NoHome: If it isn't a burden, could I please get a room to stay in?
+			FarFromHome: I need to find my way back to my room...
+			LoveSpace: This place is quite spacious. Reminds me of when I met Kris and Susie.
+			DislikeCrowded: I like the company, but I can tell my neighbours had enough...
+			HateCrowded: Things are a little... packed here...
+			LikeBiome: The {BiomeName} is nice and dark. Makes it easier for me to maintain my form ^^
+			DislikeBiome: The {BiomeName} has so much light! It hurts >~<
+			LikeNPC_Princess: "{NPCName} is so sweet and polite ^^"
+			Princess_LovesNPC: "{NPCName} offered me tea and cake just now"
+			LikeNPC: I like {NPCName}.
+		}
+
+		Dialogue: {
+			Random1: I honestly have no idea how I can somehow maintain my darkner form here, but it's probably best to not think about it...
+			Random2: I wonder how Kris and Susie are doing back home...
+			Random3: How can I help you? ^^
+			PartyGirl: "{NPCName} may just have a bigger appetite for Cake than Susie"
+			PartyNoItems: Such a lovely birthday. I wish I could give everyone some cake and tea, but I have none...
+			PartyCakeTea: Greetings! May I offer you some cake and tea?
 		}
 	}
 }

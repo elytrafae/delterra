@@ -66,7 +66,8 @@ namespace Delterra.Content.NPCs {
                 .SetBiomeAffection<UndergroundBiome>(AffectionLevel.Like)
                 .SetBiomeAffection<HallowBiome>(AffectionLevel.Like)
                 .SetBiomeAffection<DesertBiome>(AffectionLevel.Dislike)
-                // TODO: Add NPC happiness data!
+                .SetNPCAffection(NPCID.PartyGirl, AffectionLevel.Like)
+            // TODO: Add NPC happiness data!
             ; // < Mind the semicolon!
 
             // This creates a "profile" for ExamplePerson, which allows for different textures during a party and/or while the NPC is shimmered.
@@ -157,24 +158,33 @@ namespace Delterra.Content.NPCs {
             WeightedRandom<string> chat = new WeightedRandom<string>();
 
             int partyGirl = NPC.FindFirstNPC(NPCID.PartyGirl);
-            if (partyGirl >= 0 && Main.rand.NextBool(4)) {
-                chat.Add(Language.GetTextValue("Mods.ExampleMod.Dialogue.ExamplePerson.PartyGirlDialogue", Main.npc[partyGirl].GivenName));
+            if (partyGirl >= 0) {
+                chat.Add(this.GetLocalization("Dialogue.PartyGirl").Format(Main.npc[partyGirl].GivenName));
             }
+
             // These are things that the NPC has a chance of telling you when you talk to it.
-            chat.Add(Language.GetTextValue("Mods.ExampleMod.Dialogue.ExamplePerson.StandardDialogue1"));
-            chat.Add(Language.GetTextValue("Mods.ExampleMod.Dialogue.ExamplePerson.StandardDialogue2"));
-            chat.Add(Language.GetTextValue("Mods.ExampleMod.Dialogue.ExamplePerson.StandardDialogue3"));
-            chat.Add(Language.GetTextValue("Mods.ExampleMod.Dialogue.ExamplePerson.StandardDialogue4"));
-            chat.Add(Language.GetTextValue("Mods.ExampleMod.Dialogue.ExamplePerson.CommonDialogue"), 5.0);
-            chat.Add(Language.GetTextValue("Mods.ExampleMod.Dialogue.ExamplePerson.RareDialogue"), 0.1);
+            chat.Add(this.GetLocalizedValue("Dialogue.Random1"));
+            chat.Add(this.GetLocalizedValue("Dialogue.Random2"));
+            chat.Add(this.GetLocalizedValue("Dialogue.Random3"));
+
+            if (Condition.BirthdayParty.IsMet()) {
+                string partytext = this.GetLocalizedValue("Dialogue.PartyNoItems");
+                if (Main.hardMode) {
+                    partytext = this.GetLocalizedValue("Dialogue.PartyCakeTea");
+                    Main.npcChatCornerItem = Main.rand.NextBool(2) ? ItemID.SliceOfCake : ItemID.Teacup;
+                }
+                chat.Add(partytext, 6);
+            }
 
             string chosenChat = chat; // chat is implicitly cast to a string. This is where the random choice is made.
 
+            /*
             // Here is some additional logic based on the chosen chat line. In this case, we want to display an item in the corner for StandardDialogue4.
             if (chosenChat == Language.GetTextValue("Mods.ExampleMod.Dialogue.ExamplePerson.StandardDialogue4")) {
                 // Main.npcChatCornerItem shows a single item in the corner, like the Angler Quest chat.
                 Main.npcChatCornerItem = ItemID.HiveBackpack;
             }
+            */
 
             return chosenChat;
         }
@@ -193,7 +203,9 @@ namespace Delterra.Content.NPCs {
         public override void AddShops() {
             var npcShop = new NPCShop(Type, ShopName)
                 .Add<WhiteRibbon>()
-                .Add<PinkRibbon>(Condition.DownedEowOrBoc);
+                .Add<PinkRibbon>(Condition.DownedEowOrBoc)
+                .Add(ItemID.SliceOfCake, Condition.BirthdayParty, Condition.Hardmode)
+                .Add(ItemID.Teacup, Condition.BirthdayParty, Condition.Hardmode);
 
             npcShop.Register();
         }
@@ -231,7 +243,7 @@ namespace Delterra.Content.NPCs {
             int type = EmoteID.EmotionLove;
 
             // Make the selection more likely by adding it to the list multiple times
-            for (int i = 0; i < 2; i++) {
+            for (int i = 0; i < 3; i++) {
                 emoteList.Add(type);
             }
 
