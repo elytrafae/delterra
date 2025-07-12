@@ -61,7 +61,7 @@ namespace Delterra.Systems {
             if (tensionItem.IsTPConsumedOnUse(player)) {
                 return GetTensionCost(tensionItem, player) <= GrazingPlayer.Get(player).TP;
             }
-            return false;
+            return true;
         }
 
         public override bool? UseItem(Item item, Player player) {
@@ -73,6 +73,8 @@ namespace Delterra.Systems {
             }
             return null;
         }
+
+
 
     }
 }
