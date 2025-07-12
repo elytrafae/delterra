@@ -13,9 +13,9 @@ namespace Delterra.Content.Buffs {
 
         private int DAMAGE_REDUCTION = 15;
         private int DEFENSE = 5;
-        private int TP_PER_SECOND = GrazingPlayer.GetTPForPercent(2);
+        private int TP_PER_SECOND = GrazingPlayer.GetTPForPercent(2) + 4;
 
-        public override LocalizedText Description => base.Description.WithFormatArgs(DAMAGE_REDUCTION, DEFENSE, (float)TP_PER_SECOND/GrazingPlayer.TP_PER_PERCENT);
+        public override LocalizedText Description => base.Description.WithFormatArgs(DAMAGE_REDUCTION, DEFENSE, TP_PER_SECOND/GrazingPlayer.TP_PER_PERCENT);
 
         public override void Update(Player player, ref int buffIndex) {
             player.endurance += (DAMAGE_REDUCTION/100f);
