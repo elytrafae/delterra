@@ -1,12 +1,13 @@
 ﻿using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
+using Delterra.Systems;
 
 namespace Delterra.Content.Items.Spells {
     public class HealPrayer : ModItem, ITensionConsumingItem {
 
         public override void SetDefaults() {
-            Item.UseSound = SoundID.Item100;
+            Item.UseSound = MySoundStyles.Heal;
             Item.useStyle = ItemUseStyleID.HoldUp;
             Item.useTurn = true;
             Item.useAnimation = Item.useTime = 60;

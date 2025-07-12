@@ -27,7 +27,12 @@ namespace Delterra.Systems {
         public static readonly SoundStyle Tension = RegisterSound("Tension");
 
 
-        private static SoundStyle RegisterSound(string name) { 
+        // Sound Styles made by elytrafae, which are just variations of existing sound styles above.
+        public static readonly SoundStyle TensionBit = SetPitchVariance(Tension.WithVolumeScale(1.1f).WithPitchOffset(-0.2f), 0.2f);
+        public static readonly SoundStyle TensionGem = SetPitchVariance(Tension.WithVolumeScale(1.1f), 0.2f);
+        public static readonly SoundStyle TensionMax = SetPitchVariance(Tension.WithVolumeScale(1.1f).WithPitchOffset(0.2f), 0.2f);
+
+        private static SoundStyle RegisterSound(string name) {
             return new SoundStyle(nameof(Delterra) + "/Assets/SoundEffects/" + name, SoundType.Sound);
         }
 
@@ -37,6 +42,11 @@ namespace Delterra.Systems {
 
         private static SoundStyle RegisterAmbient(string name) {
             return new SoundStyle(nameof(Delterra) + "/Assets/AmbientSounds/" + name, SoundType.Ambient);
+        }
+
+        private static SoundStyle SetPitchVariance(SoundStyle style, float pitchVariance) {
+            style.PitchVariance = pitchVariance;
+            return style;
         }
 
     }

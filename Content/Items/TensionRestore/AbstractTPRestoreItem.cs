@@ -22,7 +22,7 @@ namespace Delterra.Content.Items.TensionRestore {
             Item.consumable = true;
             Item.useTime = 15;
             Item.useAnimation = 15;
-            Item.UseSound = SoundID.Item103;
+            Item.UseSound = MySoundStyles.Tension;
             Item.maxStack = Item.CommonMaxStack;
         }
 

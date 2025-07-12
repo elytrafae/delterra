@@ -1,12 +1,17 @@
 ﻿using Delterra.Content.Gores;
 using Delterra.Systems;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
+using Terraria.GameContent;
 using Terraria.ModLoader;
 
 namespace Delterra.Content.Projectiles {
     public class RudeBuster : ModProjectile {
+
+        public const int ACTUAL_WIDTH = 80;
+        public const int ACTUAL_HEIGHT = 80;
 
         public override void SetDefaults() {
             Projectile.friendly = true;
@@ -26,9 +31,15 @@ namespace Delterra.Content.Projectiles {
             if (Timer == 1) {
                 SoundEngine.PlaySound(MySoundStyles.RudeBusterSwing, Projectile.Center);
             }
-            if (Timer % 20 == 0) {
-                Gore.NewGore(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero, ModContent.GoreType<RudeBusterAfterimage>());
+            if (Timer % 10 == 0) {
+                Gore.NewGore(Projectile.GetSource_FromAI(), Projectile.Center - new Vector2(ACTUAL_WIDTH / 2, ACTUAL_HEIGHT / 2), Vector2.Zero, ModContent.GoreType<RudeBusterAfterimage>());
             }
+        }
+
+        public override bool PreDraw(ref Color lightColor) {
+            Vector2 drawPos = Projectile.Center - new Vector2(ACTUAL_WIDTH/2, ACTUAL_HEIGHT/2) - Main.screenPosition;
+            Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, drawPos, null, lightColor, Projectile.rotation, Vector2.Zero, 1f, SpriteEffects.None);
+            return false;
         }
 
         public override void ModifyDamageHitbox(ref Rectangle hitbox) {

@@ -20,6 +20,7 @@ namespace Delterra.Content.Items.TensionRestore {
             Item.width = 32;
             Item.height = 32;
             Item.rare = ItemRarityID.Green;
+            Item.UseSound = MySoundStyles.TensionMax;
         }
 
     }
