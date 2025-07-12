@@ -32,7 +32,11 @@ namespace Delterra.Content.Items.TensionRestore {
 
         public override bool? UseItem(Player player) {
             GrazingPlayer.Get(player).TP += TPHeal;
-            player.AddBuff(BuffID.PotionSickness, PotionSicknessTime);
+            int potionSicknessTime = PotionSicknessTime;
+            if (EquipmentEffectPlayer.Get(player).tensionRestorePotionSicknessReduced) {
+                potionSicknessTime = (int)(potionSicknessTime * 0.85f);
+            }
+            player.AddBuff(BuffID.PotionSickness, potionSicknessTime);
             return true;
         }
 

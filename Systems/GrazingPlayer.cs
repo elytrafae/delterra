@@ -44,6 +44,8 @@ namespace Delterra.Systems {
         private int dangerTime = 0;
         private int grazeNoiseCooldown = 0;
 
+        public bool bigGrazeAreaStat = false;
+
         public override void PostUpdate() {
             // Everyone handles their own TP and grazing locally!
             // This is why the NPC/Projectile variables are not synced. They only apply to the current player.
@@ -91,6 +93,10 @@ namespace Delterra.Systems {
             //ChatHelper.DisplayMessage(NetworkText.FromLiteral("TP: " + TP / 100f + "%"), Color.Pink, 255);
         }
 
+        public override void ResetEffects() {
+            bigGrazeAreaStat = false;
+        }
+
         void IFaeModPlayer.OnDodge(Player.HurtInfo info, DodgeType dodgeType) {
             immuneAllowedToGatherTP = 120;
         }
@@ -136,6 +142,10 @@ namespace Delterra.Systems {
             Vector2 center = Player.Center;
             int totalWidth = BASE_GRAZE_WIDTH;
             int totalHeight = BASE_GRAZE_HEIGHT;
+            if (bigGrazeAreaStat) { // Increase graze area by 25%
+                totalWidth += (totalWidth / 4);
+                totalHeight += (totalHeight / 4);
+            }
             return new Rectangle((int)(center.X - totalWidth/2), (int)(center.Y - totalHeight/2), totalWidth, totalHeight);
         }
 
