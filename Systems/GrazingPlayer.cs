@@ -29,7 +29,8 @@ namespace Delterra.Systems {
             }
         }
 
-        public const int MAXTP = 10000;
+        public const int TP_PER_PERCENT = 100;
+        public const int MAXTP = TP_PER_PERCENT*100;
         public const int BASE_GRAZE_WIDTH = 64;
         public const int BASE_GRAZE_HEIGHT = 96;
 
@@ -124,6 +125,9 @@ namespace Delterra.Systems {
             return new Rectangle((int)(center.X - totalWidth/2), (int)(center.Y - totalHeight/2), totalWidth, totalHeight);
         }
 
+        public static int GetTPForPercent(float percent) { 
+            return (int)(percent * TP_PER_PERCENT);
+        }
         public static GrazingPlayer Get(Player player) {
             return player.GetModPlayer<GrazingPlayer>();
         }

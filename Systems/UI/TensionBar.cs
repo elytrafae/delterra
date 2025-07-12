@@ -24,8 +24,8 @@ namespace Delterra.Systems.UI {
         private int currentDisplayedTP = 0;
         private int currentDisplayedRedTP = 0;
         private int hoverBlinkTime = 0;
-        private const int MAX_TP_SCROLL_SPEED_PER_TICK = 50;
-        private const int MAX_RED_TP_SCROLL_SPEED_PER_TICK = 35;
+        private const int MAX_TP_SCROLL_SPEED_PER_TICK = 70;
+        private const int MAX_RED_TP_SCROLL_SPEED_PER_TICK = 45;
 
         private Color BackgroundFillingColor = new Color(255, 0, 0);
         private Color MainFillingColor = new Color(255, 127, 39);

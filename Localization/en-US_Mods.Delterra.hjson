@@ -1,4 +1,10 @@
 TensionCostText: Costs {0} [c/FF7F27:TP]
+TPRestoreText:
+	'''
+	+{0}% [c/FF7F27:TP] at the cost of
+	{1} seconds of Potion Sickness
+	{2}
+	'''
 
 Items: {
 	HealPrayer: {
@@ -8,10 +14,16 @@ Items: {
 
 	TensionBit: {
 		DisplayName: Tension Bit
-		Tooltip:
-			'''
-			+20% [c/FF7F27:TP] at the cost of
-			45 seconds of Potion Sickness
-			'''
+		Tooltip: ""
+	}
+
+	TensionGem: {
+		DisplayName: Tension Gem
+		Tooltip: ""
+	}
+
+	TensionMax: {
+		DisplayName: Tension Max
+		Tooltip: ""
 	}
 }
