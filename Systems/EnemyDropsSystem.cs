@@ -1,4 +1,5 @@
-﻿using Delterra.Content.Items.Spells.Axes;
+﻿using Delterra.Content.Items.Accessories;
+using Delterra.Content.Items.Spells.Axes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,9 @@ namespace Delterra.Systems {
             }
             if (npc.type == NPCID.DD2Betsy) {
                 AddLootToBoss<JusticeAx>(npcLoot);
+            }
+            if (npc.type == NPCID.UndeadMiner) {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GlowWrist>(), 2));
             }
         }
 
