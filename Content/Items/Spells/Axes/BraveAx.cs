@@ -20,8 +20,10 @@ namespace Delterra.Content.Items.Spells.Axes {
             Item.damage = 45;
             Item.knockBack = 3.5f;
             Item.useTime = (Item.useAnimation = 50);
-            Item.rare = ItemRarityID.Blue;
-            Item.value = Terraria.Item.sellPrice(0, 0, 10, 0);
+            Item.rare = ItemRarityID.Green;
+            Item.value = Terraria.Item.sellPrice(0, 0, 40, 0);
+            Item.shootSpeed = 8;
+            Item.scale = 1.1f;
         }
 
         public override void AddRecipes() {

@@ -12,10 +12,12 @@ namespace Delterra.Systems {
 
         public bool tensionRestorePotionSicknessReduced = false;
         public float healingMultiplier = 1f;
+        public int commonLifeRegen = 0;
 
         public override void ResetEffects() {
             tensionRestorePotionSicknessReduced = false;
             healingMultiplier = 1f;
+            commonLifeRegen = 0;
         }
 
         public override bool CanUseItem(Item item) {
@@ -24,6 +26,10 @@ namespace Delterra.Systems {
 
         public override void GetHealLife(Item item, bool quickHeal, ref int healValue) {
             healValue = (int)(healValue * healingMultiplier);
+        }
+
+        public override void UpdateLifeRegen() {
+            Player.lifeRegen += commonLifeRegen;
         }
 
         public static EquipmentEffectPlayer Get(Player player) { 

@@ -70,6 +70,7 @@ namespace Delterra.Content.Projectiles {
 
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers) {
             modifiers.SetCrit();
+            modifiers.ScalingArmorPenetration += 0.3f;
         }
 
     }

@@ -17,13 +17,14 @@ namespace Delterra.Content.Items.Spells.Axes {
 
         public LocalizedText RudeBusterTooltip => Language.GetOrRegister("Mods." + nameof(Delterra) + ".RudeBusterTooltip");
         public override LocalizedText Tooltip => RudeBusterTooltip.WithFormatArgs(base.Tooltip);
+        public virtual int RudeBusterCost => GrazingPlayer.GetTPForPercent(50);
 
         public override void SetDefaults() {
             Item.DamageType = DamageClass.Melee;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.UseSound = SoundID.Item1;
             Item.shoot = ModContent.ProjectileType<RudeBuster>();
-            Item.shootSpeed = 7;
+            Item.shootSpeed = 9;
         }
 
         public override bool CanUseItem(Player player) {
@@ -52,7 +53,7 @@ namespace Delterra.Content.Items.Spells.Axes {
         }
 
         int ITensionConsumingItem.GetBaseTPCost(Player player) {
-            return GrazingPlayer.GetTPForPercent(50);
+            return RudeBusterCost;
         }
 
         bool ITensionConsumingItem.IsTPConsumedOnUse(Player player) {

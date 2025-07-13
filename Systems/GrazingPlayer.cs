@@ -53,7 +53,7 @@ namespace Delterra.Systems {
             if (Main.myPlayer == Player.whoAmI && IsAllowedToGetTPByGrazing()) {
                 Rectangle grazeArea = GetGrazeRectangle();
                 foreach (Projectile projectile in Main.ActiveProjectiles) {
-                    if (projectile.hostile && grazeArea.Intersects(projectile.Hitbox)) {
+                    if (projectile.hostile && projectile.damage > 0 && grazeArea.Intersects(projectile.Hitbox)) {
                         GrazingProjectile modProj = GrazingProjectile.Get(projectile);
                         if (!modProj.wasGrazedBefore) {
                             modProj.wasGrazedBefore = true;
@@ -66,7 +66,7 @@ namespace Delterra.Systems {
                 }
 
                 foreach (NPC npc in Main.ActiveNPCs) {
-                    if (!(npc.friendly || npc.CountsAsACritter || Main.npcCatchable[npc.type]) && grazeArea.Intersects(npc.Hitbox)) {
+                    if (!(npc.friendly || npc.CountsAsACritter || Main.npcCatchable[npc.type]) && npc.damage > 0 && grazeArea.Intersects(npc.Hitbox)) {
                         GrazingNPC modNPC = GrazingNPC.Get(npc);
                         if (!modNPC.wasGrazedBefore) {
                             modNPC.wasGrazedBefore = true;

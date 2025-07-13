@@ -21,6 +21,7 @@ using Delterra.Content.Emotes;
 using Microsoft.Xna.Framework;
 using Delterra.Content.Items.Accessories;
 using Delterra.Content.Items;
+using Delterra.Content.Items.Spells.Axes;
 
 namespace Delterra.Content.NPCs {
 
@@ -197,7 +198,9 @@ namespace Delterra.Content.NPCs {
             var npcShop = new NPCShop(Type, ShopName)
                 .Add<WhiteRibbon>()
                 .Add<PinkRibbon>(Condition.DownedEowOrBoc)
+                .Add<BlueRibbon>(Condition.DownedMechBossAny)
                 .Add<MaliusHammer>(Condition.DownedSkeletron)
+                .Add<AbsorbAx>(Condition.Eclipse)
                 .Add(ItemID.SliceOfCake, Condition.BirthdayParty, Condition.Hardmode)
                 .Add(ItemID.Teacup, Condition.BirthdayParty, Condition.Hardmode);
 

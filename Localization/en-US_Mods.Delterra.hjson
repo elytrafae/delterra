@@ -32,11 +32,6 @@ Items: {
 		Tooltip: ""
 	}
 
-	ManeAx: {
-		DisplayName: Mane Ax
-		Tooltip: ""
-	}
-
 	DefensiveCharm: {
 		DisplayName: Defensive Charm
 		Tooltip:
@@ -53,13 +48,18 @@ Items: {
 
 	PinkRibbon: {
 		DisplayName: Pink Ribbon
-		Tooltip: Increased graze area
+		Tooltip:
+			'''
+			A cute hair ribbon.
+			Increased graze area
+			'''
 	}
 
 	WhiteRibbon: {
 		DisplayName: White Ribbon
 		Tooltip:
 			'''
+			A crinkly hair ribbon.
 			Reduced Potion Sickness when 
 			using [c/FF7F27:TP] recovery items
 			'''
@@ -67,7 +67,13 @@ Items: {
 
 	BlueRibbon: {
 		DisplayName: Blue Ribbon
-		Tooltip: ""
+		Tooltip:
+			'''
+			A blue cheer bow.
+			Increases healing from
+			potions and spells.
+			Increases life regeneration.
+			'''
 	}
 
 	TwinRibbon: {
@@ -89,6 +95,70 @@ Items: {
 			'''
 	}
 
+	ManeAx: {
+		DisplayName: Mane Ax
+		Tooltip:
+			'''
+			Beginner's ax forged from 
+			the mane of a dragon whelp.
+			'''
+	}
+
+	AbsorbAx: {
+		DisplayName: Absorb Ax
+		Tooltip:
+			'''
+			A long, curved axe with an indent. 
+			Scoop up HP when you attack.
+			'''
+	}
+
+	AutoAx: {
+		DisplayName: Auto Axe
+		Tooltip:
+			'''
+			Make sure to charge it by 
+			plugging it into the wall.
+			Grants [c/FF7F27:TP] on melee crits.
+			'''
+	}
+
+	BraveAx: {
+		DisplayName: Brave Ax
+		Tooltip:
+			'''
+			A glossy ax from a block warrior. 
+			Suitable for heroes.
+			'''
+	}
+
+	Devilsknife: {
+		DisplayName: Devilsknife
+		Tooltip:
+			'''
+			Skull-emblazoned scythe-ax. 
+			Reduces Rudebuster's cost by 10
+			'''
+	}
+
+	ToxicAx: {
+		DisplayName: Toxic Axe
+		Tooltip:
+			'''
+			An axe used to clear wastelands in 
+			a fetid swamp. Not poison, but venomous.
+			'''
+	}
+
+	JusticeAx: {
+		DisplayName: Justice Axe
+		Tooltip:
+			'''
+			In order to attain this item, 
+			you became much stronger!
+			'''
+	}
+
 	SnowRing: {
 		DisplayName: Snow Ring
 		Tooltip: ""
@@ -98,6 +168,7 @@ Items: {
 Projectiles: {
 	RudeBuster.DisplayName: Rude Buster
 	IceShock.DisplayName: Ice Shock
+	JusticeRudeBuster.DisplayName: Justice Rude Buster
 }
 
 Buffs: {
@@ -113,6 +184,7 @@ Buffs: {
 }
 
 Emotes.RalseiEmote.Command: ralseiemote
+Bestiary.Ralsei: A prince from the dark and three time accidental fluffiest pet contest winner. His mission was to save the world from destruction, but somehow he ended up here...
 
 NPCs: {
 	Ralsei: {

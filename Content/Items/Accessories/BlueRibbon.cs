@@ -15,11 +15,12 @@ namespace Delterra.Content.Items.Accessories {
             Item.DefaultToAccessory();
             Item.rare = ItemRarityID.LightRed;
             Item.value = Terraria.Item.sellPrice(0, 1, 0, 0);
-            Item.defense = 3;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual) {
-            EquipmentEffectPlayer.Get(player).healingMultiplier += 0.2f;
+            EquipmentEffectPlayer modPlayer = EquipmentEffectPlayer.Get(player);
+            modPlayer.healingMultiplier += 0.25f;
+            modPlayer.commonLifeRegen += 2;
         }
 
     }
