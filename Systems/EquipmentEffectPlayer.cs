@@ -24,6 +24,7 @@ namespace Delterra.Systems {
         public StatModifier tpCost = new();
         public bool frostmancerSet = false;
         public bool dealmakerVisible = false;
+        public int asgoreTruckGloryTime = 0;
 
         public override void ResetEffects() {
             tensionRestorePotionSicknessReduced = false;
@@ -51,6 +52,9 @@ namespace Delterra.Systems {
                     Dust dust = Dust.NewDustPerfect(spawnPos, DustID.Snow, new Vector2(Main.rand.NextFloat(-0.5f, 0.5f), 0.3f));
                     dust.noGravity = false;
                 }
+            }
+            if (asgoreTruckGloryTime > 0) {
+                asgoreTruckGloryTime--;
             }
         }
 
@@ -101,6 +105,7 @@ namespace Delterra.Systems {
                 if (asgoreTruckHit == true) {
                     if (target.type == NPCID.Deerclops) {
                         info.Damage = 999999999;
+                        asgoreTruckGloryTime = 120;
                     }
                     SoundEngine.PlaySound(MySoundStyles.RealisticExplosion, target.Center);
                     Gore.NewGorePerfect(Player.GetSource_OnHit(target), target.Center - new Vector2(35.5f, 50), Vector2.Zero, ModContent.GoreType<RealisticExplosion>());
