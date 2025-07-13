@@ -34,7 +34,7 @@ namespace Delterra.Content.PlayerDrawLayers {
                 Texture2D texture = Graze100.Value;
                 if (modPlayer.pinkRibbonGrazeArea && modPlayer.frostmancerGrazeArea) {
                     texture = Graze150.Value;
-                } else if (modPlayer.pinkRibbonGrazeArea && modPlayer.frostmancerGrazeArea) {
+                } else if (modPlayer.pinkRibbonGrazeArea || modPlayer.frostmancerGrazeArea) {
                     texture = Graze125.Value;
                 }
                 Main.EntitySpriteDraw(texture, rect.TopLeft() - Main.screenPosition, null, color, 0, Vector2.Zero, 1f, Microsoft.Xna.Framework.Graphics.SpriteEffects.None);

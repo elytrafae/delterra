@@ -18,17 +18,19 @@ namespace Delterra.Content.Items.Armor {
         public static readonly int MagicDamageBonusPercent = 15;
         public static readonly int MagicCritBonus = 7;
 
+        public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(MagicDamageBonusPercent, MagicCritBonus, TPCostReductionPercent);
+
         public static LocalizedText SetBonusText { get; private set; }
 
         public override void SetStaticDefaults() {
             // We are passing in "{0}" into WithFormatArgs to replace "{0}" with itself because we do the final formatting for this LocalizedText in UpdateArmorSet itself according to the players current ReversedUpDownArmorSetBonuses setting.
-            SetBonusText = this.GetLocalization("SetBonus").WithFormatArgs("{0}", TPCostReductionPercent);
+            SetBonusText = this.GetLocalization("SetBonus");
         }
 
         public override void SetDefaults() {
-            Item.value = Item.sellPrice(gold: 7); // How many coins the item is worth
-            Item.rare = ItemRarityID.Red; // The rarity of the item
-            Item.defense = 12; // The amount of defense the item will give when equipped
+            Item.value = Item.sellPrice(gold: 7);
+            Item.rare = ItemRarityID.Red; 
+            Item.defense = 13; 
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs) {

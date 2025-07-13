@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Delterra.Content.Buffs;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Delterra.Systems {
@@ -35,6 +36,17 @@ namespace Delterra.Systems {
             if (greenLightLevel > 0f) {
                 Lighting.AddLight(Player.Center, new Vector3(0.6f, 1f, 0.6f) * greenLightLevel);
             }
+            if (frostmancerSet) {
+                Lighting.AddLight(Player.Center, new Vector3(0.6f, 0.6f, 0.6f));
+                if (Main.rand.NextBool(11)) {
+                    int spawnWidth = 60;
+                    int spawnHeight = 10;
+                    Vector2 spawnTopLeft = Player.Center - new Vector2(spawnWidth/2, 45);
+                    Vector2 spawnPos = spawnTopLeft + new Vector2(Main.rand.NextFloat(spawnWidth), Main.rand.NextFloat(spawnHeight));
+                    Dust dust = Dust.NewDustPerfect(spawnPos, DustID.Snow, new Vector2(Main.rand.NextFloat(-0.5f, 0.5f), 0.3f));
+                    dust.noGravity = false;
+                }
+            }
         }
 
         public override bool CanUseItem(Item item) {
@@ -51,7 +63,7 @@ namespace Delterra.Systems {
 
         public override void ArmorSetBonusActivated() {
             if (frostmancerSet) {
-                Player.AddBuff();
+                Player.AddBuff(ModContent.BuffType<Trance>(), 4 * 60);
             }
         }
 

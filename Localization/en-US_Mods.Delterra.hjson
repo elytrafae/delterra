@@ -269,14 +269,37 @@ Items: {
 		DisplayName: Thorn Ring
 		Tooltip:
 			'''
-			Reduces the TP cost of ice spells
+			Reduces the [c/FF7F27:TP] cost of ice spells
 			Your potential is finally unlocked.
 			'''
 	}
 
 	FrostmancerRobe: {
 		DisplayName: Frostmancer Robe
-		Tooltip: ""
+		Tooltip:
+			'''
+			[c/FF7F27:TP] gain from Attacking 
+			or Defending increased.
+			{0}% magic damage
+			{1}% magic crit
+			Ice Skates effect
+			'''
+	}
+
+	FrostmancerHood: {
+		SetBonus:
+			'''
+			Increased graze area
+			Activate the set bonus to slip 
+			into a Trance for 5 seconds. 
+			'''
+		DisplayName: Frostmancer Hood
+		Tooltip:
+			'''
+			{0}% magic damage
+			{1}% magic crit
+			{2}% reduced [c/FF7F27:TP] cost
+			'''
 	}
 }
 
@@ -297,6 +320,11 @@ Buffs: {
 	Defending: {
 		DisplayName: Defending
 		Description: +{0}% Damage Reduction, +{1} Defense and +{2} [c/FF7F27:TP] per second, but you cannot use items
+	}
+
+	Trance: {
+		DisplayName: Trance
+		Description: Massively increased magic damage and crit chance, as well as passive [c/FF7F27:TP] gain, but you lose 20 Health per second!
 	}
 }
 
