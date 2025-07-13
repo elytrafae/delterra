@@ -23,6 +23,7 @@ using Delterra.Content.Items.Accessories;
 using Delterra.Content.Items;
 using Delterra.Content.Items.Spells.Axes;
 using Delterra.Content.Items.TensionRestore;
+using Delterra.Content.Items.Spells.HealPrayer;
 
 namespace Delterra.Content.NPCs {
 
@@ -163,6 +164,8 @@ namespace Delterra.Content.NPCs {
             chat.Add(this.GetLocalizedValue("Dialogue.Random1"));
             chat.Add(this.GetLocalizedValue("Dialogue.Random2"));
             chat.Add(this.GetLocalizedValue("Dialogue.Random3"));
+            chat.Add(this.GetLocalizedValue("Dialogue.Random4"), 0.7f);
+            chat.Add(this.GetLocalizedValue("Dialogue.Random5"), 0.5f);
 
             string partytext = "";
 
@@ -197,10 +200,16 @@ namespace Delterra.Content.NPCs {
         // Not completely finished, but below is what the NPC will sell
         public override void AddShops() {
             var npcShop = new NPCShop(Type, ShopName)
-                .Add<TensionBit>()
                 .Add<WhiteRibbon>()
                 .Add<PinkRibbon>(Condition.DownedEowOrBoc)
                 .Add<BlueRibbon>(Condition.DownedMechBossAny)
+                .Add<TensionBit>()
+                .Add<TensionGem>(Condition.Hardmode)
+                .Add<TensionMax>(Condition.DownedCultist)
+                .Add<HealPrayer1>(Condition.DownedEyeOfCthulhu)
+                .Add<HealPrayer2>(Condition.DownedSkeletron)
+                .Add<HealPrayer3>(Condition.DownedPlantera)
+                .Add<HealPrayer4>(Condition.DownedCultist)
                 .Add<MaliusHammer>(Condition.DownedSkeletron)
                 .Add<AbsorbAx>(Condition.Eclipse)
                 .Add(ItemID.SliceOfCake, Condition.BirthdayParty, Condition.Hardmode)

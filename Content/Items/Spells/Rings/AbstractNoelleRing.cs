@@ -8,10 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Delterra.Content.Items.Spells.Rings {
     public abstract class AbstractNoelleRing : ModItem, ITensionConsumingItem {
+
+        public LocalizedText IceShockTooltip => Language.GetOrRegister("Mods." + nameof(Delterra) + ".IceShockTooltip");
+        public override LocalizedText Tooltip => IceShockTooltip.WithFormatArgs(base.Tooltip);
 
         public virtual int IceShockCost => GrazingPlayer.GetTPForPercent(16);
         public virtual int SnowGraveCost => GrazingPlayer.GetTPForPercent(200);
@@ -29,12 +33,22 @@ namespace Delterra.Content.Items.Spells.Rings {
             Item.knockBack = 5f;
         }
 
+        public override bool AltFunctionUse(Player player) {
+            return IsSnowGraveUnlocked;
+        }
+
+        public override void ModifyManaCost(Player player, ref float reduce, ref float mult) {
+            if (player.altFunctionUse == 2) {
+                mult *= 10;
+            }
+        }
+
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) {
             position = Main.MouseWorld;
             if (IsSnowGraveUnlocked && player.altFunctionUse == 2) {
                 type = ModContent.ProjectileType<SnowGrave>();
                 position.Y = player.Center.Y + Main.screenHeight/2 + 50;
-                damage *= 5;
+                damage *= 3;
             }
         }
 
