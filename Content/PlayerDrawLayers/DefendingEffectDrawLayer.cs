@@ -31,7 +31,8 @@ namespace Delterra.Content.PlayerDrawLayers {
                 if (drawInfo.drawPlayer.HasBuff<Defending>()) {
                     Color color = Color.White;// * 0.2f;
                     Vector2 pos = drawInfo.drawPlayer.Center - Main.screenPosition - defendSprite.Size()/2;
-                    Main.EntitySpriteDraw(defendSprite.Value, pos, null, color, 0, Vector2.Zero, 1f, Microsoft.Xna.Framework.Graphics.SpriteEffects.None);
+                    // Main.spriteBatch.Draw(defendSprite.Value, pos, color);
+                    //Main.EntitySpriteDraw(defendSprite.Value, pos, null, color, 0, Vector2.Zero, 1f, Microsoft.Xna.Framework.Graphics.SpriteEffects.None);
                 }
                
             }

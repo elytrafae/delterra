@@ -88,9 +88,17 @@ Items: {
 			  use this to fuse items." - Malius
 			'''
 	}
+
+	SnowRing: {
+		DisplayName: Snow Ring
+		Tooltip: ""
+	}
 }
 
-Projectiles.RudeBuster.DisplayName: Rude Buster
+Projectiles: {
+	RudeBuster.DisplayName: Rude Buster
+	IceShock.DisplayName: Ice Shock
+}
 
 Buffs: {
 	Attacking: {

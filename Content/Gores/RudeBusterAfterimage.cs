@@ -8,6 +8,7 @@ using Delterra.Content.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.GameContent;
 using Terraria.ModLoader;
 
 namespace Delterra.Content.Gores {
@@ -18,9 +19,6 @@ namespace Delterra.Content.Gores {
             if (source is EntitySource_Parent parentSource) {
                 if (parentSource.Entity is Projectile proj) {
                     gore.rotation = proj.rotation;
-                    float mirrorRot = proj.rotation;
-                    // TODO: Find the math formula for this
-                    gore.position = proj.position - new Vector2((float)Math.Sin(mirrorRot) * RudeBuster.ACTUAL_WIDTH, (float)Math.Cos(mirrorRot) * RudeBuster.ACTUAL_HEIGHT)/2;
                 }
             }
         }
@@ -32,7 +30,10 @@ namespace Delterra.Content.Gores {
         }
 
         public override Color? GetAlpha(Gore gore, Color lightColor) {
-            return lightColor * (gore.timeLeft / 30f);
+            Vector2 drawPos = gore.position + new Vector2(gore.Width/2f, gore.Height/2f) - Main.screenPosition;
+            Color drawColor = lightColor * (gore.timeLeft / 30f);
+            Main.EntitySpriteDraw(TextureAssets.Gore[gore.type].Value, drawPos, null, drawColor, gore.rotation, new Vector2(gore.Width / 2f, gore.Height / 2f), 1f, Microsoft.Xna.Framework.Graphics.SpriteEffects.None);
+            return Color.Transparent;
         }
 
     }

@@ -12,8 +12,8 @@ using Terraria.ModLoader;
 namespace Delterra.Content.Projectiles {
     public class RudeBuster : ModProjectile {
 
-        public const int ACTUAL_WIDTH = 80;
-        public const int ACTUAL_HEIGHT = 80;
+        public const int ACTUAL_WIDTH = 62;
+        public const int ACTUAL_HEIGHT = 62;
         public static readonly Vector3 LIGHT = new Vector3(0.8f, 0, 0.76f);
 
         public override void SetDefaults() {
