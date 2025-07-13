@@ -15,12 +15,16 @@ namespace Delterra.Systems {
         public float healingMultiplier = 1f;
         public int commonLifeRegen = 0;
         public float greenLightLevel = 0f;
+        public float additionalLootChance = 0f;
+        public bool secretRingBuff = false;
 
         public override void ResetEffects() {
             tensionRestorePotionSicknessReduced = false;
             healingMultiplier = 1f;
             commonLifeRegen = 0;
             greenLightLevel = 0f;
+            additionalLootChance = 0f;
+            secretRingBuff = false;
         }
 
         public override void PostUpdateMiscEffects() {

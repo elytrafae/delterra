@@ -197,6 +197,16 @@ Items: {
 			'''
 	}
 
+	Dealmaker: {
+		DisplayName: Dealmaker
+		Tooltip:
+			'''
+			Fashionable pink and yellow glasses.
+			30% chance for a non-boss enemy to 
+			drop their loot again, and...?
+			'''
+	}
+
 	SnowRing: {
 		DisplayName: Snow Ring
 		Tooltip: ""

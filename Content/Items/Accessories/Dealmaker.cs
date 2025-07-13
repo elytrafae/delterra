@@ -9,29 +9,18 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Delterra.Content.Items.Accessories {
-    internal class SpikeBand : ModItem {
+    internal class Dealmaker : ModItem {
 
         public override void SetDefaults() {
             Item.DefaultToAccessory();
             Item.rare = ItemRarityID.LightRed;
-            Item.value = Terraria.Item.sellPrice(0, 4, 0, 0);
-            Item.defense = 7;
+            Item.value = Terraria.Item.sellPrice(0, 10, 0, 0);
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual) {
             EquipmentEffectPlayer modPlayer = EquipmentEffectPlayer.Get(player);
-            modPlayer.greenLightLevel = 2.5f;
-            player.GetDamage(DamageClass.Generic) += 0.05f;
-            player.cactusThorns = true;
-        }
-
-        public override void AddRecipes() {
-            CreateRecipe()
-                .AddIngredient<IronShackle>()
-                .AddIngredient<GlowWrist>()
-                .AddIngredient<MaliusHammer>()
-                .AddTile(TileID.MythrilAnvil)
-                .Register();
+            modPlayer.additionalLootChance += 0.3f;
+            modPlayer.secretRingBuff = true;
         }
 
     }

@@ -28,6 +28,12 @@ namespace Delterra.Content.Items.Spells.Rings {
             position = Main.MouseWorld;
         }
 
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage) {
+            if (EquipmentEffectPlayer.Get(player).secretRingBuff) {
+                damage *= 1.2f;
+            }
+        }
+
         public override bool? UseItem(Player player) {
             Vector2 baseDustPos = player.Center + new Vector2(player.direction * 10, -10);
             Vector2 baseDustVelocity = new Vector2(player.direction * 2f, -1f);
