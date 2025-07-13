@@ -25,5 +25,7 @@ namespace Delterra.Content.Items.Accessories {
             modPlayer.secretRingBuff = true;
         }
 
+        
+
     }
 }

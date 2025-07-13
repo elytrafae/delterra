@@ -9,6 +9,8 @@ using Terraria;
 using Terraria.ModLoader;
 
 namespace Delterra.Content.Items.Accessories {
+
+    [AutoloadEquip(EquipType.Face)]
     public class BlueRibbon : ModItem {
 
         public override void SetDefaults() {

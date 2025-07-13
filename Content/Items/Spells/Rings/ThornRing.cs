@@ -35,11 +35,11 @@ namespace Delterra.Content.Items.Spells.Rings {
             if (Main.myPlayer != player.whoAmI) {
                 return;
             }
-            if (GrazingPlayer.Get(player).TP >= SnowGraveCost) {
+            if (GrazingPlayer.Get(player).TP >= GlobalTensionConsumingItem.GetTensionCost(SnowGraveCost, player)) {
                 ActiveSound? activeSound = SoundEngine.SoundPlayer.FindActiveSound(MySoundStyles.SnowgraveBell);
                 if (activeSound == null || !activeSound.IsPlaying) {
                     SoundEngine.PlaySound(MySoundStyles.SnowgraveBell, null, soundInstance => {
-                        return Main.LocalPlayer.HeldItem?.type == Type && GrazingPlayer.Get(player).TP >= SnowGraveCost;
+                        return Main.LocalPlayer.HeldItem?.type == Type && GrazingPlayer.Get(player).TP >= GlobalTensionConsumingItem.GetTensionCost(SnowGraveCost, player);
                     });
                 }
             }

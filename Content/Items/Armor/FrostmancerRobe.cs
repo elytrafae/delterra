@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Delterra.Content.Buffs;
+using Delterra.Systems;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +13,9 @@ namespace Delterra.Content.Items.Armor {
 
     [AutoloadEquip(EquipType.Body)]
     internal class FrostmancerRobe : ModItem {
+
+        public static readonly int MagicDamageBonusPercent = 20;
+        public static readonly int MagicCritBonus = 10;
 
         public override void Load() {
             // The code below runs only if we're not loading on a server
@@ -34,7 +39,21 @@ namespace Delterra.Content.Items.Armor {
         public override void SetDefaults() {
             Item.width = 18;
             Item.height = 14;
-            Item.rare = ItemRarityID.Blue;
+            Item.rare = ItemRarityID.Red;
+            Item.value = Item.sellPrice(gold: 14);
+        }
+
+        public override void UpdateEquip(Player player) {
+            GrazingPlayer grazePlayer = GrazingPlayer.Get(player);
+            if (player.HasBuff<Attacking>()) {
+                grazePlayer.TP += Main.rand.Next(1, 3); // Gives 1 or 2 TP every tick
+            }
+            if (player.HasBuff<Defending>()) {
+                grazePlayer.TP += 4;
+            }
+            player.GetDamage(DamageClass.Magic) += (MagicDamageBonusPercent / 100f);
+            player.GetCritChance(DamageClass.Magic) += MagicCritBonus;
+            player.iceSkate = true;
         }
 
         public override void SetMatch(bool male, ref int equipSlot, ref bool robes) {
@@ -50,6 +69,14 @@ namespace Delterra.Content.Items.Armor {
 				equipSlot = EquipLoader.GetEquipSlot(Mod, Name + "_Female", EquipType.Legs);
 			}
 			*/
+        }
+
+        public override void AddRecipes() {
+            CreateRecipe()
+                .AddIngredient(ItemID.LunarBar, 15)
+                .AddIngredient<GlacialFragment>(15)
+                .AddTile(TileID.LunarCraftingStation)
+                .Register();
         }
 
     }
