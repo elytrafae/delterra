@@ -14,7 +14,7 @@ namespace Delterra.Content.Items.Spells.Rings {
 
         public override void SetDefaults() {
             base.SetDefaults();
-            Item.damage = 250;
+            Item.damage = 400;
             Item.rare = ItemRarityID.Cyan;
             Item.value = Terraria.Item.sellPrice(0, 10, 0, 0);
         }

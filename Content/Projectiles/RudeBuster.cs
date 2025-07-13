@@ -36,7 +36,7 @@ namespace Delterra.Content.Projectiles {
                 SoundEngine.PlaySound(MySoundStyles.RudeBusterSwing, Projectile.Center);
             }
             Vector2 visualPosition = Projectile.Center - new Vector2(ACTUAL_WIDTH / 2, ACTUAL_HEIGHT / 2);
-            if (Timer % 3 == 0) {
+            if (Timer % Math.Max(5 - (int)(Projectile.velocity.Length() / 4), 1) == 0) {
                 Gore.NewGore(Projectile.GetSource_FromAI(), visualPosition, Vector2.Zero, ModContent.GoreType<RudeBusterAfterimage>());
             }
             for (int i = 0; i < 1; i++) {

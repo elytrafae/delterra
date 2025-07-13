@@ -26,6 +26,7 @@ namespace Delterra.Content.Items.Spells.Rings {
             Item.shoot = ModContent.ProjectileType<IceShockHM>();
             Item.shootSpeed = 0;
             Item.useTime = (Item.useAnimation = 30);
+            Item.knockBack = 5f;
         }
 
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) {

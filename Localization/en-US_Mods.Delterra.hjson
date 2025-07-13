@@ -211,6 +211,26 @@ Items: {
 		DisplayName: Snow Ring
 		Tooltip: ""
 	}
+
+	GlacialFragment: {
+		DisplayName: Glacial Fragment
+		Tooltip: ""
+	}
+
+	FreezeRing: {
+		DisplayName: Freeze Ring
+		Tooltip: ""
+	}
+
+	IceRing: {
+		DisplayName: Ice Ring
+		Tooltip: ""
+	}
+
+	ThornRing: {
+		DisplayName: Thorn Ring
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -218,6 +238,7 @@ Projectiles: {
 	IceShock.DisplayName: Ice Shock
 	IceShockHM.DisplayName: Ice Shock
 	JusticeRudeBuster.DisplayName: Justice Rude Buster
+	SnowGrave.DisplayName: Snow Grave
 }
 
 Buffs: {

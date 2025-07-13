@@ -22,6 +22,7 @@ using Microsoft.Xna.Framework;
 using Delterra.Content.Items.Accessories;
 using Delterra.Content.Items;
 using Delterra.Content.Items.Spells.Axes;
+using Delterra.Content.Items.TensionRestore;
 
 namespace Delterra.Content.NPCs {
 
@@ -196,6 +197,7 @@ namespace Delterra.Content.NPCs {
         // Not completely finished, but below is what the NPC will sell
         public override void AddShops() {
             var npcShop = new NPCShop(Type, ShopName)
+                .Add<TensionBit>()
                 .Add<WhiteRibbon>()
                 .Add<PinkRibbon>(Condition.DownedEowOrBoc)
                 .Add<BlueRibbon>(Condition.DownedMechBossAny)

@@ -11,7 +11,7 @@ namespace Delterra.Content.Items.Spells.Axes {
 
         public override void SetDefaults() {
             base.SetDefaults();
-            Item.damage = 150;
+            Item.damage = 190;
             Item.knockBack = 3f;
             Item.useTime = (Item.useAnimation = 50);
             Item.rare = ItemRarityID.Lime;

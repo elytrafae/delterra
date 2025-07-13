@@ -84,7 +84,9 @@ namespace Delterra.Systems {
 
     public class KilledByNoelleRingCondition : IItemDropRuleCondition {
         public bool CanDrop(DropAttemptInfo info) {
-            return ContentSamples.ItemsByType[info.item].ModItem is AbstractNoelleRing;
+            //Console.WriteLine("Checking condition... " + (ContentSamples.ItemsByType[info.item].ModItem is AbstractNoelleRing) + " || " + info.item);
+            //return ContentSamples.ItemsByType[info.item].ModItem is AbstractNoelleRing;
+            return info.player?.HeldItem?.ModItem is AbstractNoelleRing;
         }
 
         public bool CanShowItemDropInUI() {
