@@ -10,8 +10,12 @@ using Terraria.ModLoader;
 
 namespace Delterra.Content.Items.Accessories {
 
-    [AutoloadEquip(EquipType.Face)]
+    //[AutoloadEquip(EquipType.Face)]
     internal class Dealmaker : ModItem {
+
+        public override void SetStaticDefaults() {
+            //EquipLoader.AddEquipTexture(Mod, $"{Texture}_{EquipType.Face}", EquipType.Face, this, null);
+        }
 
         public override void SetDefaults() {
             Item.DefaultToAccessory();
@@ -24,8 +28,6 @@ namespace Delterra.Content.Items.Accessories {
             modPlayer.additionalLootChance += 0.3f;
             modPlayer.secretRingBuff = true;
         }
-
-        
 
     }
 }
