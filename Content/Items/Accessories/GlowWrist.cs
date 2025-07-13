@@ -9,6 +9,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Delterra.Content.Items.Accessories {
+
+    [AutoloadEquip(EquipType.HandsOn)]
     internal class GlowWrist : ModItem {
 
         public override void SetDefaults() {
