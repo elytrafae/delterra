@@ -1,5 +1,7 @@
-﻿using Delterra.Content.Items.Accessories;
+﻿using Delterra.Content.Items;
+using Delterra.Content.Items.Accessories;
 using Delterra.Content.Items.Spells.Axes;
+using Delterra.Content.Items.Spells.Rings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +16,33 @@ using Terraria.ModLoader;
 namespace Delterra.Systems {
     public class EnemyDropsNPC : GlobalNPC {
 
+        private static int[] CelestialCreatures = [
+            NPCID.SolarCorite,
+            NPCID.SolarCrawltipedeHead,
+            NPCID.SolarDrakomire,
+            NPCID.SolarDrakomireRider,
+            NPCID.SolarSroller,
+            NPCID.SolarSolenian,
+            NPCID.SolarSpearman,
+            NPCID.VortexHornet,
+            NPCID.VortexHornetQueen,
+            NPCID.VortexRifleman,
+            NPCID.VortexSoldier,
+            NPCID.NebulaBeast,
+            NPCID.NebulaBrain,
+            NPCID.NebulaHeadcrab,
+            NPCID.NebulaSoldier,
+            NPCID.StardustCellSmall,
+            NPCID.StardustJellyfishBig,
+            NPCID.StardustSoldier,
+            NPCID.StardustSpiderBig,
+            NPCID.StardustWormHead
+        ];
+
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot) {
             if (npc.type == NPCID.Deerclops) {
                 AddLootToBoss<Devilsknife>(npcLoot);
+                AddLootToBoss<SnowRing>(npcLoot);
             }
             if (npc.type == NPCID.DD2Betsy) {
                 AddLootToBoss<JusticeAx>(npcLoot);
@@ -26,6 +52,11 @@ namespace Delterra.Systems {
             }
             if (NPCID.Sets.BelongsToInvasionPirate[npc.type]) {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Dealmaker>(), 50));
+            }
+            if (CelestialCreatures.Contains(npc.type)) {
+                LeadingConditionRule killedByRingCondition = new LeadingConditionRule(new KilledByNoelleRingCondition());
+                killedByRingCondition.OnSuccess(ItemDropRule.Common(ModContent.ItemType<GlacialFragment>(), 1, 1, 6));
+                npcLoot.Add(killedByRingCondition);
             }
         }
 
@@ -49,6 +80,20 @@ namespace Delterra.Systems {
             }
         }
 
+    }
+
+    public class KilledByNoelleRingCondition : IItemDropRuleCondition {
+        public bool CanDrop(DropAttemptInfo info) {
+            return ContentSamples.ItemsByType[info.item].ModItem is AbstractNoelleRing;
+        }
+
+        public bool CanShowItemDropInUI() {
+            return false;
+        }
+
+        public string GetConditionDescription() {
+            return "If killed by any of Noelle's Rings";
+        }
     }
 
     public class EnemyDropsItem : GlobalItem {

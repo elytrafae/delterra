@@ -13,19 +13,28 @@ using Terraria.ModLoader;
 namespace Delterra.Content.Items.Spells.Rings {
     public abstract class AbstractNoelleRing : ModItem, ITensionConsumingItem {
 
+        public virtual int IceShockCost => GrazingPlayer.GetTPForPercent(16);
+        public virtual int SnowGraveCost => GrazingPlayer.GetTPForPercent(200);
+        private bool IsSnowGraveUnlocked => SnowGraveCost <= GrazingPlayer.MAXTP;
+
         public override void SetDefaults() {
             Item.DamageType = DamageClass.Magic;
             Item.useStyle = ItemUseStyleID.HoldUp;
             Item.mana = 20;
             Item.noUseGraphic = true;
             //Item.UseSound = SoundID.Item1;
-            Item.shoot = ModContent.ProjectileType<IceShock>();
+            Item.shoot = ModContent.ProjectileType<IceShockHM>();
             Item.shootSpeed = 0;
             Item.useTime = (Item.useAnimation = 30);
         }
 
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) {
             position = Main.MouseWorld;
+            if (IsSnowGraveUnlocked && player.altFunctionUse == 2) {
+                type = ModContent.ProjectileType<SnowGrave>();
+                position.Y = player.Center.Y + Main.screenHeight/2 + 50;
+                damage *= 5;
+            }
         }
 
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage) {
@@ -44,8 +53,13 @@ namespace Delterra.Content.Items.Spells.Rings {
         }
 
         int ITensionConsumingItem.GetBaseTPCost(Player player) {
-            return GrazingPlayer.GetTPForPercent(16);
+            if (IsSnowGraveUnlocked && player.altFunctionUse == 2) {
+                return SnowGraveCost;
+            }
+            return IceShockCost;
         }
+
+        
 
     }
 }

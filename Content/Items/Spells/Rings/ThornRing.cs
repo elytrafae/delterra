@@ -1,0 +1,34 @@
+﻿using Delterra.Systems;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Terraria.ID;
+
+namespace Delterra.Content.Items.Spells.Rings {
+    public class ThornRing : AbstractNoelleRing {
+
+        public override int IceShockCost => base.IceShockCost/2;
+        public override int SnowGraveCost => base.SnowGraveCost / 2;
+
+        public override void SetDefaults() {
+            base.SetDefaults();
+            Item.damage = 250;
+            Item.rare = ItemRarityID.Cyan;
+            Item.value = Terraria.Item.sellPrice(0, 10, 0, 0);
+        }
+
+        public override void AddRecipes() {
+            CreateRecipe()
+                .AddIngredient<GlacialFragment>(1000)
+                .AddIngredient(ItemID.Stinger, 10)
+                .AddIngredient(ItemID.Cactus, 10)
+                .AddIngredient(ItemID.SilverCoin, 19)
+                .AddIngredient(ItemID.CopperCoin, 97)
+                .AddTile(TileID.LunarCraftingStation)
+                .Register();
+        }
+
+    }
+}

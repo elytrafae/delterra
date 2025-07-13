@@ -216,6 +216,7 @@ Items: {
 Projectiles: {
 	RudeBuster.DisplayName: Rude Buster
 	IceShock.DisplayName: Ice Shock
+	IceShockHM.DisplayName: Ice Shock
 	JusticeRudeBuster.DisplayName: Justice Rude Buster
 }
 

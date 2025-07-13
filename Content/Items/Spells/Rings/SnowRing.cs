@@ -16,8 +16,11 @@ namespace Delterra.Content.Items.Spells.Rings
 
         public override void SetDefaults() {
             base.SetDefaults();
-            Item.damage = 45;
-            // TODO: Add shop values
+            Item.damage = 90;
+            Item.rare = ItemRarityID.Orange;
+            Item.value = Terraria.Item.sellPrice(0, 1, 0, 0);
+            Item.shoot = ModContent.ProjectileType<IceShock>();
         }
+
     }
 }
