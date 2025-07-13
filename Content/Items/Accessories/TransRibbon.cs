@@ -24,7 +24,7 @@ namespace Delterra.Content.Items.Accessories {
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual) {
-            GrazingPlayer.Get(player).bigGrazeAreaStat = true;
+            GrazingPlayer.Get(player).pinkRibbonGrazeArea = true;
             EquipmentEffectPlayer modPlayer = EquipmentEffectPlayer.Get(player);
             modPlayer.tensionRestorePotionSicknessReduced = true;
             modPlayer.healingMultiplier += 0.25f;

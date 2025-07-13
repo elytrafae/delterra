@@ -1,5 +1,6 @@
 ﻿using Delterra.Systems;
 using FaeLibrary.API;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Delterra.Content.Buffs {
     internal class Trance : ModBuff, IFaeBuff {
+
+        public override LocalizedText Description => base.Description;
 
         public override void SetStaticDefaults() {
             Main.debuff[Type] = true;
@@ -21,13 +25,13 @@ namespace Delterra.Content.Buffs {
             player.GetDamage(DamageClass.Magic) *= 1.5f;
             player.GetCritChance(DamageClass.Magic) += 100;
             GrazingPlayer.Get(player).TP += 1;
+            if (Main.rand.NextBool(4)) {
+                Dust.NewDustPerfect(player.Center, DustID.Blood, new Vector2(Main.rand.NextFloat(-0.5f, 0.5f), Main.rand.NextFloat(-0.5f, 0f)));
+            }
         }
 
         void IFaeBuff.UpdateBadLifeRegen(Player player, ref int buffIndex) {
-            if (player.lifeRegen > 0) {
-                player.lifeRegen = 0;
-            }
-            player.lifeRegen -= 10;
+            player.lifeRegen -= 40;
         }
 
     }

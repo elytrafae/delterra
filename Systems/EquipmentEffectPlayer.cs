@@ -51,7 +51,7 @@ namespace Delterra.Systems {
 
         public override void ArmorSetBonusActivated() {
             if (frostmancerSet) {
-                Player.AddBuff();
+                Player.AddBuff(ModContent.BuffType<Trance>(), 4 * 60);
             }
         }
 

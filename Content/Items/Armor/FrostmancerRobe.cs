@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Delterra.Content.Items.Armor {
@@ -16,6 +17,8 @@ namespace Delterra.Content.Items.Armor {
 
         public static readonly int MagicDamageBonusPercent = 20;
         public static readonly int MagicCritBonus = 10;
+
+        public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(MagicDamageBonusPercent, MagicCritBonus);
 
         public override void Load() {
             // The code below runs only if we're not loading on a server
@@ -41,6 +44,7 @@ namespace Delterra.Content.Items.Armor {
             Item.height = 14;
             Item.rare = ItemRarityID.Red;
             Item.value = Item.sellPrice(gold: 14);
+            Item.defense = 20;
         }
 
         public override void UpdateEquip(Player player) {

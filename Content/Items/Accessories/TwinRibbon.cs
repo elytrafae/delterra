@@ -21,7 +21,7 @@ namespace Delterra.Content.Items.Accessories {
 
         public override void UpdateAccessory(Player player, bool hideVisual) {
             EquipmentEffectPlayer.Get(player).tensionRestorePotionSicknessReduced = true;
-            GrazingPlayer.Get(player).bigGrazeAreaStat = true;
+            GrazingPlayer.Get(player).pinkRibbonGrazeArea = true;
         }
 
         public override void AddRecipes() {
