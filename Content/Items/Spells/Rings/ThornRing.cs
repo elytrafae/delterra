@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 
 namespace Delterra.Content.Items.Spells.Rings {
@@ -21,13 +23,26 @@ namespace Delterra.Content.Items.Spells.Rings {
 
         public override void AddRecipes() {
             CreateRecipe()
-                .AddIngredient<GlacialFragment>(1000)
+                .AddIngredient<GlacialFragment>(600)
                 .AddIngredient(ItemID.Stinger, 10)
                 .AddIngredient(ItemID.Cactus, 10)
                 .AddIngredient(ItemID.SilverCoin, 19)
                 .AddIngredient(ItemID.CopperCoin, 97)
                 .AddTile(TileID.LunarCraftingStation)
                 .Register();
+        }
+        public override void HoldItem(Player player) {
+            if (Main.myPlayer != player.whoAmI) {
+                return;
+            }
+            if (GrazingPlayer.Get(player).TP >= SnowGraveCost) {
+                ActiveSound? activeSound = SoundEngine.SoundPlayer.FindActiveSound(MySoundStyles.SnowgraveBell);
+                if (activeSound == null || !activeSound.IsPlaying) {
+                    SoundEngine.PlaySound(MySoundStyles.SnowgraveBell, null, soundInstance => {
+                        return Main.LocalPlayer.HeldItem?.type == Type && GrazingPlayer.Get(player).TP >= SnowGraveCost;
+                    });
+                }
+            }
         }
 
     }

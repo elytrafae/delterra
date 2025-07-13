@@ -23,7 +23,7 @@ namespace Delterra.Systems {
         public static readonly SoundStyle RudeBusterHit = RegisterSound("Rudebuster_Hit");
         public static readonly SoundStyle RudeBusterSwing = RegisterSound("Rudebuster_Swing");
         public static readonly SoundStyle SnowgraveBell = RegisterSound("Snowgrave_Bell");
-        public static readonly SoundStyle SnowgraveCast = RegisterSound("Snowgrave_Cast");
+        public static readonly SoundStyle SnowgraveCast = RegisterSound("Snowgrave_Cast").WithVolumeScale(1.3f);
         public static readonly SoundStyle Tension = RegisterSound("Tension");
 
 
