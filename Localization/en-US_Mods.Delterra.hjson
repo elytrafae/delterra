@@ -136,7 +136,12 @@ Items: {
 
 	IronShackle: {
 		DisplayName: Iron Shackle
-		Tooltip: +1% Damage
+		Tooltip: 
+			'''
+			Shackle that ironically increases 
+			your attack and defense.
+			+1% Damage
+			'''
 	}
 
 	PinkRibbon: {
@@ -280,8 +285,8 @@ Items: {
 			'''
 			[c/FF7F27:TP] gain from Attacking 
 			or Defending increased.
-			{0}% magic damage
-			{1}% magic crit
+			+{0}% magic damage
+			+{1}% magic crit
 			Ice Skates effect
 			'''
 	}
@@ -296,8 +301,8 @@ Items: {
 		DisplayName: Frostmancer Hood
 		Tooltip:
 			'''
-			{0}% magic damage
-			{1}% magic crit
+			+{0}% magic damage
+			+{1}% magic crit
 			{2}% reduced [c/FF7F27:TP] cost
 			'''
 	}
