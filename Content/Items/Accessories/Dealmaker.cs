@@ -29,5 +29,12 @@ namespace Delterra.Content.Items.Accessories {
             modPlayer.secretRingBuff = true;
         }
 
+        public override void UpdateVisibleAccessory(Player player, bool hideVisual) {
+            if (!hideVisual) {
+                EquipmentEffectPlayer.Get(player).dealmakerVisible = true;
+            }
+            base.UpdateVisibleAccessory(player, hideVisual);
+        }
+
     }
 }

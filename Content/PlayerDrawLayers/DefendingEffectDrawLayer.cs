@@ -29,8 +29,8 @@ namespace Delterra.Content.PlayerDrawLayers {
         protected override void Draw(ref PlayerDrawSet drawInfo) {
             if (drawInfo.drawPlayer.whoAmI == Main.myPlayer && drawInfo.shadow == 0) { // ONLY FOR *OUR REAL* PLAYER!
                 if (drawInfo.drawPlayer.HasBuff<Defending>()) {
-                    Color color = Color.White;// * 0.2f;
-                    Vector2 pos = drawInfo.drawPlayer.Center - Main.screenPosition - defendSprite.Size()/2;
+                    Color color = Color.White * 0.3f;
+                    Vector2 pos = drawInfo.Center - Main.screenPosition - defendSprite.Size()/2;
                     // Main.spriteBatch.Draw(defendSprite.Value, pos, color);
                     //Main.EntitySpriteDraw(defendSprite.Value, pos, null, color, 0, Vector2.Zero, 1f, Microsoft.Xna.Framework.Graphics.SpriteEffects.None);
                     DrawData data = new DrawData(defendSprite.Value, pos, null, color, 0, Vector2.Zero, 1f, Microsoft.Xna.Framework.Graphics.SpriteEffects.None);

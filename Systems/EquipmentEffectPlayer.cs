@@ -20,6 +20,7 @@ namespace Delterra.Systems {
         public bool secretRingBuff = false;
         public StatModifier tpCost = new();
         public bool frostmancerSet = false;
+        public bool dealmakerVisible = false;
 
         public override void ResetEffects() {
             tensionRestorePotionSicknessReduced = false;
@@ -30,6 +31,7 @@ namespace Delterra.Systems {
             secretRingBuff = false;
             tpCost = new();
             frostmancerSet = false;
+            dealmakerVisible = false;
         }
 
         public override void PostUpdateMiscEffects() {

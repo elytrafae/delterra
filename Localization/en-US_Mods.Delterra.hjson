@@ -301,6 +301,11 @@ Items: {
 			{2}% reduced [c/FF7F27:TP] cost
 			'''
 	}
+
+	CastleTownMusicBoxItem: {
+		DisplayName: Castle Town Music Box Item
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
