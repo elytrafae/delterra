@@ -17,6 +17,8 @@ namespace Delterra.Systems {
         public float greenLightLevel = 0f;
         public float additionalLootChance = 0f;
         public bool secretRingBuff = false;
+        public StatModifier tpCost = new();
+        public bool frostmancerSet = false;
 
         public override void ResetEffects() {
             tensionRestorePotionSicknessReduced = false;
@@ -25,6 +27,8 @@ namespace Delterra.Systems {
             greenLightLevel = 0f;
             additionalLootChance = 0f;
             secretRingBuff = false;
+            tpCost = new();
+            frostmancerSet = false;
         }
 
         public override void PostUpdateMiscEffects() {
@@ -43,6 +47,12 @@ namespace Delterra.Systems {
 
         public override void UpdateLifeRegen() {
             Player.lifeRegen += commonLifeRegen;
+        }
+
+        public override void ArmorSetBonusActivated() {
+            if (frostmancerSet) {
+                Player.AddBuff();
+            }
         }
 
         public static EquipmentEffectPlayer Get(Player player) { 

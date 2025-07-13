@@ -44,7 +44,8 @@ namespace Delterra.Systems {
         private int dangerTime = 0;
         private int grazeNoiseCooldown = 0;
 
-        public bool bigGrazeAreaStat = false;
+        public bool pinkRibbonGrazeArea = false;
+        public bool frostmancerGrazeArea = false;
 
         public override void PostUpdate() {
             // Everyone handles their own TP and grazing locally!
@@ -94,7 +95,8 @@ namespace Delterra.Systems {
         }
 
         public override void ResetEffects() {
-            bigGrazeAreaStat = false;
+            pinkRibbonGrazeArea = false;
+            frostmancerGrazeArea = false;
         }
 
         void IFaeModPlayer.OnDodge(Player.HurtInfo info, DodgeType dodgeType) {
@@ -142,7 +144,10 @@ namespace Delterra.Systems {
             Vector2 center = Player.Center;
             int totalWidth = BASE_GRAZE_WIDTH;
             int totalHeight = BASE_GRAZE_HEIGHT;
-            if (bigGrazeAreaStat) { // Increase graze area by 25%
+            if (pinkRibbonGrazeArea && frostmancerGrazeArea) { // Increase graze area by 50%
+                totalWidth += (totalWidth / 2);
+                totalHeight += (totalHeight / 2);
+            } else if (pinkRibbonGrazeArea || frostmancerGrazeArea) { // Increase graze area by 25%
                 totalWidth += (totalWidth / 4);
                 totalHeight += (totalHeight / 4);
             }

@@ -273,6 +273,11 @@ Items: {
 			Your potential is finally unlocked.
 			'''
 	}
+
+	FrostmancerRobe: {
+		DisplayName: Frostmancer Robe
+		Tooltip: ""
+	}
 }
 
 Projectiles: {

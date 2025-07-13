@@ -15,6 +15,8 @@ using Terraria.ModLoader;
 namespace Delterra.Content.Projectiles {
     public class SnowGrave : ModProjectile {
 
+        public static readonly Vector3 LIGHT = new Vector3(0.5f, 0.5f, 0.9f) * 2;
+
         private static int AscendSpeed => 5;
         private static int WindupTime => 60;
         private static int StartToEndGrowth => 600;
@@ -60,6 +62,12 @@ namespace Delterra.Content.Projectiles {
 
             if (Projectile.position.Y + Projectile.height < EndHeight) {
                 Projectile.Kill();
+            }
+
+            Rectangle rect = new Rectangle(Projectile.Hitbox.X, Projectile.Hitbox.Y, Projectile.Hitbox.Width, Projectile.Hitbox.Height);
+            ModifyDamageHitbox(ref rect);
+            for (int i = rect.Y; i < rect.Y + rect.Height; i += 30) {
+                Lighting.AddLight(new Vector2(rect.Center.X, i), LIGHT);
             }
         }
 

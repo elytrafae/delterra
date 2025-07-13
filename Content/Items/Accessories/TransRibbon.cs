@@ -9,6 +9,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Delterra.Content.Items.Accessories {
+
+    [AutoloadEquip(EquipType.Face)]
     public class TransRibbon : ModItem {
 
         public override void SetStaticDefaults() {

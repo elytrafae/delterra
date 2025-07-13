@@ -8,6 +8,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Delterra.Content.Items.Accessories {
+
+    [AutoloadEquip(EquipType.HandsOn)]
     public class IronShackle : ModItem {
 
         public override void SetStaticDefaults() {

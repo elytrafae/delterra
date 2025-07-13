@@ -50,8 +50,11 @@ namespace Delterra.Systems {
         }
 
         public static int GetTensionCost(ITensionConsumingItem tensionItem, Player player) {
-            // TODO: TP cost modifying items go here
-            return tensionItem.GetBaseTPCost(player);
+            return GetTensionCost(tensionItem.GetBaseTPCost(player), player);
+        }
+
+        public static int GetTensionCost(int baseCost, Player player) { 
+            return (int)EquipmentEffectPlayer.Get(player).tpCost.ApplyTo(baseCost);
         }
 
         public override bool CanUseItem(Item item, Player player) {
