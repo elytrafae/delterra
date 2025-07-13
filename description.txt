@@ -10,7 +10,8 @@ Currently, the mod adds:
 	- Ralsei the Dark Prince, a brand new town NPC, who moves in the moment you have available housing for him.
 	- Several new accessories to spice up gameplay
 	- A brand new post-Moon Lord armor set
-
+	- A meme
+	- A music box, with a familiar song remixed by jteoh
 
 Credits:
 	- Zeb & mythic apex: ASGORE trap remix
