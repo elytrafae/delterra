@@ -227,7 +227,7 @@ namespace Delterra.Content.NPCs {
         public override bool CanGoToStatue(bool toKingStatue) => toKingStatue;
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback) {
-            damage = 20;
+            damage = 22;
             knockback = 4f;
         }
 
