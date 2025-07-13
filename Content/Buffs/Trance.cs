@@ -25,7 +25,7 @@ namespace Delterra.Content.Buffs {
             player.GetDamage(DamageClass.Magic) *= 1.5f;
             player.GetCritChance(DamageClass.Magic) += 100;
             GrazingPlayer.Get(player).TP += 1;
-            if (Main.rand.NextBool(4)) {
+            if (Main.rand.NextBool(3)) {
                 Dust.NewDustPerfect(player.Center, DustID.Blood, new Vector2(Main.rand.NextFloat(-0.5f, 0.5f), Main.rand.NextFloat(-0.5f, 0f)));
             }
         }

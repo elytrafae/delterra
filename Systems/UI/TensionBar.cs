@@ -171,7 +171,7 @@ namespace Delterra.Systems.UI {
                 return 0;
             }
             if (player.HeldItem.ModItem is ITensionConsumingItem tensionItem) {
-                return tensionItem.GetBaseTPCost(player);
+                return GlobalTensionConsumingItem.GetTensionCost(tensionItem, player);
             }
             return 0;
         }

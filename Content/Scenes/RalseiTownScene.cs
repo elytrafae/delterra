@@ -7,7 +7,9 @@ using Terraria.ModLoader;
 namespace Delterra.Content.Scenes {
     internal class RalseiTownScene : ModSceneEffect {
 
-        public override int Music => MusicLoader.GetMusicSlot(Mod, "Assets/Music/castletown");
+        public const string MUSIC_PATH = "Assets/Music/castletown";
+
+        public override int Music => MusicLoader.GetMusicSlot(Mod, MUSIC_PATH);
 
         public override SceneEffectPriority Priority => SceneEffectPriority.Environment;
 
