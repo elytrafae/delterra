@@ -200,6 +200,7 @@ namespace Delterra.Content.NPCs {
         // Not completely finished, but below is what the NPC will sell
         public override void AddShops() {
             var npcShop = new NPCShop(Type, ShopName)
+                .Add<DefensiveCharm>()
                 .Add<WhiteRibbon>()
                 .Add<PinkRibbon>(Condition.DownedEowOrBoc)
                 .Add<BlueRibbon>(Condition.DownedMechBossAny)

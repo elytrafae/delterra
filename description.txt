@@ -1,1 +1,12 @@
-Modify this file with a description of your mod.
+
+Delterra is a mod aimed at making your Terraria experience more fun by adding features inspired by the popular hit indie game, Deltarune.
+
+Currently, the mod adds:
+	- The TP mechanic! Attack, Defend and graze bullets and enemies to gain TP and unleash powerful effects!
+	- Tension Bit, Tension Gem and Tension Max, powerful items that can fill your TP bar at the cost of Potion Sickness
+	- Axes, which are all true melee weapons, with the shared ability to cast Rude Buster, a powerful damaging spell!
+	- Rings, magic weapons that cost both TP and mana to unleash a delayed, but powerful Ice Shock anywhere you desire.
+	- Heal Prayer, a healing spell you can get better versions of as you progress
+	- Ralsei the Dark Prince, a brand new town NPC, who moves in the moment you have available housing for him.
+	- Several new accessories to spice up gameplay
+	- A brand new post-Moon Lord armor set

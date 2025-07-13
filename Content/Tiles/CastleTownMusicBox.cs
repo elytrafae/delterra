@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Delterra.Content.Items.Placables;
+using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,7 +36,7 @@ namespace Delterra.Content.Tiles {
             Player player = Main.LocalPlayer;
             player.noThrow = 2;
             player.cursorItemIconEnabled = true;
-            player.cursorItemIconID = ModContent.ItemType<ExampleMusicBox>();
+            player.cursorItemIconID = ModContent.ItemType<CastleTownMusicBoxItem>();
         }
 
         public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) {
@@ -67,5 +69,4 @@ namespace Delterra.Content.Tiles {
         }
     }
 
-}
 }

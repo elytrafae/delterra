@@ -37,7 +37,9 @@ namespace Delterra.Content.PlayerDrawLayers {
                 } else if (modPlayer.pinkRibbonGrazeArea || modPlayer.frostmancerGrazeArea) {
                     texture = Graze125.Value;
                 }
-                Main.EntitySpriteDraw(texture, rect.TopLeft() - Main.screenPosition, null, color, 0, Vector2.Zero, 1f, Microsoft.Xna.Framework.Graphics.SpriteEffects.None);
+                DrawData data = new DrawData(texture, rect.TopLeft() - Main.screenPosition, null, color, 0, Vector2.Zero, 1f, Microsoft.Xna.Framework.Graphics.SpriteEffects.None);
+                drawInfo.DrawDataCache.Add(data);
+                //Main.EntitySpriteDraw(texture, rect.TopLeft() - Main.screenPosition, null, color, 0, Vector2.Zero, 1f, Microsoft.Xna.Framework.Graphics.SpriteEffects.None);
             }
         }
     }

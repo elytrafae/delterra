@@ -33,6 +33,8 @@ namespace Delterra.Content.PlayerDrawLayers {
                     Vector2 pos = drawInfo.drawPlayer.Center - Main.screenPosition - defendSprite.Size()/2;
                     // Main.spriteBatch.Draw(defendSprite.Value, pos, color);
                     //Main.EntitySpriteDraw(defendSprite.Value, pos, null, color, 0, Vector2.Zero, 1f, Microsoft.Xna.Framework.Graphics.SpriteEffects.None);
+                    DrawData data = new DrawData(defendSprite.Value, pos, null, color, 0, Vector2.Zero, 1f, Microsoft.Xna.Framework.Graphics.SpriteEffects.None);
+                    drawInfo.DrawDataCache.Add(data);
                 }
                
             }
