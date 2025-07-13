@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Delterra.Content.Buffs;
+using Delterra.Content.Gores;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static Terraria.NPC.HitModifiers;
 
 namespace Delterra.Systems {
     public class EquipmentEffectPlayer : ModPlayer {
@@ -72,7 +75,43 @@ namespace Delterra.Systems {
         public static EquipmentEffectPlayer Get(Player player) { 
             return player.GetModPlayer<EquipmentEffectPlayer>();
         }
-        
 
+
+        // This part uses the precise order in which OnHit calls are made. First the generic one is called, then the other ones.
+        // With that, we can rule out the use of items and projectiles for damage dealing!
+        public bool asgoreTruckHit = false;
+        
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers) {
+            if (Player.HasBuff<TheKingsChariotBuff>()) {
+                asgoreTruckHit = true;
+                modifiers.ModifyHitInfo += GetAsgoresTruckModifiers(target);
+            }
+        }
+
+        public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers) {
+            asgoreTruckHit = false;
+        }
+
+        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers) {
+            asgoreTruckHit = false;
+        }
+
+        private HitInfoModifier GetAsgoresTruckModifiers(NPC target) {
+            return (ref NPC.HitInfo info) => {
+                if (asgoreTruckHit == true) {
+                    if (target.type == NPCID.Deerclops) {
+                        info.Damage = 999999999;
+                    }
+                    SoundEngine.PlaySound(MySoundStyles.RealisticExplosion, target.Center);
+                    Gore.NewGorePerfect(Player.GetSource_OnHit(target), target.Center - new Vector2(35.5f, 50), Vector2.Zero, ModContent.GoreType<RealisticExplosion>());
+                }
+            };
+        }
+
+        private void Modifiers_AsgoresTruck(ref NPC.HitInfo info) {
+            if (asgoreTruckHit == true) {
+                info.Damage = 999999999;
+            }
+        }
     }
 }

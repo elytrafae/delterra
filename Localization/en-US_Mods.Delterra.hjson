@@ -303,8 +303,13 @@ Items: {
 	}
 
 	CastleTownMusicBoxItem: {
-		DisplayName: Castle Town Music Box Item
-		Tooltip: ""
+		DisplayName: Music Box (Castle Town)
+		Tooltip: Makes a certain someone homesick
+	}
+
+	IceColdBeer: {
+		DisplayName: Ice Cold Beer
+		Tooltip: Perfect for a drive around town
 	}
 }
 
@@ -330,6 +335,11 @@ Buffs: {
 	Trance: {
 		DisplayName: Trance
 		Description: Massively increased magic damage and crit chance, as well as passive [c/FF7F27:TP] gain, but you lose 20 Health per second!
+	}
+
+	TheKingsChariotBuff: {
+		DisplayName: The Kings Chariot
+		Description: '''"Nooo! You were supposed to obey traffic laws!"'''
 	}
 }
 

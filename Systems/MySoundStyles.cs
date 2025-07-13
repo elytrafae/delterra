@@ -25,6 +25,8 @@ namespace Delterra.Systems {
         public static readonly SoundStyle SnowgraveBell = RegisterSound("Snowgrave_Bell").WithVolumeScale(0.9f);
         public static readonly SoundStyle SnowgraveCast = RegisterSound("Snowgrave_Cast").WithVolumeScale(1.3f);
         public static readonly SoundStyle Tension = RegisterSound("Tension");
+        public static readonly SoundStyle RealisticExplosion = RegisterSound("RealisticExplosion");
+        public static readonly SoundStyle Splat = RegisterSound("Splat");
 
 
         // Sound Styles made by elytrafae, which are just variations of existing sound styles above.
