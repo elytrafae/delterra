@@ -3,8 +3,11 @@ using Terraria;
 using Terraria.ModLoader;
 using Delterra.Systems;
 
-namespace Delterra.Content.Items.Spells {
-    public class HealPrayer : ModItem, ITensionConsumingItem {
+namespace Delterra.Content.Items.Spells.HealPrayer {
+    public abstract class AbstractHealPrayer : ModItem, ITensionConsumingItem {
+
+        public abstract int Heal { get; }
+        public virtual int TPCost => GrazingPlayer.GetTPForPercent(32);
 
         public override void SetDefaults() {
             Item.UseSound = MySoundStyles.Heal;
@@ -14,7 +17,7 @@ namespace Delterra.Content.Items.Spells {
             Item.maxStack = 1;
             Item.rare = ItemRarityID.Blue;
             Item.value = Item.buyPrice(0, 1, 0);
-            Item.healLife = 60;
+            Item.healLife = Heal;
         }
 
         public override bool? UseItem(Player player) {
@@ -22,7 +25,7 @@ namespace Delterra.Content.Items.Spells {
         }
 
         public int GetBaseTPCost(Player player) {
-            return 3200;
+            return TPCost;
         }
     }
 }

@@ -21,7 +21,8 @@ namespace Delterra.Content.Items.TensionRestore {
             Item.value = 0;
             Item.width = 32;
             Item.height = 32;
-            Item.rare = ItemRarityID.Green;
+            Item.rare = ItemRarityID.Blue;
+            Item.value = Terraria.Item.sellPrice(0, 0, 3, 0);
             Item.UseSound = MySoundStyles.TensionBit;
         }
 

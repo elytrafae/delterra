@@ -112,37 +112,9 @@ namespace Delterra.Systems.UI {
         // Here we draw our UI
         protected override void DrawSelf(SpriteBatch spriteBatch) {
             base.DrawSelf(spriteBatch);
-            /*
-            var modPlayer = Main.LocalPlayer.GetModPlayer<ExampleResourcePlayer>();
-            // Calculate quotient
-            float quotient = (float)modPlayer.exampleResourceCurrent / modPlayer.exampleResourceMax2; // Creating a quotient that represents the difference of your currentResource vs your maximumResource, resulting in a float of 0-1f.
-            quotient = Utils.Clamp(quotient, 0f, 1f); // Clamping it to 0-1f so it doesn't go over that.
-
-            // Here we get the screen dimensions of the barFrame element, then tweak the resulting rectangle to arrive at a rectangle within the barFrame texture that we will draw the gradient. These values were measured in a drawing program.
-            Rectangle hitbox = barFrame.GetInnerDimensions().ToRectangle();
-            hitbox.X += 12;
-            hitbox.Width -= 24;
-            hitbox.Y += 8;
-            hitbox.Height -= 16;
-
-            // Now, using this hitbox, we draw a gradient by drawing vertical lines while slowly interpolating between the 2 colors.
-            int left = hitbox.Left;
-            int right = hitbox.Right;
-            int steps = (int)((right - left) * quotient);
-            for (int i = 0; i < steps; i += 1) {
-                // float percent = (float)i / steps; // Alternate Gradient Approach
-                float percent = (float)i / (right - left);
-                spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height), Color.Lerp(gradientA, gradientB, percent));
-            }
-            */
         }
 
         public override void Update(GameTime gameTime) {
-            /*
-            var modPlayer = Main.LocalPlayer.GetModPlayer<ExampleResourcePlayer>();
-            // Setting the text per tick to update and show our resource values.
-            text.SetText(ExampleResourceUISystem.ExampleResourceText.Format(modPlayer.exampleResourceCurrent, modPlayer.exampleResourceMax2));
-            */
             GrazingPlayer modPlayer = GrazingPlayer.Get(Main.LocalPlayer);
             if (currentDisplayedTP != modPlayer.TP) {
                 if (Math.Abs(currentDisplayedTP - modPlayer.TP) < MAX_TP_SCROLL_SPEED_PER_TICK) {
@@ -163,7 +135,7 @@ namespace Delterra.Systems.UI {
             // TODO: Add white thingy when the TP bar fills up quickly
             UpdateBar(background_filling, currentDisplayedRedTP);
             UpdateBar(main_filling, currentDisplayedTP);
-            if (currentDisplayedTP < GrazingPlayer.MAXTP) {
+            if (currentDisplayedTP < GrazingPlayer.MAXTP-100) {
                 marker.Color = Color.White;
                 marker.Top.Set(196 - (int)((float)currentDisplayedTP / GrazingPlayer.MAXTP * 196) - 2, 0f);
             } else {

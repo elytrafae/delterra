@@ -10,10 +10,30 @@ RudeBusterTooltip:
 	Right-click to cast Rude Buster!
 	{0}
 	'''
+IceShockTooltip:
+	'''
+	Casts Ice Shock!
+	{0}
+	'''
 
 Items: {
-	HealPrayer: {
-		DisplayName: Heal Prayer
+	HealPrayer1: {
+		DisplayName: Heal Prayer Mk 1
+		Tooltip: ""
+	}
+
+	HealPrayer2: {
+		DisplayName: Heal Prayer Mk 2
+		Tooltip: ""
+	}
+
+	HealPrayer3: {
+		DisplayName: Heal Prayer Mk 3
+		Tooltip: ""
+	}
+
+	HealPrayer4: {
+		DisplayName: Heal Prayer Mk 4
 		Tooltip: ""
 	}
 
@@ -207,29 +227,51 @@ Items: {
 			'''
 	}
 
-	SnowRing: {
-		DisplayName: Snow Ring
-		Tooltip: ""
-	}
-
 	GlacialFragment: {
 		DisplayName: Glacial Fragment
-		Tooltip: ""
+		Tooltip:
+			'''
+			Colder than the dark 
+			side of the moon
+			'''
+	}
+
+	SnowRing: {
+		DisplayName: Snow Ring
+		Tooltip:
+			'''
+			A ring with the 
+			emblem of the snowflake
+			'''
 	}
 
 	FreezeRing: {
 		DisplayName: Freeze Ring
-		Tooltip: ""
+		Tooltip:
+			'''
+			Deals increased damage at the cost
+			of raised [c/FF7F27:TP] cost.
+			A ring with a snowglobe on it. 
+			... is that someone inside?
+			'''
 	}
 
 	IceRing: {
 		DisplayName: Ice Ring
-		Tooltip: ""
+		Tooltip:
+			'''
+			A ring with ice spikes
+			sticking out of it
+			'''
 	}
 
 	ThornRing: {
 		DisplayName: Thorn Ring
-		Tooltip: ""
+		Tooltip:
+			'''
+			Reduces the TP cost of ice spells
+			Your potential is finally unlocked.
+			'''
 	}
 }
 
@@ -238,7 +280,7 @@ Projectiles: {
 	IceShock.DisplayName: Ice Shock
 	IceShockHM.DisplayName: Ice Shock
 	JusticeRudeBuster.DisplayName: Justice Rude Buster
-	SnowGrave.DisplayName: Snow Grave
+	SnowGrave.DisplayName: Snowgrave
 }
 
 Buffs: {
@@ -278,6 +320,8 @@ NPCs: {
 			Random1: I honestly have no idea how I can somehow maintain my darkner form here, but it's probably best to not think about it...
 			Random2: I wonder how Kris and Susie are doing back home...
 			Random3: How can I help you? ^^
+			Random4: Hope Susie and Kris finish their group project by the time I get home
+			Random5: I would like to once again thank you for having me ^^
 			PartyGirl: "{NPCName} may just have a bigger appetite for Cake than Susie"
 			PartyNoItems: Such a lovely birthday. I wish I could give everyone some cake and tea, but I have none...
 			PartyCakeTea: Greetings! May I offer you some cake and tea?
