@@ -61,7 +61,10 @@ namespace Delterra.Content.Projectiles {
         public override void OnKill(int timeLeft) {
             if (timeLeft > 0) {
                 SoundEngine.PlaySound(MySoundStyles.RudeBusterHit, Projectile.Center);
-                // TODO: Create additional gore for the hit effects... ;_;
+                Vector2 visualPosition = Projectile.Center - new Vector2(ACTUAL_WIDTH / 2, ACTUAL_HEIGHT / 2);
+                for (int i = 0; i < 25; i++) {
+                    Dust.NewDust(visualPosition, ACTUAL_WIDTH, ACTUAL_HEIGHT, DustID.ShimmerSpark);
+                }
             }
         }
 

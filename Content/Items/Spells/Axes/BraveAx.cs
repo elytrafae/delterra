@@ -12,13 +12,13 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Delterra.Content.Items.Spells.Axes {
-    public class ManeAx : AbstractSusieAxe {
+    public class BraveAx : AbstractSusieAxe {
         
 
         public override void SetDefaults() {
             base.SetDefaults();
-            Item.damage = 32;
-            Item.knockBack = 3f;
+            Item.damage = 45;
+            Item.knockBack = 3.5f;
             Item.useTime = (Item.useAnimation = 50);
             Item.rare = ItemRarityID.Blue;
             Item.value = Terraria.Item.sellPrice(0, 0, 10, 0);
@@ -26,26 +26,14 @@ namespace Delterra.Content.Items.Spells.Axes {
 
         public override void AddRecipes() {
             CreateRecipe()
-                .AddIngredient(ItemID.IronAxe)
-                .AddIngredient(ItemID.RottenChunk, 5)
+                .AddIngredient<ManeAx>()
+                .AddIngredient(ItemID.ShadowScale, 10)
                 .AddTile(TileID.Anvils)
                 .Register();
 
             CreateRecipe()
-                .AddIngredient(ItemID.IronAxe)
-                .AddIngredient(ItemID.Vertebrae, 5)
-                .AddTile(TileID.Anvils)
-                .Register();
-
-            CreateRecipe()
-                .AddIngredient(ItemID.LeadAxe)
-                .AddIngredient(ItemID.RottenChunk, 5)
-                .AddTile(TileID.Anvils)
-                .Register();
-
-            CreateRecipe()
-                .AddIngredient(ItemID.LeadAxe)
-                .AddIngredient(ItemID.Vertebrae, 5)
+                .AddIngredient<ManeAx>()
+                .AddIngredient(ItemID.TissueSample, 10)
                 .AddTile(TileID.Anvils)
                 .Register();
         }
