@@ -136,7 +136,7 @@ Items: {
 
 	IronShackle: {
 		DisplayName: Iron Shackle
-		Tooltip: 
+		Tooltip:
 			'''
 			Shackle that ironically increases 
 			your attack and defense.

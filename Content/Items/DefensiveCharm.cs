@@ -14,7 +14,7 @@ namespace Delterra.Content.Items {
             Item.maxStack = 1;
             Item.value = Terraria.Item.sellPrice(gold:2);
             Item.rare = ItemRarityID.Green;
-            Item.UseSound = MySoundStyles.Petrify; // TODO: Discuss sound
+            Item.UseSound = MySoundStyles.Petrify;
         }
 
     }
