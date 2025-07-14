@@ -1,0 +1,48 @@
+
+This document shall detail further plans after the feature freeze period ends
+
+- Buff Axes
+	- Axes will generally get an attack speed buff and according damage adjustments
+	- Axes will get bonus reach or additional projectiles on left-click(?)
+	- Rude Buster whill create a unique effect based on the axe:
+		- Mane Ax has nothing, but will maintain its slow swing speed with a further damage buff (?)
+		- Brave Ax has the 4 additional projectiles from Deltarune, each dealing 25% of Rude Buster's damage to enemies they collide with
+		- Devilsknife spawns 4 spades and 4 diamonds on the enemy, which can all hit one enemy for 15% of Rude Buster's damage. These additional projectiles cannot hit the original enemy hit, if there was one.
+		- Auto Ax spawns a large electric shockwave, inflicting a unique electricity debuff for 10 seconds
+		- Absorb Ax's Rude Buster will now spawn blood clots that home in on the caster to heal them
+		- Toxic Ax spawns a venomous cloud that ever so slowly continues moving in the same direction Rude Buster did before impact, inflicting enemies with Acid Venom continously while they are inside
+		- Justice Axe will have Brave Ax's Rude Buster effects, on top Rude Buster triggering an additional time after a small delay every time it is used.
+
+
+- Rework Heal Prayer into Ralsei Scarves
+	- The scarves themselves will have one of two attack styles, depending on reach: Shortsword style, or Chain Knife style
+	- Right Click will cast Heal Prayer at various efficiencies
+	- Not too sure about this idea. My biggest fear is that only one functionality of each Scarf would be used, but I have no idea how I could discourage/disable Scarf Swapping
+
+
+- New minecarts: Kriscoaster, Susiecoaster, Ralseicoaster, Noellecoaster, Berdlycoaster
+
+- C-Round, a naturally spawning Critter
+
+- First Boss: K-Round
+	- Would act extremely similarly to its Deltarune counterpart
+	- Damaging K-Round himself does nothing helpful, as K-Round will just heal it up and get increased damage.
+	- Damaging the crown at the top of his head enough to knock it off of its head is the win condition
+	- In classic mode, K-Round cannot take damage to make it easier to hit the crown.
+	- Summon method: Throw a Gold/Platinum crown on top of C-Round, or Right-click a C-Round with the crown
+	- Drops: 
+		- Power Crown (Helmet, Expert Only). A powerful crown that needs a catalyst. Has a set bonus for various armor pieces
+			Mining Armor: +4 Defense, Emit light, +3% Damage while Underground and an additional +4% while in Caverns or below
+			Rain Armor: +5 Defense, [Insert something funny IDK]
+			Angler Armor: +3 Defense, +15 Fishing Power
+			Ninja Armor: +3 Defense, +25% increased movement speed and increased jump speed
+			Gold/Platinum Armor: +7 Defense, +0.5HP/s life regen
+			Pumpkin Armor: Hermes Boots effect and +10% Damage
+			Snow Armor: +4 Defense, +15% Damage against snow enemies
+			Gem Robes: +4 Defense, +5% Magic Damage and Increased mana regeneration.
+			Flinx Fur Coat: +3 Defense, +7% Whip Speed and Size 
+			
+		- C-Round-a-rang (Boomerang), Pre-Hardmode version of the Light Disk
+		- Kingly Legs (Accessory): Every 5 seconds, your next jump's height and speed is increased drastically, and it grants brief invincibility
+		- Star Spray (Make Spell Book): Shoots a burst of 5 medium range stars every use. The stars that expire without hitting anything have a very small chance of turning into a Mana Star
+		- Self Care Milk (Consumable): Heals 60 HP and grants +20% Damage for 15 seconds.
