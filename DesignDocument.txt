@@ -44,5 +44,31 @@ This document shall detail further plans after the feature freeze period ends
 			
 		- C-Round-a-rang (Boomerang), Pre-Hardmode version of the Light Disk
 		- Kingly Legs (Accessory): Every 5 seconds, your next jump's height and speed is increased drastically, and it grants brief invincibility
-		- Star Spray (Make Spell Book): Shoots a burst of 5 medium range stars every use. The stars that expire without hitting anything have a very small chance of turning into a Mana Star
+		- Star Spray (Mage Spell Book): Shoots a burst of 5 medium range stars every use. The stars that expire without hitting anything have a very small chance of turning into a Mana Star
 		- Self Care Milk (Consumable): Heals 60 HP and grants +20% Damage for 15 seconds.
+
+
+- Additional Town NPCs
+	- Make vanilla town NPCs comment on modded town NPCs
+
+	- Trashy:
+		- (Not a Town NPC by code, but will have a behavior closest to a town NPC)
+		- Will have an empty shop page where you can sell items for maximum happiness values.
+		- Does not require housing
+		- Appears after Queen Slime is defeated
+		- Can be moved to a new location every 5 in-game days using a special consumable item he gives you
+		- Cannot defend himself
+
+	- Susie:
+		- Can move in at any time, but only into houses with an Axe Statue inside
+		- Secondary action can grant you the "Rude" permanent buff, making you deal 1.05x damage and gives you +3% Crit Chance (mutually exclusive with Stoic and Fluffy)
+		- [INSERT PRIMARY FUNCTION HERE]
+
+	- Kris:
+		- Can move in at any time, but only into houses with a Sword Statue or Shield Statue inside
+		- Secondary action can grant you the "Stoic" permanent buff, giving you 5% Damage Reduction, which applies before Defense (mutually exclusive with Rude and Fluffy)
+		- [INSERT PRIMARY FUNCTION HERE]
+
+	- Ralsei (update):
+		- Can move in at any time, but only into houses with a Cross Statue or Heart Statue inside
+		- Secondary action can grant you the "Fluffy" permanent buff, making potions and healing spells heal for 10% more, as well as making positive regeneration 10% more effective (mutually exclusive with Rude and Stoic)
