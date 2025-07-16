@@ -375,7 +375,7 @@ NPCs: {
 			Random3: How can I help you?
 			Random4: Hope Susie and Kris finish their group project by the time I get home.
 			Random5: I would like to once again thank you for having me.
-			PartyGirl: "{NPCName} may just have a bigger appetite for Cake than Susie."
+			PartyGirl: "{0} may just have a bigger appetite for Cake than Susie."
 			PartyNoItems: Such a lovely birthday. I wish I could give everyone some cake and tea, but I have none...
 			PartyCakeTea: Greetings! May I offer you some cake and tea?
 		}
