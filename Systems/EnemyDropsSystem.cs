@@ -103,6 +103,7 @@ namespace Delterra.Systems {
         public override void ModifyItemLoot(Item item, ItemLoot itemLoot) {
             if (item.type == ItemID.DeerclopsBossBag) {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Devilsknife>()));
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<SnowRing>()));
             }
             if (item.type == ItemID.BossBagBetsy) {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<JusticeAx>()));
