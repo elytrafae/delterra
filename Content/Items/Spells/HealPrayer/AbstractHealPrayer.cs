@@ -2,6 +2,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using Delterra.Systems;
+using System;
 
 namespace Delterra.Content.Items.Spells.HealPrayer {
     public abstract class AbstractHealPrayer : ModItem, ITensionConsumingItem {
@@ -24,8 +25,9 @@ namespace Delterra.Content.Items.Spells.HealPrayer {
             return true;
         }
 
-        public int GetBaseTPCost(Player player) {
+        int ITensionConsumingItem.GetBaseTPCost(Player player) {
             return TPCost;
         }
+
     }
 }
