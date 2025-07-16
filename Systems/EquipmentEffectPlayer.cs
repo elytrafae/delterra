@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Delterra.Content.Buffs;
 using Delterra.Content.Gores;
+using Delterra.Content.Items.Spells.HealPrayer;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -24,6 +25,10 @@ namespace Delterra.Systems {
         public StatModifier tpCost = new();
         public bool frostmancerSet = false;
         public bool dealmakerVisible = false;
+
+
+        public int currentScarfType = 0;
+        public int currentScarfUses = 0;
         public int asgoreTruckGloryTime = 0;
 
         public override void ResetEffects() {
@@ -47,7 +52,7 @@ namespace Delterra.Systems {
                 if (Main.rand.NextBool(11)) {
                     int spawnWidth = 60;
                     int spawnHeight = 10;
-                    Vector2 spawnTopLeft = Player.Center - new Vector2(spawnWidth/2, 45);
+                    Vector2 spawnTopLeft = Player.Center - new Vector2(spawnWidth / 2, 45);
                     Vector2 spawnPos = spawnTopLeft + new Vector2(Main.rand.NextFloat(spawnWidth), Main.rand.NextFloat(spawnHeight));
                     Dust dust = Dust.NewDustPerfect(spawnPos, DustID.Snow, new Vector2(Main.rand.NextFloat(-0.5f, 0.5f), 0.3f));
                     dust.noGravity = false;
@@ -55,6 +60,12 @@ namespace Delterra.Systems {
             }
             if (asgoreTruckGloryTime > 0) {
                 asgoreTruckGloryTime--;
+            }
+            if (Player.HeldItem?.ModItem is AbstractRalseiScarf) {
+                if (Player.HeldItem.type != currentScarfType) {
+                    currentScarfUses = 0;
+                    currentScarfType = Player.HeldItem.type;
+                }
             }
         }
 

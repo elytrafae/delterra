@@ -316,6 +316,11 @@ Items: {
 		DisplayName: Ice Cold Beer
 		Tooltip: Perfect for a drive around town
 	}
+
+	RedScarf: {
+		DisplayName: Red Scarf
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
