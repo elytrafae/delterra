@@ -1,4 +1,4 @@
-﻿using Delterra.Content.Items.Spells.HealPrayer;
+﻿using Delterra.Content.Items.Spells.Scarves;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;

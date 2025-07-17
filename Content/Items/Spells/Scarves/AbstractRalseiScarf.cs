@@ -3,8 +3,10 @@ using Terraria;
 using Terraria.ModLoader;
 using Delterra.Systems;
 using System;
+using Microsoft.Xna.Framework;
+using Terraria.Audio;
 
-namespace Delterra.Content.Items.Spells.HealPrayer {
+namespace Delterra.Content.Items.Spells.Scarves {
 
     public abstract class AbstractRalseiScarf : ModItem, ITensionConsumingItem {
 
@@ -13,7 +15,7 @@ namespace Delterra.Content.Items.Spells.HealPrayer {
         public virtual double MaxTPCost => MinTPCost*2;
 
         public override void SetDefaults() {
-            Item.UseSound = MySoundStyles.Heal;
+            //Item.UseSound = MySoundStyles.Heal;
             Item.useStyle = ItemUseStyleID.HiddenAnimation;
             Item.useTurn = true;
             Item.useAnimation = Item.useTime = 18;
@@ -32,8 +34,10 @@ namespace Delterra.Content.Items.Spells.HealPrayer {
             if (player.whoAmI == Main.myPlayer) {
                 if (player.altFunctionUse == 2) {
                     EquipmentEffectPlayer.Get(player).currentScarfUses = 0;
+                    SoundEngine.PlaySound(MySoundStyles.Heal);
                 } else {
                     EquipmentEffectPlayer.Get(player).currentScarfUses++;
+                    SoundEngine.PlaySound(SoundID.Item1);
                 }
             }
             return true;
@@ -41,6 +45,10 @@ namespace Delterra.Content.Items.Spells.HealPrayer {
 
         public override bool AltFunctionUse(Player player) {
             return true;
+        }
+
+        public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) {
+            position.Y -= player.gravDir * 4;
         }
 
         public override bool CanShoot(Player player) {

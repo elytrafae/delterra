@@ -41,6 +41,8 @@ namespace Delterra.Systems {
 
         public StatModifier AllTPChangeStat = new();
         public Dictionary<TPGainType, StatModifier> TPChangeStats = new();
+        public StatModifier OldAllTPChangeStat = new();
+        public Dictionary<TPGainType, StatModifier> OldTPChangeStats = new();
 
         public override void PostUpdate() {
             // Everyone handles their own TP and grazing locally!
@@ -90,7 +92,8 @@ namespace Delterra.Systems {
         }
 
         public void GainTP(float amount, ITPGainContext context) {
-            StatModifier modifier = AllTPChangeStat.CombineWith(TPChangeStats[context.Type]);
+            // We use the old stats to make sure that we have everything, no matter the update phase
+            StatModifier modifier = OldAllTPChangeStat.CombineWith(OldTPChangeStats[context.Type]);
             // TODO: Add the ability to add calls for more context-based control.
             TP += modifier.ApplyTo(amount);
         }
@@ -103,7 +106,12 @@ namespace Delterra.Systems {
             pinkRibbonGrazeArea = false;
             frostmancerGrazeArea = false;
 
+            // We save the stats from one tick before to use, because status effects run before other equipment, apparently
+            OldAllTPChangeStat = AllTPChangeStat;
             AllTPChangeStat = new();
+            foreach (TPGainType type in TPChangeStats.Keys) {
+                OldTPChangeStats[type] = TPChangeStats[type];
+            }
             foreach (TPGainType type in Enum.GetValues(typeof(TPGainType))) {
                 TPChangeStats[type] = new StatModifier();
             }

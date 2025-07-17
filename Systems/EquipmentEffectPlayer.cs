@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Delterra.Content.Buffs;
+﻿using Delterra.Content.Buffs;
 using Delterra.Content.Gores;
-using Delterra.Content.Items.Spells.HealPrayer;
+using Delterra.Content.Items.Spells.Scarves;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
