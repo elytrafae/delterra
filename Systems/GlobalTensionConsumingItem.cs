@@ -25,7 +25,7 @@ namespace Delterra.Systems {
         }
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips) {
-            TooltipLine line = new TooltipLine(Mod, "TensionCost", TensionCostText.Format(GetTensionCost(item, Main.LocalPlayer) / 100));
+            TooltipLine line = new TooltipLine(Mod, "TensionCost", TensionCostText.Format(Math.Ceiling(GetTensionCost(item, Main.LocalPlayer))));
             int lineIndex = tooltips.FindIndex(line => line.Name == PLACE_COST_AFTER);
             if (lineIndex != -1) {
                 tooltips.Insert(lineIndex + 1, line);
@@ -42,19 +42,19 @@ namespace Delterra.Systems {
             tooltips.Add(line);
         }
 
-        public static int GetTensionCost(Item item, Player player) {
+        public static double GetTensionCost(Item item, Player player) {
             if (item.ModItem is ITensionConsumingItem tensionItem) { 
                 return GetTensionCost(tensionItem, player);
             }
             return 0;
         }
 
-        public static int GetTensionCost(ITensionConsumingItem tensionItem, Player player) {
+        public static double GetTensionCost(ITensionConsumingItem tensionItem, Player player) {
             return GetTensionCost(tensionItem.GetBaseTPCost(player), player);
         }
 
-        public static int GetTensionCost(int baseCost, Player player) { 
-            return (int)EquipmentEffectPlayer.Get(player).tpCost.ApplyTo(baseCost);
+        public static double GetTensionCost(double baseCost, Player player) { 
+            return EquipmentEffectPlayer.Get(player).tpCost.ApplyTo((float)baseCost);
         }
 
         public override bool CanUseItem(Item item, Player player) {
@@ -72,7 +72,7 @@ namespace Delterra.Systems {
                 return null;
             }
             if (tensionItem.IsTPConsumedOnUse(player)) {
-                GrazingPlayer.Get(player).TP -= GetTensionCost(tensionItem, player);
+                GrazingPlayer.Get(player).SpendTP(GetTensionCost(tensionItem, player));
             }
             return null;
         }

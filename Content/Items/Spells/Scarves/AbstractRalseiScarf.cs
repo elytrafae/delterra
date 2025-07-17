@@ -9,8 +9,8 @@ namespace Delterra.Content.Items.Spells.HealPrayer {
     public abstract class AbstractRalseiScarf : ModItem, ITensionConsumingItem {
 
         public abstract int Heal { get; }
-        public virtual int MinTPCost => GrazingPlayer.GetTPForPercent(32);
-        public virtual int MaxTPCost => MinTPCost*2;
+        public virtual double MinTPCost => 32;
+        public virtual double MaxTPCost => MinTPCost*2;
 
         public override void SetDefaults() {
             Item.UseSound = MySoundStyles.Heal;
@@ -31,7 +31,6 @@ namespace Delterra.Content.Items.Spells.HealPrayer {
         public override bool? UseItem(Player player) {
             if (player.whoAmI == Main.myPlayer) {
                 if (player.altFunctionUse == 2) {
-                    GrazingPlayer.Get(player).TP -= GlobalTensionConsumingItem.GetTensionCost(Item, player);
                     EquipmentEffectPlayer.Get(player).currentScarfUses = 0;
                 } else {
                     EquipmentEffectPlayer.Get(player).currentScarfUses++;
@@ -40,24 +39,24 @@ namespace Delterra.Content.Items.Spells.HealPrayer {
             return true;
         }
 
+        public override bool AltFunctionUse(Player player) {
+            return true;
+        }
+
         public override bool CanShoot(Player player) {
             return player.altFunctionUse != 2;
         }
 
-        int ITensionConsumingItem.GetBaseTPCost(Player player) {
+        double ITensionConsumingItem.GetBaseTPCost(Player player) {
             EquipmentEffectPlayer modPlayer = EquipmentEffectPlayer.Get(player);
             if (modPlayer.currentScarfType != Type) {
                 return MaxTPCost;
             }
-            return Math.Max(MinTPCost, MaxTPCost - modPlayer.currentScarfUses * GrazingPlayer.GetTPForPercent(4));
+            return Math.Max(MinTPCost, MaxTPCost - modPlayer.currentScarfUses * 4);
         }
 
         bool ITensionConsumingItem.IsTPConsumedOnUse(Player player) {
-            return false;
-        }
-
-        public override bool AltFunctionUse(Player player) {
-            return GrazingPlayer.Get(player).TP >= GlobalTensionConsumingItem.GetTensionCost(Item, player);
+            return player.altFunctionUse == 2;
         }
 
         public override void GetHealLife(Player player, bool quickHeal, ref int healValue) {

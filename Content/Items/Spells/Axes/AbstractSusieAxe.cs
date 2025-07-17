@@ -17,7 +17,7 @@ namespace Delterra.Content.Items.Spells.Axes {
 
         public LocalizedText RudeBusterTooltip => Language.GetOrRegister("Mods." + nameof(Delterra) + ".RudeBusterTooltip");
         public override LocalizedText Tooltip => RudeBusterTooltip.WithFormatArgs(base.Tooltip);
-        public virtual int RudeBusterCost => GrazingPlayer.GetTPForPercent(50);
+        public virtual double RudeBusterCost => 50;
 
         public override void SetDefaults() {
             Item.DamageType = DamageClass.Melee;
@@ -43,21 +43,16 @@ namespace Delterra.Content.Items.Spells.Axes {
             damage *= 2;
         }
 
-        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {
-            GrazingPlayer.Get(player).TP -= GlobalTensionConsumingItem.GetTensionCost(Item, player);
-            return true;
-        }
-
         public override float UseSpeedMultiplier(Player player) {
             return player.altFunctionUse == 2 ? 3f : 1f;
         }
 
-        int ITensionConsumingItem.GetBaseTPCost(Player player) {
+        double ITensionConsumingItem.GetBaseTPCost(Player player) {
             return RudeBusterCost;
         }
 
         bool ITensionConsumingItem.IsTPConsumedOnUse(Player player) {
-            return false;
+            return player.altFunctionUse == 2;
         }
 
     }

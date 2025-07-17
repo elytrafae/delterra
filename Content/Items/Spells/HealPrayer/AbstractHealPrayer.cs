@@ -8,7 +8,7 @@ namespace Delterra.Content.Items.Spells.HealPrayer {
     public abstract class AbstractHealPrayer : ModItem, ITensionConsumingItem {
 
         public abstract int Heal { get; }
-        public virtual int TPCost => GrazingPlayer.GetTPForPercent(32);
+        public virtual double TPCost => 32;
 
         public override void SetDefaults() {
             Item.UseSound = MySoundStyles.Heal;
@@ -25,7 +25,7 @@ namespace Delterra.Content.Items.Spells.HealPrayer {
             return true;
         }
 
-        int ITensionConsumingItem.GetBaseTPCost(Player player) {
+        double ITensionConsumingItem.GetBaseTPCost(Player player) {
             return TPCost;
         }
 

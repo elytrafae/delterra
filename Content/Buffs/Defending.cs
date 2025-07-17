@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Delterra.Systems;
+using Delterra.Systems.TPSources;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Delterra.Systems;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -14,9 +15,9 @@ namespace Delterra.Content.Buffs {
 
         private int DAMAGE_REDUCTION = 15;
         private int DEFENSE = 5;
-        private int TP_PER_SECOND = GrazingPlayer.GetTPForPercent(2) + 4;
+        private double TP_PER_SECOND = 2;
 
-        public override LocalizedText Description => base.Description.WithFormatArgs(DAMAGE_REDUCTION, DEFENSE, TP_PER_SECOND/GrazingPlayer.TP_PER_PERCENT);
+        public override LocalizedText Description => base.Description.WithFormatArgs(DAMAGE_REDUCTION, DEFENSE, TP_PER_SECOND);
 
         public override void SetStaticDefaults() {
             Main.debuff[Type] = true;
@@ -26,7 +27,7 @@ namespace Delterra.Content.Buffs {
         public override void Update(Player player, ref int buffIndex) {
             player.endurance += (DAMAGE_REDUCTION/100f);
             player.statDefense += DEFENSE;
-            GrazingPlayer.Get(player).TP += (TP_PER_SECOND / 60);
+            GrazingPlayer.Get(player).GainTP((float)TP_PER_SECOND / 60, new TPGainDefendContext(ModContent.BuffType<Defending>()));
         }
 
     }

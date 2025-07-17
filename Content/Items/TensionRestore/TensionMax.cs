@@ -10,7 +10,7 @@ using Terraria;
 namespace Delterra.Content.Items.TensionRestore {
     public class TensionMax : AbstractTPRestoreItem {
 
-        public override int TPHeal => GrazingPlayer.GetTPForPercent(100);
+        public override float TPHeal => 100;
 
         public override int PotionSicknessTime => 80 * 60;
 

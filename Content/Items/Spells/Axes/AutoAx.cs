@@ -1,4 +1,5 @@
 ﻿using Delterra.Systems;
+using Delterra.Systems.TPSources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,8 +23,8 @@ namespace Delterra.Content.Items.Spells.Axes {
         }
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone) {
-            if (hit.Crit) {
-                GrazingPlayer.Get(player).TP += GrazingPlayer.GetTPForPercent(1);
+            if (hit.Crit) { // Only called on the client doing the hit. Perfect!
+                GrazingPlayer.Get(player).GainTP(1, new TPGainHitNPCContext<Item>(Item, target, hit));
             }
         }
 

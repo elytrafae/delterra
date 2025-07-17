@@ -1,5 +1,6 @@
 ﻿using Delterra.Content.Buffs;
 using Delterra.Systems;
+using Delterra.Systems.TPSources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,12 +50,8 @@ namespace Delterra.Content.Items.Armor {
 
         public override void UpdateEquip(Player player) {
             GrazingPlayer grazePlayer = GrazingPlayer.Get(player);
-            if (player.HasBuff<Attacking>()) {
-                grazePlayer.TP += Main.rand.Next(1, 3); // Gives 1 or 2 TP every tick
-            }
-            if (player.HasBuff<Defending>()) {
-                grazePlayer.TP += 4;
-            }
+            grazePlayer.TPChangeStats[TPGainType.DEFEND] += 1f;
+            grazePlayer.TPChangeStats[TPGainType.ATTACK] += 1f;
             player.GetDamage(DamageClass.Magic) += (MagicDamageBonusPercent / 100f);
             player.GetCritChance(DamageClass.Magic) += MagicCritBonus;
             player.iceSkate = true;

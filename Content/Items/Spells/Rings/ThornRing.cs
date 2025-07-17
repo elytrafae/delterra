@@ -11,8 +11,8 @@ using Terraria.ID;
 namespace Delterra.Content.Items.Spells.Rings {
     public class ThornRing : AbstractNoelleRing {
 
-        public override int IceShockCost => base.IceShockCost/2;
-        public override int SnowGraveCost => base.SnowGraveCost / 2;
+        public override double IceShockCost => base.IceShockCost/2;
+        public override double SnowGraveCost => base.SnowGraveCost / 2;
 
         public override void SetDefaults() {
             base.SetDefaults();

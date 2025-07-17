@@ -14,7 +14,7 @@ using Terraria.ModLoader;
 namespace Delterra.Content.Items.Spells.Axes {
     public class Devilsknife : AbstractSusieAxe {
 
-        public override int RudeBusterCost => GrazingPlayer.GetTPForPercent(40);
+        public override double RudeBusterCost => 40;
 
         public override void SetDefaults() {
             base.SetDefaults();

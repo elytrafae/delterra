@@ -21,11 +21,11 @@ namespace Delterra.Systems.UI {
         private UIImage cover;
         private UITensionText text;
 
-        private int currentDisplayedTP = 0;
-        private int currentDisplayedRedTP = 0;
+        private double currentDisplayedTP = 0;
+        private double currentDisplayedRedTP = 0;
         private int hoverBlinkTime = 0;
-        private const int MAX_TP_SCROLL_SPEED_PER_TICK = 70;
-        private const int MAX_RED_TP_SCROLL_SPEED_PER_TICK = 45;
+        private const double MAX_TP_SCROLL_SPEED_PER_TICK = 0.9;
+        private const double MAX_RED_TP_SCROLL_SPEED_PER_TICK = 0.6;
 
         private Color BackgroundFillingColor = new Color(255, 0, 0);
         private Color MainFillingColor = new Color(255, 127, 39);
@@ -135,20 +135,20 @@ namespace Delterra.Systems.UI {
             // TODO: Add white thingy when the TP bar fills up quickly
             UpdateBar(background_filling, currentDisplayedRedTP);
             UpdateBar(main_filling, currentDisplayedTP);
-            if (currentDisplayedTP < GrazingPlayer.MAXTP-100) {
+            if (currentDisplayedTP < GrazingPlayer.MAXTP - 1) {
                 marker.Color = Color.White;
                 marker.Top.Set(196 - (int)((float)currentDisplayedTP / GrazingPlayer.MAXTP * 196) - 2, 0f);
             } else {
                 marker.Color = Color.Transparent;
             }
 
-            text.Number = (int)modPlayer.TPPercent;
+            text.Number = (int)modPlayer.TP;
             
             hoverBlinkTime += 3;
             if (hoverBlinkTime >= 360) {
                 hoverBlinkTime -= 360;
             }
-            int heldTPCost = HeldItemTPCost(Main.LocalPlayer);
+            double heldTPCost = HeldItemTPCost(Main.LocalPlayer);
             if (heldTPCost > 0) {
                 if (heldTPCost > modPlayer.TP) {
                     UpdateBar(hover_filling, currentDisplayedTP, 0);
@@ -163,7 +163,7 @@ namespace Delterra.Systems.UI {
             base.Update(gameTime);
         }
 
-        private int HeldItemTPCost(Player player) {
+        private double HeldItemTPCost(Player player) {
             if (player.HeldItem == null || player.HeldItem.IsAir) {
                 return 0;
             }
@@ -176,9 +176,9 @@ namespace Delterra.Systems.UI {
             return 0;
         }
 
-        private void UpdateBar(UIImageWithFrame image, int topTP, int bottomTP = 0) {
-            int pixelsOffBottom = (int)((float)bottomTP / GrazingPlayer.MAXTP * 196);
-            int pixelsOffTop = 196 - (int)((float)topTP / GrazingPlayer.MAXTP * 196);
+        private void UpdateBar(UIImageWithFrame image, double topTP, double bottomTP = 0) {
+            int pixelsOffBottom = (int)(bottomTP / GrazingPlayer.MAXTP * 196);
+            int pixelsOffTop = 196 - (int)(topTP / GrazingPlayer.MAXTP * 196);
             int height = 196 - pixelsOffBottom - pixelsOffTop;
             int y = pixelsOffTop;
 

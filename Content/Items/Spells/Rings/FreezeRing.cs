@@ -10,7 +10,7 @@ using Terraria.ID;
 namespace Delterra.Content.Items.Spells.Rings {
     public class FreezeRing : AbstractNoelleRing {
 
-        public override int IceShockCost => GrazingPlayer.GetTPForPercent(25);
+        public override double IceShockCost => 25;
 
         public override void SetDefaults() {
             base.SetDefaults();
