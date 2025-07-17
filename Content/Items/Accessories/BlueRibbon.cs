@@ -7,6 +7,7 @@ using Delterra.Systems;
 using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
+using FaeLibrary.API.ClassExtensions;
 
 namespace Delterra.Content.Items.Accessories {
 
@@ -20,9 +21,8 @@ namespace Delterra.Content.Items.Accessories {
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual) {
-            EquipmentEffectPlayer modPlayer = EquipmentEffectPlayer.Get(player);
-            modPlayer.healingMultiplier += 0.25f;
-            modPlayer.commonLifeRegen += 2;
+            player.GetCommonPositiveRegenStat() += 2;
+            player.GetPotionHealingStat() += 0.25f;
         }
 
     }

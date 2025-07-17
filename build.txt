@@ -1,5 +1,5 @@
 displayName = Delterra
 author = elytrafae, jteoh, JaimeezNuts
-version = 1.0
+version = 2.0
 includeSource = true
 modReferences = FaeLibrary

@@ -17,8 +17,6 @@ namespace Delterra.Systems {
     public class EquipmentEffectPlayer : ModPlayer {
 
         public bool tensionRestorePotionSicknessReduced = false;
-        public float healingMultiplier = 1f;
-        public int commonLifeRegen = 0;
         public float greenLightLevel = 0f;
         public float additionalLootChance = 0f;
         public bool secretRingBuff = false;
@@ -33,8 +31,6 @@ namespace Delterra.Systems {
 
         public override void ResetEffects() {
             tensionRestorePotionSicknessReduced = false;
-            healingMultiplier = 1f;
-            commonLifeRegen = 0;
             greenLightLevel = 0f;
             additionalLootChance = 0f;
             secretRingBuff = false;
@@ -71,14 +67,6 @@ namespace Delterra.Systems {
 
         public override bool CanUseItem(Item item) {
             return !Player.HasBuff<Defending>();
-        }
-
-        public override void GetHealLife(Item item, bool quickHeal, ref int healValue) {
-            healValue = (int)(healValue * healingMultiplier);
-        }
-
-        public override void UpdateLifeRegen() {
-            Player.lifeRegen += commonLifeRegen;
         }
 
         public override void ArmorSetBonusActivated() {
@@ -122,12 +110,6 @@ namespace Delterra.Systems {
                     Gore.NewGorePerfect(Player.GetSource_OnHit(target), target.Center - new Vector2(35.5f, 50), Vector2.Zero, ModContent.GoreType<RealisticExplosion>());
                 }
             };
-        }
-
-        private void Modifiers_AsgoresTruck(ref NPC.HitInfo info) {
-            if (asgoreTruckHit == true) {
-                info.Damage = 999999999;
-            }
         }
     }
 }

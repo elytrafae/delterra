@@ -2,6 +2,7 @@
 using Delterra.Content.Items.Accessories;
 using Delterra.Content.Items.Spells.Axes;
 using Delterra.Content.Items.Spells.Rings;
+using FaeLibrary.API;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Delterra.Systems {
-    public class EnemyDropsNPC : GlobalNPC {
+
+    public class EnemyDropsSystem : ModSystem {
 
         private static int[] CelestialCreatures = [
             NPCID.SolarCorite,
@@ -39,32 +41,24 @@ namespace Delterra.Systems {
             NPCID.StardustWormHead
         ];
 
-        public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot) {
-            if (npc.type == NPCID.Deerclops) {
-                AddLootToBoss<Devilsknife>(npcLoot);
-                AddLootToBoss<SnowRing>(npcLoot);
-            }
-            if (npc.type == NPCID.DD2Betsy) {
-                AddLootToBoss<JusticeAx>(npcLoot);
-            }
-            if (npc.type == NPCID.UndeadMiner) {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GlowWrist>(), 2));
-            }
-            if (NPCID.Sets.BelongsToInvasionPirate[npc.type]) {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Dealmaker>(), 50));
-            }
-            if (CelestialCreatures.Contains(npc.type)) {
-                LeadingConditionRule killedByRingCondition = new LeadingConditionRule(new KilledByNoelleRingCondition());
-                killedByRingCondition.OnSuccess(ItemDropRule.Common(ModContent.ItemType<GlacialFragment>(), 1, 1, 6));
-                npcLoot.Add(killedByRingCondition);
-            }
+        public override void PostSetupContent() {
+            FaeLootUtils.AddLootToBossAndBag(NPCID.Deerclops, ItemID.DeerclopsBossBag, 
+                ItemDropRule.OneFromOptions(1, ModContent.ItemType<Devilsknife>(), ModContent.ItemType<SnowRing>())
+            );
+            FaeLootUtils.AddLootToBossAndBag(NPCID.DD2Betsy, ItemID.BossBagBetsy, ItemDropRule.Common(ModContent.ItemType<JusticeAx>()));
+            FaeLootUtils.AddLootToNPC(NPCID.UndeadMiner, ItemDropRule.Common(ModContent.ItemType<GlowWrist>(), 2));
+            FaeLootUtils.AddLootToNPC((npc) => NPCID.Sets.BelongsToInvasionPirate[npc.type], ItemDropRule.Common(ModContent.ItemType<Dealmaker>(), 50));
+
+            // Glacial Fragments from Celestial Creatures
+            LeadingConditionRule killedByRingCondition = new LeadingConditionRule(new KilledByNoelleRingCondition());
+            killedByRingCondition.OnSuccess(ItemDropRule.Common(ModContent.ItemType<GlacialFragment>(), 1, 1, 6));
+            FaeLootUtils.AddLootToNPC((npc) => CelestialCreatures.Contains(npc.type), killedByRingCondition);
+            /////////////////////////////////////////////
         }
 
-        private void AddLootToBoss<T>(NPCLoot npcLoot) where T : ModItem {
-            LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
-            notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<T>()));
-            npcLoot.Add(notExpertRule);
-        }
+    }
+
+    public class EnemyDropsNPC : GlobalNPC {
 
         public override void OnKill(NPC npc) {
             if ((!npc.boss) && npc.lastInteraction < 255) {
@@ -96,18 +90,5 @@ namespace Delterra.Systems {
         public string GetConditionDescription() {
             return "If killed by any of Noelle's Rings";
         }
-    }
-
-    public class EnemyDropsItem : GlobalItem {
-
-        public override void ModifyItemLoot(Item item, ItemLoot itemLoot) {
-            if (item.type == ItemID.DeerclopsBossBag) {
-                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Devilsknife>()));
-            }
-            if (item.type == ItemID.BossBagBetsy) {
-                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<JusticeAx>()));
-            }
-        }
-
     }
 }
