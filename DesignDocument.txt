@@ -1,6 +1,12 @@
 
 This document shall detail further plans after the feature freeze period ends
 
+- Add configs for
+	- Graze Noise
+	- Graze Hitbox
+	- TP bar being visible while a non-TP affecting item is held(?)
+
+
 - Buff Axes
 	- Axes will generally get an attack speed buff and according damage adjustments
 	- Axes will get bonus reach or additional projectiles on left-click(?)
