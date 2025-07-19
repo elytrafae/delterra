@@ -3,7 +3,6 @@ TPRestoreText:
 	'''
 	+{0}% [c/FF7F27:TP] at the cost of
 	{1} seconds of Potion Sickness
-	{2}
 	'''
 RudeBusterTooltip:
 	'''
@@ -329,6 +328,8 @@ Projectiles: {
 	IceShockHM.DisplayName: Ice Shock
 	JusticeRudeBuster.DisplayName: Justice Rude Buster
 	SnowGrave.DisplayName: Snowgrave
+	CollisionTest.DisplayName: Collision Test
+	RedScarfProjectile.DisplayName: Red Scarf Projectile
 }
 
 Buffs: {

@@ -30,6 +30,7 @@ namespace Delterra.Content.Items.Spells.Rings {
             Item.shootSpeed = 0;
             Item.useTime = (Item.useAnimation = 30);
             Item.knockBack = 5f;
+            Item.noMelee = true;
         }
 
         public override void ModifyManaCost(Player player, ref float reduce, ref float mult) {

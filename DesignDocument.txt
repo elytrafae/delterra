@@ -6,6 +6,8 @@ This document shall detail further plans after the feature freeze period ends
 	- Graze Hitbox
 	- TP bar being visible while a non-TP affecting item is held(?)
 
+- Adjust volumes
+
 
 - Buff Axes
 	- Axes will generally get an attack speed buff and according damage adjustments

@@ -44,6 +44,8 @@ namespace Delterra.Systems {
         public StatModifier OldAllTPChangeStat = new();
         public Dictionary<TPGainType, StatModifier> OldTPChangeStats = new();
 
+        private List<TPOverTimeEffect> TPOverTimeEffects = new List<TPOverTimeEffect>();
+
         public override void PostUpdate() {
             // Everyone handles their own TP and grazing locally!
             // This is why the NPC/Projectile variables are not synced. They only apply to the current player.
@@ -88,14 +90,38 @@ namespace Delterra.Systems {
                 dangerTime--;
             }
 
+            for (int i = 0; i < TPOverTimeEffects.Count; i++) { 
+                TPOverTimeEffect effect = TPOverTimeEffects[i];
+                TP += effect.tpGainPerFrame;
+                effect.tpLeft -= effect.tpGainPerFrame;
+                if (effect.tpLeft < effect.tpGainPerFrame) {
+                    TP += effect.tpLeft;
+                    TPOverTimeEffects.Remove(effect);
+                    i--;
+                }
+            }
+
             //ChatHelper.DisplayMessage(NetworkText.FromLiteral("TP: " + TP / 100f + "%"), Color.Pink, 255);
         }
 
-        public void GainTP(float amount, ITPGainContext context) {
+        public float CalculateTPGain(float amount, ITPGainContext context, bool isAboutToBeUsedUp = false) {
             // We use the old stats to make sure that we have everything, no matter the update phase
             StatModifier modifier = OldAllTPChangeStat.CombineWith(OldTPChangeStats[context.Type]);
             // TODO: Add the ability to add calls for more context-based control.
-            TP += modifier.ApplyTo(amount);
+            return modifier.ApplyTo(amount);
+        }
+
+        public void GainTP(float amount, ITPGainContext context) {
+            TP += CalculateTPGain(amount, context, true);
+        }
+
+        public void GainTPOverTime(float amount, int time, ITPGainContext context) {
+            if (time <= 1) {
+                GainTP(amount, context);
+                return;
+            }
+            float tpGain = CalculateTPGain(amount, context, true);
+            TPOverTimeEffects.Add(new(time, tpGain));
         }
 
         public void SpendTP(double amount) { // Calculating the final price for this is handled elsewhere, at least for now
@@ -198,5 +224,17 @@ namespace Delterra.Systems {
             Player.AddBuff(ModContent.BuffType<Attacking>(), 60);
         }
 
+        private class TPOverTimeEffect {
+            public double tpLeft;
+            public double tpGainPerFrame;
+
+            public TPOverTimeEffect(int time, double tp) { 
+                tpLeft = tp;
+                tpGainPerFrame = tp / time;
+            }
+        }
+
     }
+
+    
 }
