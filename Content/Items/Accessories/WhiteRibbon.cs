@@ -13,6 +13,8 @@ namespace Delterra.Content.Items.Accessories {
     [AutoloadEquip(EquipType.Face)]
     public class WhiteRibbon : ModItem {
 
+        public override string LocalizationCategory => base.LocalizationCategory + ".Accessories";
+
         public override void SetStaticDefaults() {
             ItemID.Sets.IsLavaImmuneRegardlessOfRarity[Type] = true;
         }

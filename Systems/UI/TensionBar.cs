@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Delterra.Content;
+using Delterra.Systems.Config;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
+using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ModLoader;
 using Terraria.UI;
-using Terraria;
-using System;
-using Delterra.Content;
 
 namespace Delterra.Systems.UI {
     
@@ -106,6 +107,10 @@ namespace Delterra.Systems.UI {
 
         public override void Draw(SpriteBatch spriteBatch) {
             // Add draw condition here, if ever relevant
+            if (!(ClientConfig.Get().AlwaysDisplayTPBar || Main.LocalPlayer.HeldItem?.ModItem is ITensionConsumingItem)) {
+                return;
+            }
+
             base.Draw(spriteBatch);
         }
 

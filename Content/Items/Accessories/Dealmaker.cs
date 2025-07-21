@@ -13,6 +13,8 @@ namespace Delterra.Content.Items.Accessories {
     //[AutoloadEquip(EquipType.Face)]
     internal class Dealmaker : ModItem {
 
+        public override string LocalizationCategory => base.LocalizationCategory + ".Accessories";
+
         public override void SetStaticDefaults() {
             //EquipLoader.AddEquipTexture(Mod, $"{Texture}_{EquipType.Face}", EquipType.Face, this, null);
         }

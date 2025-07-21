@@ -1,0 +1,99 @@
+HealPrayer1: {
+	DisplayName: Heal Prayer Mk 1
+	Tooltip: ""
+}
+
+HealPrayer2: {
+	DisplayName: Heal Prayer Mk 2
+	Tooltip: ""
+}
+
+HealPrayer3: {
+	DisplayName: Heal Prayer Mk 3
+	Tooltip: ""
+}
+
+HealPrayer4: {
+	DisplayName: Heal Prayer Mk 4
+	Tooltip: ""
+}
+
+TensionBit: {
+	DisplayName: Tension Bit
+	Tooltip: ""
+}
+
+TensionGem: {
+	DisplayName: Tension Gem
+	Tooltip: ""
+}
+
+TensionMax: {
+	DisplayName: Tension Max
+	Tooltip: ""
+}
+
+DefensiveCharm: {
+	DisplayName: Defensive Charm
+	Tooltip:
+		'''
+		Enter a defensive state and gain [c/FF7F27:TP]
+		You can't use items for the duration
+		'''
+}
+
+MaliusHammer: {
+	DisplayName: Malius' Single Use Hammer
+	Tooltip:
+		'''
+		"In case of Malius getting sick,
+		  use this to fuse items." - Malius
+		'''
+}
+
+GlacialFragment: {
+	DisplayName: Glacial Fragment
+	Tooltip:
+		'''
+		Colder than the dark 
+		side of the moon
+		'''
+}
+
+FrostmancerRobe: {
+	DisplayName: Frostmancer Robe
+	Tooltip:
+		'''
+		[c/FF7F27:TP] gain from Attacking 
+		or Defending increased.
+		+{0}% magic damage
+		+{1}% magic crit
+		Ice Skates effect
+		'''
+}
+
+FrostmancerHood: {
+	SetBonus:
+		'''
+		Increased graze area
+		Activate the set bonus to slip 
+		into a Trance for 5 seconds. 
+		'''
+	DisplayName: Frostmancer Hood
+	Tooltip:
+		'''
+		+{0}% magic damage
+		+{1}% magic crit
+		{2}% reduced [c/FF7F27:TP] cost
+		'''
+}
+
+CastleTownMusicBoxItem: {
+	DisplayName: Music Box (Castle Town)
+	Tooltip: Makes a certain someone homesick
+}
+
+IceColdBeer: {
+	DisplayName: Ice Cold Beer
+	Tooltip: Perfect for a drive around town
+}

@@ -12,6 +12,7 @@ namespace Delterra.Content.Items.Accessories {
     [AutoloadEquip(EquipType.HandsOn)]
     public class IronShackle : ModItem {
 
+        public override string LocalizationCategory => base.LocalizationCategory + ".Accessories";
         public override void SetStaticDefaults() {
             ItemID.Sets.IsLavaImmuneRegardlessOfRarity[Type] = true;
         }

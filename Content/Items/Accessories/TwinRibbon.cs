@@ -13,6 +13,8 @@ namespace Delterra.Content.Items.Accessories {
     [AutoloadEquip(EquipType.Face)]
     public class TwinRibbon : ModItem {
 
+        public override string LocalizationCategory => base.LocalizationCategory + ".Accessories";
+
         public override void SetDefaults() {
             Item.DefaultToAccessory();
             Item.rare = ItemRarityID.Orange;

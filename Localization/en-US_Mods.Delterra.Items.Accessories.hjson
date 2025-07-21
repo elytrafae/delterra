@@ -1,0 +1,97 @@
+IronShackle: {
+	DisplayName: Iron Shackle
+	Tooltip:
+		'''
+		Shackle that ironically increases 
+		your attack and defense.
+		+1% Damage
+		'''
+}
+
+PinkRibbon: {
+	DisplayName: Pink Ribbon
+	Tooltip:
+		'''
+		A cute hair ribbon.
+		Increased graze area
+		'''
+}
+
+WhiteRibbon: {
+	DisplayName: White Ribbon
+	Tooltip:
+		'''
+		A crinkly hair ribbon.
+		Reduced Potion Sickness when 
+		using [c/FF7F27:TP] recovery items
+		'''
+}
+
+BlueRibbon: {
+	DisplayName: Blue Ribbon
+	Tooltip:
+		'''
+		A blue cheer bow.
+		Increases healing from
+		potions and spells.
+		Increases life regeneration.
+		'''
+}
+
+TwinRibbon: {
+	DisplayName: Twin Ribbon
+	Tooltip:
+		'''
+		Two ribbons. You'll have to 
+		put your hair into pigtails.
+		Increased graze area
+		Reduced Potion Sickness when 
+		using [c/FF7F27:TP] recovery items
+		'''
+}
+
+TransRibbon: {
+	DisplayName: Triple Ribbon
+	Tooltip:
+		'''
+		The most powerful and
+		pretty of all ribbons.
+		Increased graze area.
+		Reduced Potion Sickness when 
+		using [c/FF7F27:TP] recovery items.
+		Increases healing from
+		potions and spells.
+		Increases life regeneration.
+		'''
+}
+
+GlowWrist: {
+	DisplayName: Glow Wrist
+	Tooltip:
+		'''
+		A tough bracelet made of green wires
+		and studded with sharp glowing lights.
+		'''
+}
+
+SpikeBand: {
+	DisplayName: Spike Band
+	Tooltip:
+		'''
+		A black wristband covered in spikes. 
+		Has the tendency to get stuck to itself.
+		+5% Damage
+		Provides more light
+		Enemies that hit you take damage
+		'''
+}
+
+Dealmaker: {
+	DisplayName: Dealmaker
+	Tooltip:
+		'''
+		Fashionable pink and yellow glasses.
+		30% chance for a non-boss enemy to 
+		drop their loot again, and...?
+		'''
+}

@@ -16,6 +16,7 @@ namespace Delterra.Content.Items.Spells.Rings {
 
         public LocalizedText IceShockTooltip => Language.GetOrRegister("Mods." + nameof(Delterra) + ".IceShockTooltip");
         public override LocalizedText Tooltip => IceShockTooltip.WithFormatArgs(base.Tooltip);
+        public override string LocalizationCategory => base.LocalizationCategory + ".Weapons.NoelleRings";
 
         public virtual double IceShockCost => 16;
         public virtual double SnowGraveCost => 200;

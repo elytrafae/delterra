@@ -15,323 +15,6 @@ IceShockTooltip:
 	{0}
 	'''
 
-Items: {
-	HealPrayer1: {
-		DisplayName: Heal Prayer Mk 1
-		Tooltip: ""
-	}
-
-	HealPrayer2: {
-		DisplayName: Heal Prayer Mk 2
-		Tooltip: ""
-	}
-
-	HealPrayer3: {
-		DisplayName: Heal Prayer Mk 3
-		Tooltip: ""
-	}
-
-	HealPrayer4: {
-		DisplayName: Heal Prayer Mk 4
-		Tooltip: ""
-	}
-
-	TensionBit: {
-		DisplayName: Tension Bit
-		Tooltip: ""
-	}
-
-	TensionGem: {
-		DisplayName: Tension Gem
-		Tooltip: ""
-	}
-
-	TensionMax: {
-		DisplayName: Tension Max
-		Tooltip: ""
-	}
-
-	DefensiveCharm: {
-		DisplayName: Defensive Charm
-		Tooltip:
-			'''
-			Enter a defensive state and gain [c/FF7F27:TP]
-			You can't use items for the duration
-			'''
-	}
-
-	MaliusHammer: {
-		DisplayName: Malius' Single Use Hammer
-		Tooltip:
-			'''
-			"In case of Malius getting sick,
-			  use this to fuse items." - Malius
-			'''
-	}
-
-	ManeAx: {
-		DisplayName: Mane Ax
-		Tooltip:
-			'''
-			Beginner's ax forged from 
-			the mane of a dragon whelp.
-			'''
-	}
-
-	AbsorbAx: {
-		DisplayName: Absorb Ax
-		Tooltip:
-			'''
-			A long, curved axe with an indent. 
-			Scoop up HP when you attack.
-			'''
-	}
-
-	AutoAx: {
-		DisplayName: Auto Axe
-		Tooltip:
-			'''
-			Make sure to charge it by 
-			plugging it into the wall.
-			Grants [c/FF7F27:TP] on melee crits.
-			'''
-	}
-
-	BraveAx: {
-		DisplayName: Brave Ax
-		Tooltip:
-			'''
-			A glossy ax from a block warrior. 
-			Suitable for heroes.
-			'''
-	}
-
-	Devilsknife: {
-		DisplayName: Devilsknife
-		Tooltip:
-			'''
-			Skull-emblazoned scythe-ax. 
-			Reduces Rudebuster's cost by 10
-			'''
-	}
-
-	ToxicAx: {
-		DisplayName: Toxic Axe
-		Tooltip:
-			'''
-			An axe used to clear wastelands in 
-			a fetid swamp. Not poison, but venomous.
-			'''
-	}
-
-	JusticeAx: {
-		DisplayName: Justice Axe
-		Tooltip:
-			'''
-			In order to attain this item, 
-			you became much stronger!
-			'''
-	}
-
-	IronShackle: {
-		DisplayName: Iron Shackle
-		Tooltip:
-			'''
-			Shackle that ironically increases 
-			your attack and defense.
-			+1% Damage
-			'''
-	}
-
-	PinkRibbon: {
-		DisplayName: Pink Ribbon
-		Tooltip:
-			'''
-			A cute hair ribbon.
-			Increased graze area
-			'''
-	}
-
-	WhiteRibbon: {
-		DisplayName: White Ribbon
-		Tooltip:
-			'''
-			A crinkly hair ribbon.
-			Reduced Potion Sickness when 
-			using [c/FF7F27:TP] recovery items
-			'''
-	}
-
-	BlueRibbon: {
-		DisplayName: Blue Ribbon
-		Tooltip:
-			'''
-			A blue cheer bow.
-			Increases healing from
-			potions and spells.
-			Increases life regeneration.
-			'''
-	}
-
-	TwinRibbon: {
-		DisplayName: Twin Ribbon
-		Tooltip:
-			'''
-			Two ribbons. You'll have to 
-			put your hair into pigtails.
-			Increased graze area
-			Reduced Potion Sickness when 
-			using [c/FF7F27:TP] recovery items
-			'''
-	}
-
-	TransRibbon: {
-		DisplayName: Triple Ribbon
-		Tooltip:
-			'''
-			The most powerful and
-			pretty of all ribbons.
-			Increased graze area.
-			Reduced Potion Sickness when 
-			using [c/FF7F27:TP] recovery items.
-			Increases healing from
-			potions and spells.
-			Increases life regeneration.
-			'''
-	}
-
-	GlowWrist: {
-		DisplayName: Glow Wrist
-		Tooltip:
-			'''
-			A tough bracelet made of green wires
-			and studded with sharp glowing lights.
-			'''
-	}
-
-	SpikeBand: {
-		DisplayName: Spike Band
-		Tooltip:
-			'''
-			A black wristband covered in spikes. 
-			Has the tendency to get stuck to itself.
-			+5% Damage
-			Provides more light
-			Enemies that hit you take damage
-			'''
-	}
-
-	Dealmaker: {
-		DisplayName: Dealmaker
-		Tooltip:
-			'''
-			Fashionable pink and yellow glasses.
-			30% chance for a non-boss enemy to 
-			drop their loot again, and...?
-			'''
-	}
-
-	GlacialFragment: {
-		DisplayName: Glacial Fragment
-		Tooltip:
-			'''
-			Colder than the dark 
-			side of the moon
-			'''
-	}
-
-	SnowRing: {
-		DisplayName: Snow Ring
-		Tooltip:
-			'''
-			A ring with the 
-			emblem of the snowflake
-			'''
-	}
-
-	FreezeRing: {
-		DisplayName: Freeze Ring
-		Tooltip:
-			'''
-			Deals increased damage at the cost
-			of raised [c/FF7F27:TP] cost.
-			A ring with a snowglobe on it. 
-			... is that someone inside?
-			'''
-	}
-
-	IceRing: {
-		DisplayName: Ice Ring
-		Tooltip:
-			'''
-			A ring with ice spikes
-			sticking out of it
-			'''
-	}
-
-	ThornRing: {
-		DisplayName: Thorn Ring
-		Tooltip:
-			'''
-			Reduces the [c/FF7F27:TP] cost of ice spells
-			Your potential is finally unlocked.
-			'''
-	}
-
-	FrostmancerRobe: {
-		DisplayName: Frostmancer Robe
-		Tooltip:
-			'''
-			[c/FF7F27:TP] gain from Attacking 
-			or Defending increased.
-			+{0}% magic damage
-			+{1}% magic crit
-			Ice Skates effect
-			'''
-	}
-
-	FrostmancerHood: {
-		SetBonus:
-			'''
-			Increased graze area
-			Activate the set bonus to slip 
-			into a Trance for 5 seconds. 
-			'''
-		DisplayName: Frostmancer Hood
-		Tooltip:
-			'''
-			+{0}% magic damage
-			+{1}% magic crit
-			{2}% reduced [c/FF7F27:TP] cost
-			'''
-	}
-
-	CastleTownMusicBoxItem: {
-		DisplayName: Music Box (Castle Town)
-		Tooltip: Makes a certain someone homesick
-	}
-
-	IceColdBeer: {
-		DisplayName: Ice Cold Beer
-		Tooltip: Perfect for a drive around town
-	}
-
-	RedScarf: {
-		DisplayName: Red Scarf
-		Tooltip: ""
-	}
-}
-
-Projectiles: {
-	RudeBuster.DisplayName: Rude Buster
-	IceShock.DisplayName: Ice Shock
-	IceShockHM.DisplayName: Ice Shock
-	JusticeRudeBuster.DisplayName: Justice Rude Buster
-	SnowGrave.DisplayName: Snowgrave
-	CollisionTest.DisplayName: Collision Test
-	RedScarfProjectile.DisplayName: Red Scarf Projectile
-}
-
 Buffs: {
 	Attacking: {
 		DisplayName: Attacking
@@ -384,6 +67,28 @@ NPCs: {
 			PartyGirl: "{0} may just have a bigger appetite for Cake than Susie."
 			PartyNoItems: Such a lovely birthday. I wish I could give everyone some cake and tea, but I have none...
 			PartyCakeTea: Greetings! May I offer you some cake and tea?
+		}
+	}
+}
+
+Configs: {
+	ClientConfig: {
+		DisplayName: Client Config
+		Headers.TPBar: T P Bar Header
+
+		ShowGrazeArea: {
+			Label: Show Graze Area
+			Tooltip: If set to false, your graze area is never displayed
+		}
+
+		PlayGrazeSound: {
+			Label: Play Graze Sound
+			Tooltip: If set to false, the sound played for successfully grazing no longer plays
+		}
+
+		AlwaysDisplayTPBar: {
+			Label: Always Display TP Bar
+			Tooltip: If set to false, the TP bar is only shown while holding items that consume TP
 		}
 	}
 }

@@ -7,6 +7,7 @@ This document shall detail further plans after the feature freeze period ends
 	- TP bar being visible while a non-TP affecting item is held(?)
 
 - Adjust volumes
+- Fix an exploit where falling blocks generate TP
 
 
 - Buff Axes

@@ -1,0 +1,37 @@
+SnowRing: {
+	DisplayName: Snow Ring
+	Tooltip:
+		'''
+		A ring with the 
+		emblem of the snowflake
+		'''
+}
+
+FreezeRing: {
+	DisplayName: Freeze Ring
+	Tooltip:
+		'''
+		Deals increased damage at the cost
+		of raised [c/FF7F27:TP] cost.
+		A ring with a snowglobe on it. 
+		... is that someone inside?
+		'''
+}
+
+IceRing: {
+	DisplayName: Ice Ring
+	Tooltip:
+		'''
+		A ring with ice spikes
+		sticking out of it
+		'''
+}
+
+ThornRing: {
+	DisplayName: Thorn Ring
+	Tooltip:
+		'''
+		Reduces the [c/FF7F27:TP] cost of ice spells
+		Your potential is finally unlocked.
+		'''
+}

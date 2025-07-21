@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Media;
 using Delterra.Content.Buffs;
+using Delterra.Systems.Config;
 using Delterra.Systems.TPSources;
 using FaeLibrary.API;
 using FaeLibrary.API.Enums;
@@ -163,6 +164,9 @@ namespace Delterra.Systems {
         }
 
         public float GrazeAreaAlpha() {
+            if (!ClientConfig.Get().ShowGrazeArea) {
+                return 0f;
+            }
             if (!IsAllowedToGetTPByGrazing()) {
                 return 0f;
             }
@@ -181,7 +185,9 @@ namespace Delterra.Systems {
 
         public void TriggerTPBurst() {
             dangerTime = 60;
-            SoundEngine.PlaySound(MySoundStyles.Graze, Player.Center);
+            if (ClientConfig.Get().PlayGrazeSound) {
+                SoundEngine.PlaySound(MySoundStyles.Graze, Player.Center);
+            }
         }
 
         public void TriggerTPPerTick(Projectile projectile) {
@@ -196,7 +202,7 @@ namespace Delterra.Systems {
 
         public void TriggerTPPerTick() {
             dangerTime = 60;
-            if (grazeNoiseCooldown <= 0) {
+            if (grazeNoiseCooldown <= 0 && ClientConfig.Get().PlayGrazeSound) {
                 grazeNoiseCooldown = 40;
                 SoundEngine.PlaySound(MySoundStyles.Graze, Player.Center);
             }

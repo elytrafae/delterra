@@ -1,0 +1,63 @@
+ManeAx: {
+	DisplayName: Mane Ax
+	Tooltip:
+		'''
+		Beginner's ax forged from 
+		the mane of a dragon whelp.
+		'''
+}
+
+AbsorbAx: {
+	DisplayName: Absorb Ax
+	Tooltip:
+		'''
+		A long, curved axe with an indent. 
+		Scoop up HP when you attack.
+		'''
+}
+
+AutoAx: {
+	DisplayName: Auto Axe
+	Tooltip:
+		'''
+		Make sure to charge it by 
+		plugging it into the wall.
+		Grants [c/FF7F27:TP] on melee crits.
+		'''
+}
+
+BraveAx: {
+	DisplayName: Brave Ax
+	Tooltip:
+		'''
+		A glossy ax from a block warrior. 
+		Suitable for heroes.
+		'''
+}
+
+Devilsknife: {
+	DisplayName: Devilsknife
+	Tooltip:
+		'''
+		Skull-emblazoned scythe-ax. 
+		Reduces Rudebuster's cost by 10
+		'''
+}
+
+ToxicAx: {
+	DisplayName: Toxic Axe
+	Tooltip:
+		'''
+		An axe used to clear wastelands in 
+		a fetid swamp. Not poison, but venomous.
+		'''
+}
+
+JusticeAx: {
+	DisplayName: Justice Axe
+	Tooltip:
+		'''
+		In order to attain this item, 
+		you became much stronger!
+		'''
+}

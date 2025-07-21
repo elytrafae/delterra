@@ -13,6 +13,7 @@ namespace Delterra.Content.Items.Spells.Scarves {
         public abstract int Heal { get; }
         public virtual double MinTPCost => 32;
         public virtual double MaxTPCost => MinTPCost*2;
+        public override string LocalizationCategory => base.LocalizationCategory + ".Weapons.RalseiScarves";
 
         public override void SetDefaults() {
             //Item.UseSound = MySoundStyles.Heal;
