@@ -17,9 +17,8 @@ namespace Delterra.Content.Items.Spells.Rings {
         public LocalizedText IceShockTooltip => Language.GetOrRegister("Mods." + nameof(Delterra) + ".IceShockTooltip");
         public override LocalizedText Tooltip => IceShockTooltip.WithFormatArgs(base.Tooltip);
 
-        public virtual int IceShockCost => GrazingPlayer.GetTPForPercent(16);
-        public virtual int SnowGraveCost => GrazingPlayer.GetTPForPercent(200);
-        private bool IsSnowGraveUnlocked => SnowGraveCost <= GrazingPlayer.MAXTP;
+        public virtual double IceShockCost => 16;
+        public virtual double SnowGraveCost => 200;
 
         public override void SetDefaults() {
             Item.DamageType = DamageClass.Magic;
@@ -31,10 +30,7 @@ namespace Delterra.Content.Items.Spells.Rings {
             Item.shootSpeed = 0;
             Item.useTime = (Item.useAnimation = 30);
             Item.knockBack = 5f;
-        }
-
-        public override bool AltFunctionUse(Player player) {
-            return IsSnowGraveUnlocked;
+            Item.noMelee = true;
         }
 
         public override void ModifyManaCost(Player player, ref float reduce, ref float mult) {
@@ -43,9 +39,13 @@ namespace Delterra.Content.Items.Spells.Rings {
             }
         }
 
+        public override bool AltFunctionUse(Player player) {
+            return true;
+        }
+
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) {
             position = Main.MouseWorld;
-            if (IsSnowGraveUnlocked && player.altFunctionUse == 2) {
+            if (player.altFunctionUse == 2) {
                 type = ModContent.ProjectileType<SnowGrave>();
                 position.Y = player.Center.Y + Main.screenHeight/2 + 50;
                 damage *= 3;
@@ -67,8 +67,8 @@ namespace Delterra.Content.Items.Spells.Rings {
             return true;
         }
 
-        int ITensionConsumingItem.GetBaseTPCost(Player player) {
-            if (IsSnowGraveUnlocked && player.altFunctionUse == 2) {
+        double ITensionConsumingItem.GetBaseTPCost(Player player) {
+            if (player.altFunctionUse == 2) {
                 return SnowGraveCost;
             }
             return IceShockCost;

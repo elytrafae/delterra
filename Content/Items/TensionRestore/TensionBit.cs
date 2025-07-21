@@ -12,7 +12,7 @@ using Terraria.ModLoader;
 
 namespace Delterra.Content.Items.TensionRestore {
     public class TensionBit : AbstractTPRestoreItem {
-        public override int TPHeal => GrazingPlayer.GetTPForPercent(32);
+        public override float TPHeal => 32;
 
         public override int PotionSicknessTime => 60*60;
 

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Media;
 using Delterra.Content.Buffs;
+using Delterra.Systems.TPSources;
 using FaeLibrary.API;
 using FaeLibrary.API.Enums;
 using Microsoft.Xna.Framework;
@@ -13,32 +15,22 @@ using Terraria.ModLoader;
 namespace Delterra.Systems {
     public class GrazingPlayer : ModPlayer, IFaeModPlayer {
 
-        private int _TP = 0;
-        /// <summary>
-        /// NOTE: TP here goes from 0 to <see cref="MAXTP"/>  for more precise control
-        /// </summary>
-        public int TP {
+        private double _TP = 0;
+        public double TP {
             get {
                 return _TP;
             }
-            set {
+            private set {
                 _TP = Math.Clamp(value, 0, MAXTP);
             }
         }
 
-        public float TPPercent {
-            get {
-                return _TP * 100f / MAXTP;
-            }
-        }
-
-        public const int TP_PER_PERCENT = 100;
-        public const int MAXTP = TP_PER_PERCENT*100;
+        public const double MAXTP = 100;
         public const int BASE_GRAZE_WIDTH = 100;
         public const int BASE_GRAZE_HEIGHT = 100;
 
-        public const int TP_BURST_PER_BULLET = 100; // 1%
-        public const int TP_PER_TICK_PER_BULLET = 1; // 0.01%
+        public const float TP_BURST_PER_BULLET = 1f; // 1%
+        public const float TP_PER_TICK_PER_BULLET = 0.015f; // 0.01%
 
         private int immuneAllowedToGatherTP = 0;
         private int dangerTime = 0;
@@ -46,6 +38,13 @@ namespace Delterra.Systems {
 
         public bool pinkRibbonGrazeArea = false;
         public bool frostmancerGrazeArea = false;
+
+        public StatModifier AllTPChangeStat = new();
+        public Dictionary<TPGainType, StatModifier> TPChangeStats = new();
+        public StatModifier OldAllTPChangeStat = new();
+        public Dictionary<TPGainType, StatModifier> OldTPChangeStats = new();
+
+        private List<TPOverTimeEffect> TPOverTimeEffects = new List<TPOverTimeEffect>();
 
         public override void PostUpdate() {
             // Everyone handles their own TP and grazing locally!
@@ -58,9 +57,9 @@ namespace Delterra.Systems {
                         GrazingProjectile modProj = GrazingProjectile.Get(projectile);
                         if (!modProj.wasGrazedBefore) {
                             modProj.wasGrazedBefore = true;
-                            TriggerTPBurst();
+                            TriggerTPBurst(projectile);
                         } else {
-                            TriggerTPPerTick();
+                            TriggerTPPerTick(projectile);
                         }
                         weGrazedThisTick = true;
                     }
@@ -71,9 +70,9 @@ namespace Delterra.Systems {
                         GrazingNPC modNPC = GrazingNPC.Get(npc);
                         if (!modNPC.wasGrazedBefore) {
                             modNPC.wasGrazedBefore = true;
-                            TriggerTPBurst();
+                            TriggerTPBurst(npc);
                         } else {
-                            TriggerTPPerTick();
+                            TriggerTPPerTick(npc);
                         }
                         weGrazedThisTick = true;
                     }
@@ -91,12 +90,57 @@ namespace Delterra.Systems {
                 dangerTime--;
             }
 
+            for (int i = 0; i < TPOverTimeEffects.Count; i++) { 
+                TPOverTimeEffect effect = TPOverTimeEffects[i];
+                TP += effect.tpGainPerFrame;
+                effect.tpLeft -= effect.tpGainPerFrame;
+                if (effect.tpLeft < effect.tpGainPerFrame) {
+                    TP += effect.tpLeft;
+                    TPOverTimeEffects.Remove(effect);
+                    i--;
+                }
+            }
+
             //ChatHelper.DisplayMessage(NetworkText.FromLiteral("TP: " + TP / 100f + "%"), Color.Pink, 255);
+        }
+
+        public float CalculateTPGain(float amount, ITPGainContext context, bool isAboutToBeUsedUp = false) {
+            // We use the old stats to make sure that we have everything, no matter the update phase
+            StatModifier modifier = OldAllTPChangeStat.CombineWith(OldTPChangeStats[context.Type]);
+            // TODO: Add the ability to add calls for more context-based control.
+            return modifier.ApplyTo(amount);
+        }
+
+        public void GainTP(float amount, ITPGainContext context) {
+            TP += CalculateTPGain(amount, context, true);
+        }
+
+        public void GainTPOverTime(float amount, int time, ITPGainContext context) {
+            if (time <= 1) {
+                GainTP(amount, context);
+                return;
+            }
+            float tpGain = CalculateTPGain(amount, context, true);
+            TPOverTimeEffects.Add(new(time, tpGain));
+        }
+
+        public void SpendTP(double amount) { // Calculating the final price for this is handled elsewhere, at least for now
+            TP -= amount;
         }
 
         public override void ResetEffects() {
             pinkRibbonGrazeArea = false;
             frostmancerGrazeArea = false;
+
+            // We save the stats from one tick before to use, because status effects run before other equipment, apparently
+            OldAllTPChangeStat = AllTPChangeStat;
+            AllTPChangeStat = new();
+            foreach (TPGainType type in TPChangeStats.Keys) {
+                OldTPChangeStats[type] = TPChangeStats[type];
+            }
+            foreach (TPGainType type in Enum.GetValues(typeof(TPGainType))) {
+                TPChangeStats[type] = new StatModifier();
+            }
         }
 
         void IFaeModPlayer.OnDodge(Player.HurtInfo info, DodgeType dodgeType) {
@@ -125,14 +169,32 @@ namespace Delterra.Systems {
             return Math.Min(dangerTime/30f, 1f);
         }
 
+        public void TriggerTPBurst(Projectile projectile) {
+            GainTP(TP_BURST_PER_BULLET, new TPGainGrazingContext<Projectile>(projectile, true));
+            TriggerTPBurst();
+        }
+
+        public void TriggerTPBurst(NPC npc) {
+            GainTP(TP_BURST_PER_BULLET, new TPGainGrazingContext<NPC>(npc, true));
+            TriggerTPBurst();
+        }
+
         public void TriggerTPBurst() {
-            TP += TP_BURST_PER_BULLET;
             dangerTime = 60;
             SoundEngine.PlaySound(MySoundStyles.Graze, Player.Center);
         }
 
+        public void TriggerTPPerTick(Projectile projectile) {
+            GainTP(TP_PER_TICK_PER_BULLET, new TPGainGrazingContext<Projectile>(projectile, false));
+            TriggerTPPerTick();
+        }
+
+        public void TriggerTPPerTick(NPC npc) {
+            GainTP(TP_PER_TICK_PER_BULLET, new TPGainGrazingContext<NPC>(npc, false));
+            TriggerTPPerTick();
+        }
+
         public void TriggerTPPerTick() {
-            TP += TP_PER_TICK_PER_BULLET;
             dangerTime = 60;
             if (grazeNoiseCooldown <= 0) {
                 grazeNoiseCooldown = 40;
@@ -154,9 +216,6 @@ namespace Delterra.Systems {
             return new Rectangle((int)(center.X - totalWidth/2), (int)(center.Y - totalHeight/2), totalWidth, totalHeight);
         }
 
-        public static int GetTPForPercent(float percent) { 
-            return (int)(percent * TP_PER_PERCENT);
-        }
         public static GrazingPlayer Get(Player player) {
             return player.GetModPlayer<GrazingPlayer>();
         }
@@ -165,5 +224,17 @@ namespace Delterra.Systems {
             Player.AddBuff(ModContent.BuffType<Attacking>(), 60);
         }
 
+        private class TPOverTimeEffect {
+            public double tpLeft;
+            public double tpGainPerFrame;
+
+            public TPOverTimeEffect(int time, double tp) { 
+                tpLeft = tp;
+                tpGainPerFrame = tp / time;
+            }
+        }
+
     }
+
+    
 }

@@ -8,11 +8,13 @@ using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.Localization;
+using Delterra.Systems.TPSources;
 
 namespace Delterra.Content.Items.TensionRestore {
     public abstract class AbstractTPRestoreItem : ModItem {
 
-        public abstract int TPHeal { get; }
+        public abstract float TPHeal { get; }
+        public virtual int TPTime => 1;
         public abstract int PotionSicknessTime { get; }
         public LocalizedText TPTooltip => Language.GetOrRegister("Mods." + nameof(Delterra) + ".TPRestoreText");
 
@@ -31,16 +33,39 @@ namespace Delterra.Content.Items.TensionRestore {
         }
 
         public override bool? UseItem(Player player) {
-            GrazingPlayer.Get(player).TP += TPHeal;
+            GrazingPlayer.Get(player).GainTPOverTime(TPHeal, TPTime, new TPGainConsumeItemContext(Item));
+            player.AddBuff(BuffID.PotionSickness, GetPotionSicknessTime(player));
+            return true;
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips) {
+            TooltipLine TPRestoreLine = new TooltipLine(Mod, "TPRestore", 
+                TPTooltip.Format(
+                    (int)GrazingPlayer.Get(Main.LocalPlayer).CalculateTPGain(TPHeal, new TPGainConsumeItemContext(Item), false),
+                    Math.Ceiling(GetPotionSicknessTime(Main.LocalPlayer)/60f)
+                )
+            );
+            int index = tooltips.FindIndex(line => line.Name == "Consumable");
+            if (index > -1) {
+                tooltips.Insert(index, TPRestoreLine);
+            } else {
+                index = tooltips.FindIndex(line => line.Name == "Tooltip0");
+                if (index > -1) {
+                    tooltips.Insert(index, TPRestoreLine);
+                } else { 
+                    // Failsafe
+                    tooltips.Add(TPRestoreLine);
+                }
+            }
+        }
+
+        private int GetPotionSicknessTime(Player player) {
             int potionSicknessTime = PotionSicknessTime;
             if (EquipmentEffectPlayer.Get(player).tensionRestorePotionSicknessReduced) {
                 potionSicknessTime = (int)(potionSicknessTime * 0.85f);
             }
-            player.AddBuff(BuffID.PotionSickness, potionSicknessTime);
-            return true;
+            return potionSicknessTime;
         }
-
-        public override LocalizedText Tooltip => TPTooltip.WithFormatArgs(TPHeal / GrazingPlayer.TP_PER_PERCENT, PotionSicknessTime/60, base.Tooltip);
 
     }
 }

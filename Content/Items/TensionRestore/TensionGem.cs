@@ -9,7 +9,7 @@ using Terraria.ID;
 namespace Delterra.Content.Items.TensionRestore {
     public class TensionGem : AbstractTPRestoreItem {
 
-        public override int TPHeal => GrazingPlayer.GetTPForPercent(50);
+        public override float TPHeal => 50;
 
         public override int PotionSicknessTime => 60 * 60;
 

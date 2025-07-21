@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Delterra.Systems;
+using Delterra.Systems.TPSources;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -17,7 +18,7 @@ namespace Delterra.Content.Buffs {
         }
 
         public override void Update(Player player, ref int buffIndex) {
-            GrazingPlayer.Get(player).TP += 1;
+            GrazingPlayer.Get(player).GainTP(0.01f, new TPGainAttackContext(ModContent.BuffType<Attacking>()));
         }
 
         public override bool RightClick(int buffIndex) {

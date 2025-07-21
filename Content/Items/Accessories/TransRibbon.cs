@@ -1,4 +1,5 @@
 ﻿using Delterra.Systems;
+using FaeLibrary.API.ClassExtensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,8 +28,8 @@ namespace Delterra.Content.Items.Accessories {
             GrazingPlayer.Get(player).pinkRibbonGrazeArea = true;
             EquipmentEffectPlayer modPlayer = EquipmentEffectPlayer.Get(player);
             modPlayer.tensionRestorePotionSicknessReduced = true;
-            modPlayer.healingMultiplier += 0.25f;
-            modPlayer.commonLifeRegen += 2;
+            player.GetCommonPositiveRegenStat() += 2;
+            player.GetPotionHealingStat() += 0.25f;
         }
 
         public override void AddRecipes() {

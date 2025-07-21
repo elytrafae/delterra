@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Delterra.Content.Buffs;
+﻿using Delterra.Content.Buffs;
 using Delterra.Content.Gores;
+using Delterra.Content.Items.Spells.Scarves;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -16,20 +12,20 @@ namespace Delterra.Systems {
     public class EquipmentEffectPlayer : ModPlayer {
 
         public bool tensionRestorePotionSicknessReduced = false;
-        public float healingMultiplier = 1f;
-        public int commonLifeRegen = 0;
         public float greenLightLevel = 0f;
         public float additionalLootChance = 0f;
         public bool secretRingBuff = false;
         public StatModifier tpCost = new();
         public bool frostmancerSet = false;
         public bool dealmakerVisible = false;
+
+
+        public int currentScarfType = 0;
+        public int currentScarfUses = 0;
         public int asgoreTruckGloryTime = 0;
 
         public override void ResetEffects() {
             tensionRestorePotionSicknessReduced = false;
-            healingMultiplier = 1f;
-            commonLifeRegen = 0;
             greenLightLevel = 0f;
             additionalLootChance = 0f;
             secretRingBuff = false;
@@ -47,7 +43,7 @@ namespace Delterra.Systems {
                 if (Main.rand.NextBool(11)) {
                     int spawnWidth = 60;
                     int spawnHeight = 10;
-                    Vector2 spawnTopLeft = Player.Center - new Vector2(spawnWidth/2, 45);
+                    Vector2 spawnTopLeft = Player.Center - new Vector2(spawnWidth / 2, 45);
                     Vector2 spawnPos = spawnTopLeft + new Vector2(Main.rand.NextFloat(spawnWidth), Main.rand.NextFloat(spawnHeight));
                     Dust dust = Dust.NewDustPerfect(spawnPos, DustID.Snow, new Vector2(Main.rand.NextFloat(-0.5f, 0.5f), 0.3f));
                     dust.noGravity = false;
@@ -56,18 +52,16 @@ namespace Delterra.Systems {
             if (asgoreTruckGloryTime > 0) {
                 asgoreTruckGloryTime--;
             }
+            if (Player.HeldItem?.ModItem is AbstractRalseiScarf) {
+                if (Player.HeldItem.type != currentScarfType) {
+                    currentScarfUses = 0;
+                    currentScarfType = Player.HeldItem.type;
+                }
+            }
         }
 
         public override bool CanUseItem(Item item) {
             return !Player.HasBuff<Defending>();
-        }
-
-        public override void GetHealLife(Item item, bool quickHeal, ref int healValue) {
-            healValue = (int)(healValue * healingMultiplier);
-        }
-
-        public override void UpdateLifeRegen() {
-            Player.lifeRegen += commonLifeRegen;
         }
 
         public override void ArmorSetBonusActivated() {
@@ -111,12 +105,6 @@ namespace Delterra.Systems {
                     Gore.NewGorePerfect(Player.GetSource_OnHit(target), target.Center - new Vector2(35.5f, 50), Vector2.Zero, ModContent.GoreType<RealisticExplosion>());
                 }
             };
-        }
-
-        private void Modifiers_AsgoresTruck(ref NPC.HitInfo info) {
-            if (asgoreTruckHit == true) {
-                info.Damage = 999999999;
-            }
         }
     }
 }
