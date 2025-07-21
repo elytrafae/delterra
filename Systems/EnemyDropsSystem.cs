@@ -1,4 +1,4 @@
-﻿using Delterra.Content.Items;
+using Delterra.Content.Items;
 using Delterra.Content.Items.Accessories;
 using Delterra.Content.Items.Spells.Axes;
 using Delterra.Content.Items.Spells.Rings;
@@ -91,4 +91,5 @@ namespace Delterra.Systems {
             return "If killed by any of Noelle's Rings";
         }
     }
+
 }
