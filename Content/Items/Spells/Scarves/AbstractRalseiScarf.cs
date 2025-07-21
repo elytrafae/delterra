@@ -28,6 +28,7 @@ namespace Delterra.Content.Items.Spells.Scarves {
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.useTurn = true;
+            Item.shootSpeed = 1;
             // Shoot stats and damage and such should be applied on each individual scarf
         }
 
