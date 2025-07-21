@@ -54,7 +54,7 @@ namespace Delterra.Systems {
             if (Main.myPlayer == Player.whoAmI && IsAllowedToGetTPByGrazing()) {
                 Rectangle grazeArea = GetGrazeRectangle();
                 foreach (Projectile projectile in Main.ActiveProjectiles) {
-                    if (projectile.hostile && projectile.damage > 0 && grazeArea.Intersects(projectile.Hitbox)) {
+                    if (projectile.hostile && projectile.damage > 0 && CustomSets.ProjectileTPGainRate[projectile.type] > 0f && grazeArea.Intersects(projectile.Hitbox)) {
                         GrazingProjectile modProj = GrazingProjectile.Get(projectile);
                         if (!modProj.wasGrazedBefore) {
                             modProj.wasGrazedBefore = true;
@@ -67,7 +67,7 @@ namespace Delterra.Systems {
                 }
 
                 foreach (NPC npc in Main.ActiveNPCs) {
-                    if (!(npc.friendly || npc.CountsAsACritter || Main.npcCatchable[npc.type]) && npc.damage > 0 && grazeArea.Intersects(npc.Hitbox)) {
+                    if (!(npc.friendly || npc.CountsAsACritter || Main.npcCatchable[npc.type]) && npc.damage > 0 && CustomSets.NPCTPGainRate[npc.type] > 0f && grazeArea.Intersects(npc.Hitbox)) {
                         GrazingNPC modNPC = GrazingNPC.Get(npc);
                         if (!modNPC.wasGrazedBefore) {
                             modNPC.wasGrazedBefore = true;
@@ -174,12 +174,12 @@ namespace Delterra.Systems {
         }
 
         public void TriggerTPBurst(Projectile projectile) {
-            GainTP(TP_BURST_PER_BULLET, new TPGainGrazingContext<Projectile>(projectile, true));
+            GainTP(TP_BURST_PER_BULLET * CustomSets.ProjectileTPGainRate[projectile.type], new TPGainGrazingContext<Projectile>(projectile, true));
             TriggerTPBurst();
         }
 
         public void TriggerTPBurst(NPC npc) {
-            GainTP(TP_BURST_PER_BULLET, new TPGainGrazingContext<NPC>(npc, true));
+            GainTP(TP_BURST_PER_BULLET * CustomSets.NPCTPGainRate[npc.type], new TPGainGrazingContext<NPC>(npc, true));
             TriggerTPBurst();
         }
 
@@ -191,12 +191,12 @@ namespace Delterra.Systems {
         }
 
         public void TriggerTPPerTick(Projectile projectile) {
-            GainTP(TP_PER_TICK_PER_BULLET, new TPGainGrazingContext<Projectile>(projectile, false));
+            GainTP(TP_PER_TICK_PER_BULLET * CustomSets.ProjectileTPGainRate[projectile.type], new TPGainGrazingContext<Projectile>(projectile, false));
             TriggerTPPerTick();
         }
 
         public void TriggerTPPerTick(NPC npc) {
-            GainTP(TP_PER_TICK_PER_BULLET, new TPGainGrazingContext<NPC>(npc, false));
+            GainTP(TP_PER_TICK_PER_BULLET * CustomSets.NPCTPGainRate[npc.type], new TPGainGrazingContext<NPC>(npc, false));
             TriggerTPPerTick();
         }
 

@@ -1,0 +1,7 @@
+
+- Added configs for
+	- Graze Noise
+	- Graze Hitbox
+	- TP bar being visible while a non-TP affecting item is held(?)
+
+- Fixed an exploit where falling blocks generate TP
