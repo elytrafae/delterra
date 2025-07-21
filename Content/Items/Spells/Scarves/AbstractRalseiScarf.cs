@@ -48,7 +48,7 @@ namespace Delterra.Content.Items.Spells.Scarves {
         }
 
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) {
-            position.Y -= player.gravDir * 4;
+            position += GetShootOffset(player);
         }
 
         public override bool CanShoot(Player player) {
@@ -72,6 +72,11 @@ namespace Delterra.Content.Items.Spells.Scarves {
                 return;
             }
             healValue = 0;
+        }
+
+
+        public static Vector2 GetShootOffset(Player player) {
+            return new(0, -player.gravDir * 4);
         }
 
     }

@@ -16,8 +16,10 @@ namespace Delterra.Content.Items.Spells.Scarves {
         public override void SetDefaults() {
             base.SetDefaults();
             Item.shoot = ModContent.ProjectileType<RedScarfProjectile>();//ProjectileID.CopperShortswordStab;
-            Item.shootSpeed = 3;
+            Item.shootSpeed = 4;
             Item.damage = 20;
+            Item.useTime = Item.useAnimation = 90;
+            Item.autoReuse = true;
         }
     }
 }
