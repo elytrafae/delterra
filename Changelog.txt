@@ -5,3 +5,4 @@
 	- TP bar being visible while a non-TP affecting item is held(?)
 
 - Fixed an exploit where falling blocks generate TP
+- Made combination Ribbons incompatible with their downgrades

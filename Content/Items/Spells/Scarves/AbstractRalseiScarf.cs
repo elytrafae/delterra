@@ -15,6 +15,10 @@ namespace Delterra.Content.Items.Spells.Scarves {
         public virtual double MaxTPCost => MinTPCost*2;
         public override string LocalizationCategory => base.LocalizationCategory + ".Weapons.RalseiScarves";
 
+        public override void SetStaticDefaults() {
+            RalseiScarfSpriteRegistry.Register(this);
+        }
+
         public override void SetDefaults() {
             //Item.UseSound = MySoundStyles.Heal;
             Item.useStyle = ItemUseStyleID.HiddenAnimation;

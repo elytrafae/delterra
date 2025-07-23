@@ -1,4 +1,5 @@
 ﻿using Delterra.Content.Items.Spells.Scarves;
+using Delterra.Systems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -19,16 +20,17 @@ namespace Delterra.Content.PlayerDrawLayers {
         }
 
         protected override void Draw(ref PlayerDrawSet drawInfo) {
-            if (drawInfo.drawPlayer.neck <= 0) { // Don't draw Ralsei scarf if another neck accessory is visible
-                if (drawInfo.drawPlayer.HeldItem?.ModItem is AbstractRalseiScarf ralScarf) {
-                    // TODO: very shit code for testing. Will have to make a system where Ralsei Scarves load their neck texture themselves into a registry
-                    // TODO: make another sprite for when the scarf is mid-attack! If the attack sprite does not exist, and the wear sprite does, assume the artist intended them to be the same
-                    Asset<Texture2D> neckAsset = ModContent.Request<Texture2D>(ralScarf.Texture + "_Neck");
-                    if (neckAsset.IsLoaded) {
-                        DrawData item = new DrawData(neckAsset.Value, new Vector2((float)(int)(drawInfo.Position.X - Main.screenPosition.X - (float)(drawInfo.drawPlayer.bodyFrame.Width / 2) + (float)(drawInfo.drawPlayer.width / 2)), (float)(int)(drawInfo.Position.Y - Main.screenPosition.Y + (float)drawInfo.drawPlayer.height - (float)drawInfo.drawPlayer.bodyFrame.Height + 4f)) + drawInfo.drawPlayer.bodyPosition + new Vector2((float)(drawInfo.drawPlayer.bodyFrame.Width / 2), (float)(drawInfo.drawPlayer.bodyFrame.Height / 2)), drawInfo.drawPlayer.bodyFrame, drawInfo.colorArmorBody, drawInfo.drawPlayer.bodyRotation, drawInfo.bodyVect, 1f, drawInfo.playerEffect);
-                        //item.shader = drawInfo.cNeck;
-                        drawInfo.DrawDataCache.Add(item);
-                    }
+            Player p = drawInfo.drawPlayer;
+            if (p.neck <= 0) { // Don't draw Ralsei scarf if another neck accessory is visible
+                
+                if (p.HeldItem != null && RalseiScarfSpriteRegistry.TryGetScarfSprites(
+                            p.HeldItem.type, 
+                            out Asset<Texture2D> idleAsset,
+                            out Asset<Texture2D> attackingAsset)) { 
+                    Asset<Texture2D> neckAsset = p.ownedProjectileCounts[p.HeldItem.shoot] > 0 ? attackingAsset : idleAsset;
+                    DrawData item = new DrawData(neckAsset.Value, new Vector2((float)(int)(drawInfo.Position.X - Main.screenPosition.X - (float)(p.bodyFrame.Width / 2) + (float)(p.width / 2)), (float)(int)(drawInfo.Position.Y - Main.screenPosition.Y + (float)p.height - (float)p.bodyFrame.Height + 4f)) + p.bodyPosition + new Vector2((float)(p.bodyFrame.Width / 2), (float)(p.bodyFrame.Height / 2)), p.bodyFrame, drawInfo.colorArmorBody, p.bodyRotation, drawInfo.bodyVect, 1f, drawInfo.playerEffect);
+                    //item.shader = drawInfo.cNeck;
+                    drawInfo.DrawDataCache.Add(item);
                 }
             }
         }
