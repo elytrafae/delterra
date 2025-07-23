@@ -23,7 +23,13 @@ namespace Delterra.Content.Items.Accessories {
 
         public override void UpdateAccessory(Player player, bool hideVisual) {
             EquipmentEffectPlayer.Get(player).tensionRestorePotionSicknessReduced = true;
-            GrazingPlayer.Get(player).pinkRibbonGrazeArea = true;
+            GrazingPlayer.Get(player).grazeAreaMult += 0.25f;
+        }
+
+        public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player) {
+            int[] incompatibleItems = [ModContent.ItemType<WhiteRibbon>(), ModContent.ItemType<PinkRibbon>()];
+            bool incompatible = (equippedItem.type == Type && incompatibleItems.Contains(incomingItem.type)) || (incomingItem.type == Type && incompatibleItems.Contains(equippedItem.type));
+            return !incompatible;
         }
 
         public override void AddRecipes() {

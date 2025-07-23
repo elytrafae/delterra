@@ -38,8 +38,7 @@ namespace Delterra.Systems {
         private int dangerTime = 0;
         private int grazeNoiseCooldown = 0;
 
-        public bool pinkRibbonGrazeArea = false;
-        public bool frostmancerGrazeArea = false;
+        public float grazeAreaMult = 1f;
 
         public StatModifier AllTPChangeStat = new();
         public Dictionary<TPGainType, StatModifier> TPChangeStats = new();
@@ -133,8 +132,7 @@ namespace Delterra.Systems {
         }
 
         public override void ResetEffects() {
-            pinkRibbonGrazeArea = false;
-            frostmancerGrazeArea = false;
+            grazeAreaMult = 1f;
 
             // We save the stats from one tick before to use, because status effects run before other equipment, apparently
             OldAllTPChangeStat = AllTPChangeStat;
@@ -213,15 +211,8 @@ namespace Delterra.Systems {
 
         public Rectangle GetGrazeRectangle() {
             Vector2 center = Player.Center;
-            int totalWidth = BASE_GRAZE_WIDTH;
-            int totalHeight = BASE_GRAZE_HEIGHT;
-            if (pinkRibbonGrazeArea && frostmancerGrazeArea) { // Increase graze area by 50%
-                totalWidth += (totalWidth / 2);
-                totalHeight += (totalHeight / 2);
-            } else if (pinkRibbonGrazeArea || frostmancerGrazeArea) { // Increase graze area by 25%
-                totalWidth += (totalWidth / 4);
-                totalHeight += (totalHeight / 4);
-            }
+            int totalWidth = (int)(BASE_GRAZE_WIDTH * grazeAreaMult);
+            int totalHeight = (int)(BASE_GRAZE_HEIGHT * grazeAreaMult);
             return new Rectangle((int)(center.X - totalWidth / 2), (int)(center.Y - totalHeight / 2), totalWidth, totalHeight);
         }
 

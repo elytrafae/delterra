@@ -14,7 +14,7 @@ namespace Delterra.Content.PlayerDrawLayers {
         private static Asset<Texture2D> Graze9;
 
         public override void SetStaticDefaults() {
-            Graze9 = ModContent.Request<Texture2D>(SpritePrefix + "Graze9", AssetRequestMode.ImmediateLoad);
+            Graze9 = ModContent.Request<Texture2D>(SpritePrefix + "Graze9");
         }
 
         public override Position GetDefaultPosition() {

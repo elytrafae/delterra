@@ -46,7 +46,7 @@ namespace Delterra.Content.Items.Armor {
 
         public override void UpdateArmorSet(Player player) {
             player.setBonus = SetBonusText.Value;
-            GrazingPlayer.Get(player).frostmancerGrazeArea = true;
+            GrazingPlayer.Get(player).grazeAreaMult += 0.25f;
             EquipmentEffectPlayer.Get(player).frostmancerSet = true;
         }
 

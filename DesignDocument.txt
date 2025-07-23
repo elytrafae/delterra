@@ -3,6 +3,8 @@ This document shall detail further plans after the feature freeze period ends
 
 - Adjust volumes
 
+- "for some reason, the game crashes when loading mods after getting to the configuring part, it crashed when configuring calamity, thorium and alchemistnpc so far. kinda sad since this looked pretty cool."
+
 
 - Buff Axes
 	- Axes will generally get an attack speed buff and according damage adjustments

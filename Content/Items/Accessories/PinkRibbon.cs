@@ -26,7 +26,7 @@ namespace Delterra.Content.Items.Accessories {
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual) {
-            GrazingPlayer.Get(player).pinkRibbonGrazeArea = true;
+            GrazingPlayer.Get(player).grazeAreaMult += 0.25f;
         }
 
         /*
