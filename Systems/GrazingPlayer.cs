@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Media;
-using Delterra.Content.Buffs;
+﻿using Delterra.Content.Buffs;
 using Delterra.Systems.Config;
 using Delterra.Systems.TPSources;
 using FaeLibrary.API;
 using FaeLibrary.API.Enums;
 using Microsoft.Xna.Framework;
+using System;
+using System.Collections.Generic;
+using System.Media;
+using System.Runtime.CompilerServices;
 using Terraria;
 using Terraria.Audio;
 using Terraria.Chat;
@@ -54,7 +55,9 @@ namespace Delterra.Systems {
             if (Main.myPlayer == Player.whoAmI && IsAllowedToGetTPByGrazing()) {
                 Rectangle grazeArea = GetGrazeRectangle();
                 foreach (Projectile projectile in Main.ActiveProjectiles) {
-                    if (projectile.hostile && projectile.damage > 0 && CustomSets.ProjectileTPGainRate[projectile.type] > 0f && grazeArea.Intersects(projectile.Hitbox)) {
+                    if (projectile.hostile && projectile.damage > 0 && 
+                        CustomSets.ProjectileTPGainRate[projectile.type] > 0f && 
+                        projectile.Colliding(CallProjectileDamageHitbox(projectile), grazeArea) /*grazeArea.Intersects(projectile.Hitbox)*/) {
                         GrazingProjectile modProj = GrazingProjectile.Get(projectile);
                         if (!modProj.wasGrazedBefore) {
                             modProj.wasGrazedBefore = true;
@@ -87,11 +90,11 @@ namespace Delterra.Systems {
             if (immuneAllowedToGatherTP > 0) {
                 immuneAllowedToGatherTP--;
             }
-            if (dangerTime > 0) { 
+            if (dangerTime > 0) {
                 dangerTime--;
             }
 
-            for (int i = 0; i < TPOverTimeEffects.Count; i++) { 
+            for (int i = 0; i < TPOverTimeEffects.Count; i++) {
                 TPOverTimeEffect effect = TPOverTimeEffects[i];
                 TP += effect.tpGainPerFrame;
                 effect.tpLeft -= effect.tpGainPerFrame;
@@ -153,10 +156,10 @@ namespace Delterra.Systems {
         /// </summary>
         /// <returns>true if this player is allowed to get TP by grazing</returns>
         public bool IsAllowedToGetTPByGrazing() { // I *may* clean this up AFTER the contest.
-            return (immuneAllowedToGatherTP > 0 || 
-                Player.immuneTime <= 0 && 
-                Player.hurtCooldowns[0] <= 0 && 
-                Player.hurtCooldowns[1] <= 0 && 
+            return (immuneAllowedToGatherTP > 0 ||
+                Player.immuneTime <= 0 &&
+                Player.hurtCooldowns[0] <= 0 &&
+                Player.hurtCooldowns[1] <= 0 &&
                 Player.hurtCooldowns[2] <= 0 &&
                 Player.hurtCooldowns[3] <= 0 &&
                 Player.hurtCooldowns[4] <= 0
@@ -170,7 +173,7 @@ namespace Delterra.Systems {
             if (!IsAllowedToGetTPByGrazing()) {
                 return 0f;
             }
-            return Math.Min(dangerTime/30f, 1f);
+            return Math.Min(dangerTime / 30f, 1f);
         }
 
         public void TriggerTPBurst(Projectile projectile) {
@@ -219,7 +222,7 @@ namespace Delterra.Systems {
                 totalWidth += (totalWidth / 4);
                 totalHeight += (totalHeight / 4);
             }
-            return new Rectangle((int)(center.X - totalWidth/2), (int)(center.Y - totalHeight/2), totalWidth, totalHeight);
+            return new Rectangle((int)(center.X - totalWidth / 2), (int)(center.Y - totalHeight / 2), totalWidth, totalHeight);
         }
 
         public static GrazingPlayer Get(Player player) {
@@ -234,13 +237,18 @@ namespace Delterra.Systems {
             public double tpLeft;
             public double tpGainPerFrame;
 
-            public TPOverTimeEffect(int time, double tp) { 
+            public TPOverTimeEffect(int time, double tp) {
                 tpLeft = tp;
                 tpGainPerFrame = tp / time;
             }
         }
 
-    }
+        public Rectangle CallProjectileDamageHitbox(Projectile p) {
+            return ProjectileDamageHitbox(p);
 
-    
+            [UnsafeAccessor(UnsafeAccessorKind.Method, Name = "Damage_GetHitbox")]
+            extern static Rectangle ProjectileDamageHitbox(Projectile p);
+        }
+
+    }
 }

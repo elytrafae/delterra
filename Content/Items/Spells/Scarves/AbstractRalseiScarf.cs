@@ -51,6 +51,8 @@ namespace Delterra.Content.Items.Spells.Scarves {
 
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) {
             position += GetShootOffset(player);
+            velocity = velocity.SafeNormalize(Vector2.One);
+            velocity *= player.GetAdjustedItemScale(Item);
         }
 
         public override bool CanShoot(Player player) {

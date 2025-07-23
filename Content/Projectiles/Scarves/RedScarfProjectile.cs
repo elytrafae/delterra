@@ -18,8 +18,6 @@ namespace Delterra.Content.Projectiles.Scarves {
         public int Range => 400;
         public float ReleaseRatio => 0.25f;
 
-        // TODO: For some reason, more melee speed = more range now...?
-
         public override void SetDefaults() {
             Projectile.DamageType = DamageClass.SummonMeleeSpeed;
             Projectile.width = 10;
@@ -29,7 +27,6 @@ namespace Delterra.Content.Projectiles.Scarves {
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = -1;
             Projectile.timeLeft = 60000;
-            //Projectile.extraUpdates = 4;
         }
 
         public override void AI() {
@@ -45,11 +42,6 @@ namespace Delterra.Content.Projectiles.Scarves {
                 }
 
                 Projectile.rotation = (float)Math.Atan2(diff.Y, diff.X);
-                /*
-                while (Projectile.rotation < 0) {
-                    Projectile.rotation += MathHelper.TwoPi;
-                }
-                */
 
                 if (player.itemTime < player.itemTimeMax * ReleaseRatio && !OnWayBack) {
                     OnWayBack = true;
@@ -102,6 +94,9 @@ namespace Delterra.Content.Projectiles.Scarves {
 
         Vector2 StartingPosition = new Vector2();
 
+        // TODO: Move everything to extra AI
+        // TODO: Write rendering code
+        // TODO: Make it abstract and add an action for when the projectile is about to retract so we can make stuff happen at the tip!
         public override void SendExtraAI(BinaryWriter writer) {
             writer.WriteVector2(StartingPosition);
         }
