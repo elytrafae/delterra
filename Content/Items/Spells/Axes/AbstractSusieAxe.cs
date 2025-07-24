@@ -18,7 +18,7 @@ namespace Delterra.Content.Items.Spells.Axes {
         public LocalizedText RudeBusterTooltip => Language.GetOrRegister("Mods." + nameof(Delterra) + ".RudeBusterTooltip");
         public override LocalizedText Tooltip => RudeBusterTooltip.WithFormatArgs(base.Tooltip);
         public virtual double RudeBusterCost => 50;
-        public override string LocalizationCategory => base.LocalizationCategory + ".Weapons.SusieAxes";
+        public override string LocalizationCategory => base.LocalizationCategory + ".Weapons.Melee.SusieAxes";
 
         public override void SetDefaults() {
             Item.DamageType = DamageClass.Melee;
