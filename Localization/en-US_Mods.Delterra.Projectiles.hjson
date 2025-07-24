@@ -6,3 +6,5 @@ SnowGrave.DisplayName: Snowgrave
 CollisionTest.DisplayName: Collision Test
 RedScarfProjectile.DisplayName: Red Scarf Projectile
 RoundDiskProjectile.DisplayName: Round Disk Projectile
+StarSprayProjectile.DisplayName: Star Spray Projectile
+ManaLifesteal.DisplayName: Mana Lifesteal

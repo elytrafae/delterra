@@ -1,4 +1,4 @@
-﻿using Delterra.Content.Items.Spells.Scarves;
+﻿using Delterra.Content.Items.Weapons.Summoner.Scarves;
 using FaeLibrary.API;
 using Microsoft.Xna.Framework;
 using System;
@@ -12,7 +12,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
-namespace Delterra.Content.Projectiles.Scarves {
+namespace Delterra.Content.Projectiles.Weapons.Summoner.Scarves {
     public abstract class AbstractScarfProjectile : ModProjectile {
 
         public abstract int Range { get; }
@@ -32,7 +32,7 @@ namespace Delterra.Content.Projectiles.Scarves {
 
         public override void AI() {
             if (Projectile.TryGetOwner(out Player player)) {
-                if (player.ItemTimeIsZero || (player.itemTime >= player.itemTimeMax && OnWayBack)) {
+                if (player.ItemTimeIsZero || player.itemTime >= player.itemTimeMax && OnWayBack) {
                     Projectile.timeLeft = 0;
                     return;
                 }
@@ -43,7 +43,7 @@ namespace Delterra.Content.Projectiles.Scarves {
                 if (IsOnFirstFrame && player.whoAmI == Main.myPlayer) {
                     IsOnFirstFrame = false;
                     StartingPosition = Projectile.Center;
-                    FinalPosBeforePullback = Projectile.Center + (Projectile.velocity * Range);
+                    FinalPosBeforePullback = Projectile.Center + Projectile.velocity * Range;
                     // More precise range control
                     if (PreciseRangeControl && playerCenter.DistanceSQ(Main.MouseWorld) < playerCenter.DistanceSQ(FinalPosBeforePullback)) {
                         FinalPosBeforePullback = Main.MouseWorld;
@@ -67,7 +67,7 @@ namespace Delterra.Content.Projectiles.Scarves {
                     Projectile.position = (FinalPosBeforePullback - StartingPosition) / outgoingFrames * (player.itemTimeMax - player.itemTime) + StartingPosition;
                 } else {
                     // The scarf is rolling back!
-                    Projectile.position = (FinalPosBeforePullback - playerCenter) / (player.itemTimeMax * ReleaseRatio) * (player.itemTime) + playerCenter;
+                    Projectile.position = (FinalPosBeforePullback - playerCenter) / (player.itemTimeMax * ReleaseRatio) * player.itemTime + playerCenter;
                 }
             }
         }

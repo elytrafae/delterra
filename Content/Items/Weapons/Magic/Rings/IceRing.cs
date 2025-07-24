@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria.ID;
 
-namespace Delterra.Content.Items.Spells.Rings {
+namespace Delterra.Content.Items.Weapons.Magic.Rings {
     public class IceRing : AbstractNoelleRing {
 
         public override void SetDefaults() {

@@ -11,7 +11,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Delterra.Content.Items.Spells.Axes {
+namespace Delterra.Content.Items.Weapons.Melee.Axes {
     public class BraveAx : AbstractSusieAxe {
         
 
@@ -19,9 +19,9 @@ namespace Delterra.Content.Items.Spells.Axes {
             base.SetDefaults();
             Item.damage = 50;
             Item.knockBack = 3.5f;
-            Item.useTime = (Item.useAnimation = 50);
+            Item.useTime = Item.useAnimation = 50;
             Item.rare = ItemRarityID.Green;
-            Item.value = Terraria.Item.sellPrice(0, 0, 40, 0);
+            Item.value = Item.sellPrice(0, 0, 40, 0);
             Item.shootSpeed = 8;
             Item.scale = 1.1f;
         }

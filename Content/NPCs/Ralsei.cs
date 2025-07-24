@@ -21,9 +21,9 @@ using Delterra.Content.Emotes;
 using Microsoft.Xna.Framework;
 using Delterra.Content.Items.Accessories;
 using Delterra.Content.Items;
-using Delterra.Content.Items.Spells.Axes;
 using Delterra.Content.Items.TensionRestore;
 using Delterra.Content.Items.Spells.HealPrayer;
+using Delterra.Content.Items.Weapons.Melee.Axes;
 
 namespace Delterra.Content.NPCs {
 

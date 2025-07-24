@@ -1,5 +1,4 @@
-﻿using Delterra.Content.Items.Spells.Scarves;
-using FaeLibrary.API;
+﻿using FaeLibrary.API;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -13,7 +12,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Delterra.Content.Projectiles.Scarves {
+namespace Delterra.Content.Projectiles.Weapons.Summoner.Scarves {
     public class RedScarfProjectile : AbstractScarfProjectile {
 
         public override int Range => 400;

@@ -10,16 +10,16 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Config;
 
-namespace Delterra.Content.Items.Spells.Axes {
+namespace Delterra.Content.Items.Weapons.Melee.Axes {
     internal class JusticeAx : AbstractSusieAxe {
 
         public override void SetDefaults() {
             base.SetDefaults();
             Item.damage = 250;
             Item.knockBack = 5f;
-            Item.useTime = (Item.useAnimation = 50);
+            Item.useTime = Item.useAnimation = 50;
             Item.rare = ItemRarityID.Yellow;
-            Item.value = Terraria.Item.buyPrice(1, 0, 0, 0);
+            Item.value = Item.buyPrice(1, 0, 0, 0);
             Item.scale = 2f;
             Item.shoot = ModContent.ProjectileType<JusticeRudeBuster>();
             Item.shootSpeed = 13;

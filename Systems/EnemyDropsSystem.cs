@@ -1,7 +1,7 @@
 using Delterra.Content.Items;
 using Delterra.Content.Items.Accessories;
-using Delterra.Content.Items.Spells.Axes;
-using Delterra.Content.Items.Spells.Rings;
+using Delterra.Content.Items.Weapons.Magic.Rings;
+using Delterra.Content.Items.Weapons.Melee.Axes;
 using FaeLibrary.API;
 using System;
 using System.Collections.Generic;

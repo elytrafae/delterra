@@ -1,0 +1,10 @@
+StarSpray: {
+	DisplayName: Star Spray
+	Tooltip:
+		'''
+		Missed shots turn back into
+		trace amounts of Mana.
+		"For optimal performence, the
+		 user must never skip leg day"
+		'''
+}

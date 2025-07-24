@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 
-namespace Delterra.Content.Items.Spells.Axes {
+namespace Delterra.Content.Items.Weapons.Melee.Axes {
     internal class ToxicAx : AbstractSusieAxe {
 
         public override void SetDefaults() {
             base.SetDefaults();
             Item.damage = 190;
             Item.knockBack = 3f;
-            Item.useTime = (Item.useAnimation = 50);
+            Item.useTime = Item.useAnimation = 50;
             Item.rare = ItemRarityID.Lime;
-            Item.value = Terraria.Item.sellPrice(0, 0, 30, 0);
+            Item.value = Item.sellPrice(0, 0, 30, 0);
             Item.scale = 1.25f;
             Item.shootSpeed = 10;
         }

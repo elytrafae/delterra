@@ -1,5 +1,4 @@
-﻿using Delterra.Content.Items.Spells.Scarves;
-using Delterra.Systems;
+﻿using Delterra.Systems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;

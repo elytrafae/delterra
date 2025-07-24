@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 
-namespace Delterra.Content.Items.Spells.Axes {
+namespace Delterra.Content.Items.Weapons.Melee.Axes {
     public class AutoAx : AbstractSusieAxe {
 
         public override void SetDefaults() {
             base.SetDefaults();
             Item.damage = 95;
             Item.knockBack = 5f;
-            Item.useTime = (Item.useAnimation = 50);
+            Item.useTime = Item.useAnimation = 50;
             Item.rare = ItemRarityID.LightRed;
-            Item.value = Terraria.Item.sellPrice(0, 3, 0, 0);
+            Item.value = Item.sellPrice(0, 3, 0, 0);
             Item.shootSpeed = 10;
             Item.scale = 1.1f;
         }

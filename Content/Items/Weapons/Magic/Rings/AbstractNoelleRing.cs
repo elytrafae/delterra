@@ -11,12 +11,12 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace Delterra.Content.Items.Spells.Rings {
+namespace Delterra.Content.Items.Weapons.Magic.Rings {
     public abstract class AbstractNoelleRing : ModItem, ITensionConsumingItem {
 
         public LocalizedText IceShockTooltip => Language.GetOrRegister("Mods." + nameof(Delterra) + ".IceShockTooltip");
         public override LocalizedText Tooltip => IceShockTooltip.WithFormatArgs(base.Tooltip);
-        public override string LocalizationCategory => base.LocalizationCategory + ".Weapons.NoelleRings";
+        public override string LocalizationCategory => base.LocalizationCategory + ".Weapons.Magic.NoelleRings";
 
         public virtual double IceShockCost => 16;
         public virtual double SnowGraveCost => 200;
@@ -29,7 +29,7 @@ namespace Delterra.Content.Items.Spells.Rings {
             //Item.UseSound = SoundID.Item1;
             Item.shoot = ModContent.ProjectileType<IceShockHM>();
             Item.shootSpeed = 0;
-            Item.useTime = (Item.useAnimation = 30);
+            Item.useTime = Item.useAnimation = 30;
             Item.knockBack = 5f;
             Item.noMelee = true;
         }

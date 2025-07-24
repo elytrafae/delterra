@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 
-namespace Delterra.Content.Items.Spells.Axes {
+namespace Delterra.Content.Items.Weapons.Melee.Axes {
     internal class AbsorbAx : AbstractSusieAxe {
 
         public override void SetDefaults() {
             base.SetDefaults();
             Item.damage = 120;
             Item.knockBack = 3f;
-            Item.useTime = (Item.useAnimation = 50);
+            Item.useTime = Item.useAnimation = 50;
             Item.rare = ItemRarityID.LightPurple;
-            Item.value = Terraria.Item.buyPrice(0, 0, 30, 0);
+            Item.value = Item.buyPrice(0, 0, 30, 0);
             Item.scale = 1f;
             Item.shootSpeed = 11;
             Item.scale = 1.1f;

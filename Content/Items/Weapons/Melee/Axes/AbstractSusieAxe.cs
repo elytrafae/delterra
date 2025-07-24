@@ -12,7 +12,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.Localization;
 
-namespace Delterra.Content.Items.Spells.Axes {
+namespace Delterra.Content.Items.Weapons.Melee.Axes {
     public abstract class AbstractSusieAxe : ModItem, ITensionConsumingItem {
 
         public LocalizedText RudeBusterTooltip => Language.GetOrRegister("Mods." + nameof(Delterra) + ".RudeBusterTooltip");

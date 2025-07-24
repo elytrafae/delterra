@@ -6,7 +6,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Terraria.Audio;
 
-namespace Delterra.Content.Items.Spells.Scarves {
+namespace Delterra.Content.Items.Weapons.Summoner.Scarves {
 
     public abstract class AbstractRalseiScarf : ModItem, ITensionConsumingItem {
 
@@ -77,7 +77,7 @@ namespace Delterra.Content.Items.Spells.Scarves {
         }
 
         public override void GetHealLife(Player player, bool quickHeal, ref int healValue) {
-            if (player.altFunctionUse == 2 || (Main.HoverItem != null && (!Main.HoverItem.IsAir))) {
+            if (player.altFunctionUse == 2 || Main.HoverItem != null && !Main.HoverItem.IsAir) {
                 return;
             }
             healValue = 0;

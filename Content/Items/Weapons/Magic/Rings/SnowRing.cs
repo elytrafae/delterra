@@ -10,7 +10,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Delterra.Content.Items.Spells.Rings
+namespace Delterra.Content.Items.Weapons.Magic.Rings
 {
     public class SnowRing : AbstractNoelleRing {
 
@@ -18,7 +18,7 @@ namespace Delterra.Content.Items.Spells.Rings
             base.SetDefaults();
             Item.damage = 120;
             Item.rare = ItemRarityID.Orange;
-            Item.value = Terraria.Item.sellPrice(0, 1, 0, 0);
+            Item.value = Item.sellPrice(0, 1, 0, 0);
             Item.shoot = ModContent.ProjectileType<IceShock>();
         }
 

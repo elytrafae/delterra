@@ -8,7 +8,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 
-namespace Delterra.Content.Items.Spells.Rings {
+namespace Delterra.Content.Items.Weapons.Magic.Rings {
     public class ThornRing : AbstractNoelleRing {
 
         public override double IceShockCost => base.IceShockCost/2;
@@ -18,7 +18,7 @@ namespace Delterra.Content.Items.Spells.Rings {
             base.SetDefaults();
             Item.damage = 400;
             Item.rare = ItemRarityID.Cyan;
-            Item.value = Terraria.Item.sellPrice(0, 10, 0, 0);
+            Item.value = Item.sellPrice(0, 10, 0, 0);
         }
 
         public override void AddRecipes() {
@@ -36,7 +36,7 @@ namespace Delterra.Content.Items.Spells.Rings {
                 return;
             }
             if (GrazingPlayer.Get(player).TP >= GlobalTensionConsumingItem.GetTensionCost(SnowGraveCost, player)) {
-                ActiveSound? activeSound = SoundEngine.SoundPlayer.FindActiveSound(MySoundStyles.SnowgraveBell);
+                ActiveSound activeSound = SoundEngine.SoundPlayer.FindActiveSound(MySoundStyles.SnowgraveBell);
                 if (activeSound == null || !activeSound.IsPlaying) {
                     SoundEngine.PlaySound(MySoundStyles.SnowgraveBell, null, soundInstance => {
                         return Main.LocalPlayer.HeldItem?.type == Type && GrazingPlayer.Get(player).TP >= GlobalTensionConsumingItem.GetTensionCost(SnowGraveCost, player);

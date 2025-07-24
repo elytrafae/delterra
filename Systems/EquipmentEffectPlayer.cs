@@ -1,6 +1,6 @@
 ﻿using Delterra.Content.Buffs;
 using Delterra.Content.Gores;
-using Delterra.Content.Items.Spells.Scarves;
+using Delterra.Content.Items.Weapons.Summoner.Scarves;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
