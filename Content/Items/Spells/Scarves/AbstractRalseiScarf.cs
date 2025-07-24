@@ -28,7 +28,7 @@ namespace Delterra.Content.Items.Spells.Scarves {
             Item.rare = ItemRarityID.Blue;
             Item.value = Item.buyPrice(0, 1, 0);
             Item.healLife = Heal;
-            Item.DamageType = DamageClass.Melee;
+            Item.DamageType = DamageClass.SummonMeleeSpeed;
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.useTurn = true;
@@ -57,6 +57,7 @@ namespace Delterra.Content.Items.Spells.Scarves {
             position += GetShootOffset(player);
             velocity = velocity.SafeNormalize(Vector2.One);
             velocity *= player.GetAdjustedItemScale(Item);
+            velocity *= player.whipRangeMultiplier;
         }
 
         public override bool CanShoot(Player player) {
