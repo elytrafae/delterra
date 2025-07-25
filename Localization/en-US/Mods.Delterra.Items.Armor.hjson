@@ -1,0 +1,27 @@
+FrostmancerRobe: {
+	DisplayName: Frostmancer Robe
+	Tooltip:
+		'''
+		[c/FF7F27:TP] gain from Attacking 
+		or Defending increased.
+		+{0}% magic damage
+		+{1}% magic crit
+		Ice Skates effect
+		'''
+}
+
+FrostmancerHood: {
+	SetBonus:
+		'''
+		Increased graze area
+		Activate the set bonus to slip 
+		into a Trance for 5 seconds. 
+		'''
+	DisplayName: Frostmancer Hood
+	Tooltip:
+		'''
+		+{0}% magic damage
+		+{1}% magic crit
+		{2}% reduced [c/FF7F27:TP] cost
+		'''
+}

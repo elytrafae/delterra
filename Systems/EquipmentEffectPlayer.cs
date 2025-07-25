@@ -2,6 +2,7 @@
 using Delterra.Content.Gores;
 using Delterra.Content.Items.Weapons.Summoner.Scarves;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -11,8 +12,10 @@ using static Terraria.NPC.HitModifiers;
 namespace Delterra.Systems {
     public class EquipmentEffectPlayer : ModPlayer {
 
+        float greenLightLevel = 0f;
+        float redLightLevel = 0f;
+
         public bool tensionRestorePotionSicknessReduced = false;
-        public float greenLightLevel = 0f;
         public float additionalLootChance = 0f;
         public bool secretRingBuff = false;
         public StatModifier tpCost = new();
@@ -34,9 +37,20 @@ namespace Delterra.Systems {
             dealmakerVisible = false;
         }
 
+        public void SetGreenLight(float light) {
+            greenLightLevel = Math.Max(greenLightLevel, light);
+        }
+
+        public void SetRedLight(float light) {
+            redLightLevel = Math.Max(redLightLevel, light);
+        }
+
         public override void PostUpdateMiscEffects() {
             if (greenLightLevel > 0f) {
                 Lighting.AddLight(Player.Center, new Vector3(0.6f, 1f, 0.6f) * greenLightLevel);
+            }
+            if (redLightLevel > 0f) {
+                Lighting.AddLight(Player.Center, new Vector3(1f, 0.3f, 0.3f) * redLightLevel);
             }
             if (frostmancerSet) {
                 Lighting.AddLight(Player.Center, new Vector3(0.6f, 0.6f, 0.6f));

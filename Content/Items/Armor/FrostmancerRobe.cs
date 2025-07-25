@@ -16,6 +16,8 @@ namespace Delterra.Content.Items.Armor {
     [AutoloadEquip(EquipType.Body)]
     internal class FrostmancerRobe : ModItem {
 
+        public override string LocalizationCategory => base.LocalizationCategory + ".Armor";
+
         public static readonly int MagicDamageBonusPercent = 20;
         public static readonly int MagicCritBonus = 10;
 
