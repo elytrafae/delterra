@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 
-namespace Delterra.Content.Items.SetBonuses.PowerCrown {
-    public class PowerCrownAnglerBonus : AbstractPowerCrownBonus {
+namespace Delterra.Content.SetBonuses.PowerCrown {
+    public class PowerCrownRainBonus : AbstractPowerCrownBonus {
         public override bool IsSetMatching(Item body, Item legs) {
-            return body.type == ItemID.AnglerVest && legs.type == ItemID.AnglerPants;
+            return body.type == ItemID.RainCoat;
         }
 
         public override void UpdateSetBonus(Player player) {
-            player.statDefense += 3;
-            player.fishingSkill += 15;
+            player.statDefense += 5;
+            player.endurance += 0.2f;
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 
-namespace Delterra.Content.Items.SetBonuses.PowerCrown {
+namespace Delterra.Content.SetBonuses.PowerCrown {
     public class PowerCrownSnowBonus : AbstractPowerCrownBonus {
 
         private static readonly int[] SNOW_COATS = [ItemID.EskimoCoat, ItemID.PinkEskimoCoat];

@@ -3,7 +3,7 @@ using Delterra.Content.Items.Armor;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace Delterra.Content.Items.SetBonuses.PowerCrown {
+namespace Delterra.Content.SetBonuses.PowerCrown {
     public abstract class AbstractPowerCrownBonus : ModSetBonus {
 
         public override string LocalizationCategory => base.LocalizationCategory + ".PowerCrown";

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 
-namespace Delterra.Content.Items.SetBonuses.PowerCrown {
+namespace Delterra.Content.SetBonuses.PowerCrown {
     public class PowerCrownNinjaBonus : AbstractPowerCrownBonus {
         public override bool IsSetMatching(Item body, Item legs) {
             return body.type == ItemID.NinjaShirt && legs.type == ItemID.NinjaPants;

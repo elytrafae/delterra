@@ -48,3 +48,8 @@ PowerCrownRainBonus.SetBonusText:
 	+5 Defense
 	+20% damage reduction
 	'''
+PowerCrownFossilBonus.SetBonusText:
+	'''
+	+6 Defense
+	+4 ranged armor penetration
+	'''

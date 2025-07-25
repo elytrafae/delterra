@@ -38,7 +38,7 @@ This document shall detail further plans after the feature freeze period ends
 	- Drops: 
 		- Power Crown (Helmet, Expert Only). A powerful crown that needs a catalyst. Has a set bonus for various armor pieces
 			Mining Armor: +4 Defense, Emit light, +3% Damage while Underground and an additional +4% while in Caverns or below
-			Rain Armor: +5 Defense, [Insert something funny IDK]
+			Rain Armor: +5 Defense, +20% damage reduction (because funni)
 			Angler Armor: +3 Defense, +15 Fishing Power
 			Ninja Armor: +3 Defense, +25% increased movement speed and increased jump speed
 			Gold/Platinum Armor: +5 Defense, +1HP/s life regen

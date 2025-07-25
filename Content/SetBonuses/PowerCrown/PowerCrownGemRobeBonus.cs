@@ -8,7 +8,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Delterra.Content.Items.SetBonuses.PowerCrown {
+namespace Delterra.Content.SetBonuses.PowerCrown {
     public class PowerCrownGemRobeBonus : AbstractPowerCrownBonus {
 
         public override bool IsSetMatching(Item body, Item legs) {
