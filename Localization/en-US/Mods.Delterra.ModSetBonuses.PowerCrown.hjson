@@ -1,0 +1,50 @@
+PowerCrownMiningBonus.SetBonusText:
+	'''
+	+4 defense
+	Provides light
+	+7% damage in the Caverns or Underworld
+	+3% damage Underground
+	'''
+PowerCrownAnglerBonus.SetBonusText:
+	'''
+	+3 defense
+	+15 fishing power
+	'''
+PowerCrownNinjaBonus.SetBonusText:
+	'''
+	+3 defense
+	Increased jump height
+	+15% movement speed and acceleration
+	'''
+PowerCrownGoldPlatinumBonus.SetBonusText:
+	'''
+	+5 defense
+	Increased life regen
+	'''
+PowerCrownPumpkinBonus.SetBonusText:
+	'''
+	Hermes Boots effect
+	+10% damage
+	'''
+PowerCrownSnowBonus.SetBonusText:
+	'''
+	+4 Defense
+	+15% damage against snow enemies
+	'''
+PowerCrownGemRobeBonus.SetBonusText:
+	'''
+	+4 Defense
+	+5% magic damage
+	Increased mana regen
+	'''
+PowerCrownFlinxBonus.SetBonusText:
+	'''
+	+4 Defense
+	+10% whip size
+	+5% summon damage
+	'''
+PowerCrownRainBonus.SetBonusText:
+	'''
+	+5 Defense
+	+20% damage reduction
+	'''

@@ -21,9 +21,22 @@ namespace Delterra.Systems {
                 ProjectileID.SandBallFalling, 0f
             );
 
-        public static float[] NPCTPGainRate = ProjectileID.Sets.Factory.CreateNamedSet("NPCTPGainRate")
+        public static float[] NPCTPGainRate = NPCID.Sets.Factory.CreateNamedSet("NPCTPGainRate")
             .Description("The effective TP gain of NPCs. 1f means normal TP gain, 0f or less means TP gain is disabled.")
             .RegisterFloatSet(1f);
+
+        public static bool[] WizardRobes = ItemID.Sets.Factory.CreateNamedSet("GemRobes")
+            .Description("true for every item that can be used in the chest slot for the \"Wizard Set\" (https://terraria.wiki.gg/wiki/Wizard_set)")
+            .RegisterBoolSet(false, 
+                ItemID.AmberRobe, 
+                ItemID.AmethystRobe, 
+                ItemID.DiamondRobe, 
+                ItemID.EmeraldRobe, 
+                ItemID.RubyRobe, 
+                ItemID.SapphireRobe, 
+                ItemID.TopazRobe, 
+                ItemID.GypsyRobe
+            );
 
     }
 }

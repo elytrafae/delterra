@@ -1,5 +1,4 @@
-﻿using Delterra.Systems;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,14 +7,14 @@ using Terraria;
 using Terraria.ID;
 
 namespace Delterra.Content.Items.SetBonuses.PowerCrown {
-    public class PowerCrownMiningArmorBonus : AbstractPowerCrownBonus {
+    public class PowerCrownRainBonus : AbstractPowerCrownBonus {
         public override bool IsSetMatching(Item body, Item legs) {
-            return body.type == ItemID.MiningShirt && legs.type == ItemID.MiningPants;
+            return body.type == ItemID.RainCoat;
         }
 
         public override void UpdateSetBonus(Player player) {
-            EquipmentEffectPlayer.Get(player).SetRedLight(1f);
-            // TODO: Finish set bonus
+            player.statDefense += 5;
+            player.endurance += 0.2f;
         }
     }
 }

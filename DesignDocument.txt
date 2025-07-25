@@ -41,7 +41,7 @@ This document shall detail further plans after the feature freeze period ends
 			Rain Armor: +5 Defense, [Insert something funny IDK]
 			Angler Armor: +3 Defense, +15 Fishing Power
 			Ninja Armor: +3 Defense, +25% increased movement speed and increased jump speed
-			Gold/Platinum Armor: +7 Defense, +0.5HP/s life regen
+			Gold/Platinum Armor: +5 Defense, +1HP/s life regen
 			Pumpkin Armor: Hermes Boots effect and +10% Damage
 			Snow Armor: +4 Defense, +15% Damage against snow enemies
 			Gem Robes: +4 Defense, +5% Magic Damage and Increased mana regeneration.

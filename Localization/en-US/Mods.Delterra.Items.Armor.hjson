@@ -25,3 +25,13 @@ FrostmancerHood: {
 		{2}% reduced [c/FF7F27:TP] cost
 		'''
 }
+
+PowerCrownGold: {
+	DisplayName: Power Crown
+	Tooltip: ""
+}
+
+PowerCrownPlatinum: {
+	DisplayName: Power Crown
+	Tooltip: ""
+}

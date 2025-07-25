@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.NPC.HitModifiers;
@@ -21,7 +22,7 @@ namespace Delterra.Systems {
         public StatModifier tpCost = new();
         public bool frostmancerSet = false;
         public bool dealmakerVisible = false;
-
+        public float damageAgainstSnowEnemies = 1f;
 
         public int currentScarfType = 0;
         public int currentScarfUses = 0;
@@ -35,6 +36,7 @@ namespace Delterra.Systems {
             tpCost = new();
             frostmancerSet = false;
             dealmakerVisible = false;
+            damageAgainstSnowEnemies = 1f;
         }
 
         public void SetGreenLight(float light) {
@@ -97,6 +99,9 @@ namespace Delterra.Systems {
             if (Player.HasBuff<TheKingsChariotBuff>()) {
                 asgoreTruckHit = true;
                 modifiers.ModifyHitInfo += GetAsgoresTruckModifiers(target);
+            }
+            if (target.coldDamage) {
+                modifiers.SourceDamage *= damageAgainstSnowEnemies;
             }
         }
 

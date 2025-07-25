@@ -24,7 +24,7 @@ namespace Delterra.Content.Items.Accessories {
 
         public override void UpdateAccessory(Player player, bool hideVisual) {
             EquipmentEffectPlayer modPlayer = EquipmentEffectPlayer.Get(player);
-            modPlayer.greenLightLevel = 1.6f;
+            modPlayer.SetGreenLight(1.6f);
         }
 
         public override void AddRecipes() {

@@ -9,7 +9,7 @@ namespace Delterra.Content.Items.SetBonuses.PowerCrown {
         public override string LocalizationCategory => base.LocalizationCategory + ".PowerCrown";
 
         public sealed override bool IsSetMatching(Item head, Item body, Item legs) {
-            return head.type == ModContent.ItemType<Armor.PowerCrown>() && IsSetMatching(body, legs);
+            return (head.type == ModContent.ItemType<PowerCrownGold>() || head.type == ModContent.ItemType<PowerCrownPlatinum>()) && IsSetMatching(body, legs);
         }
 
         public abstract bool IsSetMatching(Item body, Item legs);

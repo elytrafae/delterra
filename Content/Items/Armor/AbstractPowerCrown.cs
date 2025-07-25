@@ -11,8 +11,9 @@ using Terraria.ModLoader;
 
 namespace Delterra.Content.Items.Armor {
 
-    [AutoloadEquip(EquipType.Head)]
-    public class PowerCrown : ModItem {
+    public abstract class AbstractPowerCrown : ModItem {
+
+        public override string LocalizationCategory => base.LocalizationCategory + ".Armor";
 
         public override void SetDefaults() {
             Item.value = Item.sellPrice(gold: 2);

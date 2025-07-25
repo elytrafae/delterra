@@ -24,7 +24,7 @@ namespace Delterra.Content.Items.Accessories {
 
         public override void UpdateAccessory(Player player, bool hideVisual) {
             EquipmentEffectPlayer modPlayer = EquipmentEffectPlayer.Get(player);
-            modPlayer.greenLightLevel = 2.5f;
+            modPlayer.SetGreenLight(2.5f);
             player.GetDamage(DamageClass.Generic) += 0.05f;
             player.cactusThorns = true;
         }
