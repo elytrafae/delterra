@@ -17,8 +17,10 @@ namespace Delterra.Content.Items.Armor {
 
         public override void SetDefaults() {
             Item.value = Item.sellPrice(gold: 2);
-            Item.rare = ItemRarityID.Green;
+            //Item.rare = ItemRarityID.Green;
             Item.defense = 0;
+            Item.expert = true;
+            Item.expertOnly = true;
         }
 
         ModSetBonus setBonusCache = null;
