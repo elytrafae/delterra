@@ -2,7 +2,8 @@
 This document shall detail further plans after the feature freeze period ends
 
 - Adjust volumes
-
+- Fix the Potion Sickness from tension items reacting weirdly with a Philosopher's Stone
+- Fix the White Ribbon's effect being frontloaded or change it entirely.
 - "for some reason, the game crashes when loading mods after getting to the configuring part, it crashed when configuring calamity, thorium and alchemistnpc so far. kinda sad since this looked pretty cool."
 
 
@@ -55,6 +56,7 @@ This document shall detail further plans after the feature freeze period ends
 
 - Additional Town NPCs
 	- Make vanilla town NPCs comment on modded town NPCs
+	- Give every modded NPC a vanity set they can sell
 
 	- Trashy:
 		- (Not a Town NPC by code, but will have a behavior closest to a town NPC)
