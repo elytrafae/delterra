@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Delterra.Systems;
+using Delterra.Systems.TPSources;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Delterra.Systems;
-using Terraria.ID;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Delterra.Content.Items.Accessories {
@@ -22,8 +23,9 @@ namespace Delterra.Content.Items.Accessories {
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual) {
-            EquipmentEffectPlayer.Get(player).tensionRestorePotionSicknessReduced = true;
-            GrazingPlayer.Get(player).grazeAreaMult += 0.25f;
+            GrazingPlayer grazePlayer = GrazingPlayer.Get(player);
+            grazePlayer.grazeAreaMult += 0.25f;
+            grazePlayer.TPChangeStats[TPGainType.RESTORE_ITEM] += 0.25f;
         }
 
         public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player) {

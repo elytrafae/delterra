@@ -13,7 +13,7 @@ namespace Delterra.Content.Items.TensionRestore {
         public override float TPHeal => 100;
         public override int TPTime => 45;
 
-        public override int PotionSicknessTime => 80 * 60;
+        public override float PotionSicknessMultiplier => 8/6f; // The ratio needed to keep the cooldown at 80 seconds
 
         public override void SetDefaults() {
             base.SetDefaults();

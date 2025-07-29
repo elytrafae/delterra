@@ -1,4 +1,5 @@
 ﻿using Delterra.Systems;
+using Delterra.Systems.TPSources;
 using FaeLibrary.API.ClassExtensions;
 using System;
 using System.Collections.Generic;
@@ -27,9 +28,10 @@ namespace Delterra.Content.Items.Accessories {
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual) {
-            GrazingPlayer.Get(player).grazeAreaMult += 0.25f;
+            GrazingPlayer grazePlayer = GrazingPlayer.Get(player);
+            grazePlayer.grazeAreaMult += 0.25f;
+            grazePlayer.TPChangeStats[TPGainType.RESTORE_ITEM] += 0.25f;
             EquipmentEffectPlayer modPlayer = EquipmentEffectPlayer.Get(player);
-            modPlayer.tensionRestorePotionSicknessReduced = true;
             player.GetCommonPositiveRegenStat() += 2;
             player.GetPotionHealingStat() += 0.25f;
         }

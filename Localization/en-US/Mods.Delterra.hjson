@@ -1,8 +1,8 @@
 TensionCostText: Costs {0} [c/FF7F27:TP]
 TPRestoreText:
 	'''
-	+{0}% [c/FF7F27:TP] at the cost of
-	{1} seconds of Potion Sickness
+	+{0}% [c/FF7F27:TP] at the cost 
+	of Potion Sickness
 	'''
 RudeBusterTooltip:
 	'''

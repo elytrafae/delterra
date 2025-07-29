@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Delterra.Systems;
+using Delterra.Systems.TPSources;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -26,7 +27,7 @@ namespace Delterra.Content.Items.Accessories {
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual) {
-            EquipmentEffectPlayer.Get(player).tensionRestorePotionSicknessReduced = true;
+            GrazingPlayer.Get(player).TPChangeStats[TPGainType.RESTORE_ITEM] += 0.25f;
         }
 
         public override void AddRecipes() {

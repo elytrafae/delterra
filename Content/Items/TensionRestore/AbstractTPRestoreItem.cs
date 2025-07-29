@@ -9,13 +9,14 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.Localization;
 using Delterra.Systems.TPSources;
+using FaeLibrary.API;
 
 namespace Delterra.Content.Items.TensionRestore {
-    public abstract class AbstractTPRestoreItem : ModItem {
+    public abstract class AbstractTPRestoreItem : ModItem, IFaeModItem {
 
         public abstract float TPHeal { get; }
         public virtual int TPTime => 1;
-        public abstract int PotionSicknessTime { get; }
+        public virtual float PotionSicknessMultiplier => 1f;
         public LocalizedText TPTooltip => Language.GetOrRegister("Mods." + nameof(Delterra) + ".TPRestoreText");
 
         public override void SetDefaults() {
@@ -26,23 +27,25 @@ namespace Delterra.Content.Items.TensionRestore {
             Item.useAnimation = 15;
             Item.UseSound = MySoundStyles.Tension;
             Item.maxStack = Item.CommonMaxStack;
+            Item.potion = true;
         }
 
+        /* This is done automatically now
         public override bool CanUseItem(Player player) {
             return GrazingPlayer.Get(player).TP < GrazingPlayer.MAXTP && !player.HasBuff(BuffID.PotionSickness);
         }
+        */
 
         public override bool? UseItem(Player player) {
             GrazingPlayer.Get(player).GainTPOverTime(TPHeal, TPTime, new TPGainConsumeItemContext(Item));
-            player.AddBuff(BuffID.PotionSickness, GetPotionSicknessTime(player));
+            // player.AddBuff(BuffID.PotionSickness, GetPotionSicknessTime(player)); // This is done automatically now
             return true;
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips) {
             TooltipLine TPRestoreLine = new TooltipLine(Mod, "TPRestore", 
                 TPTooltip.Format(
-                    (int)GrazingPlayer.Get(Main.LocalPlayer).CalculateTPGain(TPHeal, new TPGainConsumeItemContext(Item), false),
-                    Math.Ceiling(GetPotionSicknessTime(Main.LocalPlayer)/60f)
+                    (int)GrazingPlayer.Get(Main.LocalPlayer).CalculateTPGain(TPHeal, new TPGainConsumeItemContext(Item), false)
                 )
             );
             int index = tooltips.FindIndex(line => line.Name == "Consumable");
@@ -59,12 +62,8 @@ namespace Delterra.Content.Items.TensionRestore {
             }
         }
 
-        private int GetPotionSicknessTime(Player player) {
-            int potionSicknessTime = PotionSicknessTime;
-            if (EquipmentEffectPlayer.Get(player).tensionRestorePotionSicknessReduced) {
-                potionSicknessTime = (int)(potionSicknessTime * 0.85f);
-            }
-            return potionSicknessTime;
+        void IFaeModItem.ModifyPotionDelay(Player player, ref int delay) {
+            delay = (int)(delay * PotionSicknessMultiplier);
         }
 
     }

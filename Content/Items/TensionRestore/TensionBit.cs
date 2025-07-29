@@ -14,8 +14,6 @@ namespace Delterra.Content.Items.TensionRestore {
     public class TensionBit : AbstractTPRestoreItem {
         public override float TPHeal => 32;
 
-        public override int PotionSicknessTime => 60*60;
-
         public override void SetDefaults() {
             base.SetDefaults();
             Item.value = 0;

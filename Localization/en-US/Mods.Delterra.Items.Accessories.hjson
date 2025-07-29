@@ -22,8 +22,8 @@ WhiteRibbon: {
 	Tooltip:
 		'''
 		A crinkly hair ribbon.
-		Reduced Potion Sickness when 
-		using [c/FF7F27:TP] recovery items
+		+25% [c/FF7F27:TP] from
+		Tension items
 		'''
 }
 
@@ -44,9 +44,9 @@ TwinRibbon: {
 		'''
 		Two ribbons. You'll have to 
 		put your hair into pigtails.
-		Increased graze area
-		Reduced Potion Sickness when 
-		using [c/FF7F27:TP] recovery items
+		Increased graze area.
+		+25% [c/FF7F27:TP] from
+		Tension items.
 		'''
 }
 
@@ -57,8 +57,8 @@ TransRibbon: {
 		The most powerful and
 		pretty of all ribbons.
 		Increased graze area.
-		Reduced Potion Sickness when 
-		using [c/FF7F27:TP] recovery items.
+		+25% [c/FF7F27:TP] from
+		Tension items.
 		Increases healing from
 		potions and spells.
 		Increases life regeneration.

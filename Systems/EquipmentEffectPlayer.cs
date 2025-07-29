@@ -16,7 +16,6 @@ namespace Delterra.Systems {
         float greenLightLevel = 0f;
         float redLightLevel = 0f;
 
-        public bool tensionRestorePotionSicknessReduced = false;
         public float additionalLootChance = 0f;
         public bool secretRingBuff = false;
         public StatModifier tpCost = new();
@@ -29,7 +28,6 @@ namespace Delterra.Systems {
         public int asgoreTruckGloryTime = 0;
 
         public override void ResetEffects() {
-            tensionRestorePotionSicknessReduced = false;
             greenLightLevel = 0f;
             additionalLootChance = 0f;
             secretRingBuff = false;
