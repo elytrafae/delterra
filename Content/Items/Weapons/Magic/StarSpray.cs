@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Delterra.Content.Items.Weapons.Magic {
@@ -19,6 +20,8 @@ namespace Delterra.Content.Items.Weapons.Magic {
             Item.mana = 20;
             Item.damage = 12;
             Item.knockBack = 3f;
+            Item.rare = ItemRarityID.Green;
+            Item.value = Terraria.Item.sellPrice(silver: 70);
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {

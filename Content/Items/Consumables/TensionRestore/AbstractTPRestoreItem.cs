@@ -11,13 +11,15 @@ using Terraria.Localization;
 using Delterra.Systems.TPSources;
 using FaeLibrary.API;
 
-namespace Delterra.Content.Items.TensionRestore {
+namespace Delterra.Content.Items.Consumables.TensionRestore {
     public abstract class AbstractTPRestoreItem : ModItem, IFaeModItem {
 
         public abstract float TPHeal { get; }
         public virtual int TPTime => 1;
         public virtual float PotionSicknessMultiplier => 1f;
         public LocalizedText TPTooltip => Language.GetOrRegister("Mods." + nameof(Delterra) + ".TPRestoreText");
+
+        public override string LocalizationCategory => base.LocalizationCategory + ".Consumables.TPRestore";
 
         public override void SetDefaults() {
             Item.noMelee = true;

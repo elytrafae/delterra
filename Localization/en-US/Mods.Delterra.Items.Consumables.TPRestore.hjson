@@ -1,0 +1,14 @@
+TensionBit: {
+	DisplayName: Tension Bit
+	Tooltip: ""
+}
+
+TensionGem: {
+	DisplayName: Tension Gem
+	Tooltip: ""
+}
+
+TensionMax: {
+	DisplayName: Tension Max
+	Tooltip: Has increased cooldown
+}

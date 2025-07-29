@@ -35,6 +35,11 @@ Buffs: {
 		DisplayName: The Kings Chariot
 		Description: '''"Nooo! You were supposed to obey traffic laws!"'''
 	}
+
+	SelfCare: {
+		DisplayName: Self Care
+		Description: +15% damage
+	}
 }
 
 Emotes.RalseiEmote.Command: ralseiemote

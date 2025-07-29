@@ -10,7 +10,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Delterra.Content.Items.TensionRestore {
+namespace Delterra.Content.Items.Consumables.TensionRestore {
     public class TensionBit : AbstractTPRestoreItem {
         public override float TPHeal => 32;
 
@@ -20,7 +20,7 @@ namespace Delterra.Content.Items.TensionRestore {
             Item.width = 32;
             Item.height = 32;
             Item.rare = ItemRarityID.Blue;
-            Item.value = Terraria.Item.sellPrice(0, 0, 3, 0);
+            Item.value = Item.sellPrice(0, 0, 3, 0);
             Item.UseSound = MySoundStyles.TensionBit;
         }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Delterra.Systems;
 using Terraria.ID;
 
-namespace Delterra.Content.Items.TensionRestore {
+namespace Delterra.Content.Items.Consumables.TensionRestore {
     public class TensionGem : AbstractTPRestoreItem {
 
         public override float TPHeal => 50;
