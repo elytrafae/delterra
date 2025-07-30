@@ -9,12 +9,16 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Delterra.Content.Projectiles {
-    public class RudeBuster : ModProjectile {
+namespace Delterra.Content.Projectiles.Weapons.Melee.RudeBuster {
+    public abstract class AbstractRudeBuster : ModProjectile {
 
         public const int ACTUAL_WIDTH = 62;
         public const int ACTUAL_HEIGHT = 62;
-        public static readonly Vector3 LIGHT = new Vector3(0.8f, 0, 0.76f);
+
+        public virtual Color BusterColor => new Color(0xAD, 0x4B, 0xFE);
+        public virtual Vector3 Light => BusterColor.ToVector3();//new Vector3(0.8f, 0, 0.76f);
+
+        public override string Texture => "Delterra/Content/Projectiles/Weapons/Melee/RudeBuster/RudeBuster";
 
         public override void SetDefaults() {
             Projectile.friendly = true;
@@ -42,12 +46,12 @@ namespace Delterra.Content.Projectiles {
             for (int i = 0; i < 1; i++) {
                 Dust.NewDust(visualPosition, ACTUAL_WIDTH, ACTUAL_HEIGHT, DustID.ShimmerSpark);
             }
-            Lighting.AddLight(Projectile.Center, LIGHT);
+            Lighting.AddLight(Projectile.Center, Light);
         }
 
         public override bool PreDraw(ref Color lightColor) {
             Vector2 drawPos = Projectile.Center - Main.screenPosition;
-            Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, drawPos, null, lightColor, Projectile.rotation, new Vector2(ACTUAL_WIDTH / 2, ACTUAL_HEIGHT / 2), 1f, SpriteEffects.None);
+            Main.EntitySpriteDraw(TextureAssets.Projectile[Projectile.type].Value, drawPos, null, lightColor.MultiplyRGBA(BusterColor), Projectile.rotation, new Vector2(ACTUAL_WIDTH / 2, ACTUAL_HEIGHT / 2), 1f, SpriteEffects.None);
             return false;
         }
 
@@ -63,7 +67,7 @@ namespace Delterra.Content.Projectiles {
                 SoundEngine.PlaySound(MySoundStyles.RudeBusterHit, Projectile.Center);
                 Vector2 visualPosition = Projectile.Center - new Vector2(ACTUAL_WIDTH / 2, ACTUAL_HEIGHT / 2);
                 for (int i = 0; i < 25; i++) {
-                    Dust.NewDust(visualPosition, ACTUAL_WIDTH, ACTUAL_HEIGHT, DustID.ShimmerSpark);
+                    Dust.NewDust(visualPosition, ACTUAL_WIDTH, ACTUAL_HEIGHT, DustID.ShimmerSpark, 0, 0, 0, BusterColor);
                 }
             }
         }

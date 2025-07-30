@@ -9,8 +9,10 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Delterra.Content.Projectiles {
-    public class JusticeRudeBuster : RudeBuster {
+namespace Delterra.Content.Projectiles.Weapons.Melee.RudeBuster {
+    public class JusticeBuster : AbstractRudeBuster {
+
+        public override Color BusterColor => new Color(0x9B, 0xFC, 0x4E);
 
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers) {
             base.ModifyHitNPC(target, ref modifiers);

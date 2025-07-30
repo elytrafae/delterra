@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Delterra.Content.Projectiles;
+using Delterra.Content.Projectiles.Weapons.Melee.RudeBuster;
 using Delterra.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -22,6 +23,7 @@ namespace Delterra.Content.Items.Weapons.Melee.Axes {
             Item.useTime = Item.useAnimation = 50;
             Item.rare = ItemRarityID.Green;
             Item.value = Item.sellPrice(0, 0, 40, 0);
+            Item.shoot = ModContent.ProjectileType<BraveBuster>();
             Item.shootSpeed = 8;
             Item.scale = 1.1f;
         }

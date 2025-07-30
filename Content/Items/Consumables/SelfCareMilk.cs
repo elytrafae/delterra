@@ -17,7 +17,6 @@ namespace Delterra.Content.Items.Consumables {
         public override void SetDefaults() {
             Item.DefaultToHealingPotion(16, 16, 60);
             Item.rare = ItemRarityID.Green;
-            Item.value = Terraria.Item.sellPrice(silver: 1);
         }
 
         public override bool? UseItem(Player player) {

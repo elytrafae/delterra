@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Delterra.Content.Projectiles;
 using Delterra.Systems;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -11,6 +10,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.Localization;
+using Delterra.Content.Projectiles.Weapons.Melee.RudeBuster;
 
 namespace Delterra.Content.Items.Weapons.Melee.Axes {
     public abstract class AbstractSusieAxe : ModItem, ITensionConsumingItem {
@@ -24,7 +24,7 @@ namespace Delterra.Content.Items.Weapons.Melee.Axes {
             Item.DamageType = DamageClass.Melee;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.UseSound = SoundID.Item1;
-            Item.shoot = ModContent.ProjectileType<RudeBuster>();
+            //Item.shoot = ModContent.ProjectileType<AbstractRudeBuster>();
             Item.shootSpeed = 9;
         }
 

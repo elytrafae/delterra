@@ -1,4 +1,4 @@
-﻿using Delterra.Content.Projectiles;
+﻿using Delterra.Content.Projectiles.Weapons.Melee.RudeBuster;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -21,7 +21,7 @@ namespace Delterra.Content.Items.Weapons.Melee.Axes {
             Item.rare = ItemRarityID.Yellow;
             Item.value = Item.buyPrice(1, 0, 0, 0);
             Item.scale = 2f;
-            Item.shoot = ModContent.ProjectileType<JusticeRudeBuster>();
+            Item.shoot = ModContent.ProjectileType<JusticeBuster>();
             Item.shootSpeed = 13;
         }
 
