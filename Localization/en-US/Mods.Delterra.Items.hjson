@@ -54,3 +54,8 @@ IceColdBeer: {
 	DisplayName: Ice Cold Beer
 	Tooltip: Perfect for a drive around town
 }
+
+TensionTest: {
+	DisplayName: Tension Test
+	Tooltip: ""
+}
