@@ -12,6 +12,8 @@ using Terraria.ModLoader;
 namespace Delterra.Content.Projectiles.Weapons.Melee.RudeBuster.Impact {
     public class BraveBusterImpact : ModProjectile {
 
+        public virtual Color BusterColor => new Color(0xAD, 0x4B, 0xFE);
+
         public override void SetDefaults() {
             Projectile.DamageType = DamageClass.Melee;
             Projectile.friendly = true;
@@ -38,7 +40,7 @@ namespace Delterra.Content.Projectiles.Weapons.Melee.RudeBuster.Impact {
             if (alpha >= 255) {
                 Projectile.timeLeft = 0;
             }
-            Lighting.AddLight(Projectile.Center, new Color(0xAD, 0x4B, 0xFE).ToVector3() * Projectile.Opacity);
+            Lighting.AddLight(Projectile.Center, BusterColor.ToVector3() * Projectile.Opacity);
         }
 
         public override bool PreDraw(ref Color lightColor) {

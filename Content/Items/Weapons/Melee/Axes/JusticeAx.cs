@@ -21,7 +21,7 @@ namespace Delterra.Content.Items.Weapons.Melee.Axes {
             Item.rare = ItemRarityID.Yellow;
             Item.value = Item.buyPrice(1, 0, 0, 0);
             Item.scale = 2f;
-            Item.shoot = ModContent.ProjectileType<JusticeBuster>();
+            Item.shoot = ModContent.ProjectileType<DualBusterSpawner>();
             Item.shootSpeed = 13;
         }
 
