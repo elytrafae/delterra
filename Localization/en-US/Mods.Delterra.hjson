@@ -40,6 +40,11 @@ Buffs: {
 		DisplayName: Self Care
 		Description: +15% damage
 	}
+
+	Zapped: {
+		DisplayName: Zapped
+		Description: Mods.Delterra.Buffs.Zapped.Description
+	}
 }
 
 Emotes.RalseiEmote.Command: ralseiemote
