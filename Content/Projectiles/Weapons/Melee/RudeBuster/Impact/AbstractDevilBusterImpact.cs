@@ -24,20 +24,21 @@ namespace Delterra.Content.Projectiles.Weapons.Melee.RudeBuster.Impact {
         public ref float DelayTimer => ref Projectile.ai[1];
 
         public abstract float HomingVelocity { get; }
+        public abstract int Size { get; }
 
         public override void SetStaticDefaults() {
             ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true; // Make the cultist resistant to this projectile, as it's resistant to all homing projectiles.
         }
 
         public override void SetDefaults() {
-            Projectile.width = 8; // The width of projectile hitbox
-            Projectile.height = 8; // The height of projectile hitbox
+            Projectile.width = Size; // The width of projectile hitbox
+            Projectile.height = Size; // The height of projectile hitbox
 
             Projectile.DamageType = DamageClass.Melee;
             Projectile.friendly = true; // Can the projectile deal damage to enemies?
             Projectile.hostile = false; // Can the projectile deal damage to the player?
             Projectile.ignoreWater = true; // Does the projectile's speed be influenced by water?
-            Projectile.light = 1f; // How much light emit around the projectile
+            Projectile.light = 0.75f; // How much light emit around the projectile
             Projectile.timeLeft = 600; // The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
         }
 
@@ -47,6 +48,9 @@ namespace Delterra.Content.Projectiles.Weapons.Melee.RudeBuster.Impact {
 
             // A short delay to homing behavior after being fired
             if (DelayTimer < 30) {
+                if (DelayTimer == 0) {
+                    Projectile.rotation = Projectile.velocity.ToRotation();
+                }
                 DelayTimer += 1;
                 Projectile.velocity *= 0.95f;
                 return;
@@ -110,6 +114,14 @@ namespace Delterra.Content.Projectiles.Weapons.Melee.RudeBuster.Impact {
             // 6. not immortal (e.g. not a target dummy)
             // 7. doesn't have solid tiles blocking a line of sight between the projectile and NPC
             return target.CanBeChasedBy() && Collision.CanHit(Projectile.Center, 1, 1, target.position, target.width, target.height);
+        }
+
+        public override bool? CanHitNPC(NPC target) {
+            return DelayTimer < 30 ? false : null;
+        }
+
+        public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac) {
+            return false;
         }
 
     }

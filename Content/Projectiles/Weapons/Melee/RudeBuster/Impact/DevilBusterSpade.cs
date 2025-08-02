@@ -7,6 +7,8 @@ using Terraria.ModLoader;
 
 namespace Delterra.Content.Projectiles.Weapons.Melee.RudeBuster.Impact {
     internal class DevilBusterSpade : AbstractDevilBusterImpact {
-        public override float HomingVelocity => 2f;
+        public override float HomingVelocity => 5f;
+
+        public override int Size => 28;
     }
 }
