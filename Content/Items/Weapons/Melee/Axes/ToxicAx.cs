@@ -33,7 +33,8 @@ namespace Delterra.Content.Items.Weapons.Melee.Axes {
                 .AddIngredient<AutoAx>()
                 .AddIngredient<MaliusHammer>()
                 .AddIngredient(ItemID.VialofVenom, 50)
-                .AddTile(TileID.AdamantiteForge);
+                .AddTile(TileID.AdamantiteForge)
+                .Register();
         }
 
     }

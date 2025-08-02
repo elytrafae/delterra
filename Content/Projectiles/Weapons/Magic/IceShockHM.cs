@@ -11,7 +11,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Delterra.Content.Projectiles
+namespace Delterra.Content.Projectiles.Weapons.Magic
 {
     public class IceShockHM : IceShock {
 

@@ -12,7 +12,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Delterra.Content.Projectiles {
+namespace Delterra.Content.Projectiles.Weapons.Magic {
     public class SnowGrave : ModProjectile {
 
         public static readonly Vector3 LIGHT = new Vector3(0.5f, 0.5f, 0.9f) * 2;

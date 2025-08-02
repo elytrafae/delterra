@@ -5,7 +5,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Delterra.Content.Projectiles {
+namespace Delterra.Content.Projectiles.Weapons {
     public class ManaLifesteal : ModProjectile {
 
         public override void SetDefaults() {

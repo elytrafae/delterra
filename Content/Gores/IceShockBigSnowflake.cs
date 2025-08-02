@@ -1,4 +1,4 @@
-﻿using Delterra.Content.Projectiles;
+﻿using Delterra.Content.Projectiles.Weapons.Magic;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;

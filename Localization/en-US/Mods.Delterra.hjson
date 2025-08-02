@@ -74,6 +74,8 @@ NPCs: {
 			PartyCakeTea: Greetings! May I offer you some cake and tea?
 		}
 	}
+
+	KRound.DisplayName: K Round
 }
 
 Configs: {

@@ -33,7 +33,8 @@ namespace Delterra.Content.Items.Weapons.Melee.Axes {
                 .AddIngredient<BraveAx>()
                 .AddIngredient<MaliusHammer>()
                 .AddIngredient(ItemID.Wire, 50)
-                .AddTile(TileID.MythrilAnvil);
+                .AddTile(TileID.MythrilAnvil)
+                .Register();
         }
 
     }
