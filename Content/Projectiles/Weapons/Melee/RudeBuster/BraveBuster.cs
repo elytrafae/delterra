@@ -10,22 +10,26 @@ namespace Delterra.Content.Projectiles.Weapons.Melee.RudeBuster {
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
             base.OnHitNPC(target, hit, damageDone);
-            SpawnImpact(new Vector2(1, 1));
-            SpawnImpact(new Vector2(1, -1));
-            SpawnImpact(new Vector2(-1, 1));
-            SpawnImpact(new Vector2(-1, -1));
+            if (Projectile.TryGetOwner(out Player player) && player.whoAmI == Main.myPlayer) {
+                SpawnImpact(new Vector2(1, 1), target.Center);
+                SpawnImpact(new Vector2(1, -1), target.Center);
+                SpawnImpact(new Vector2(-1, 1), target.Center);
+                SpawnImpact(new Vector2(-1, -1), target.Center);
+            }
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info) {
             base.OnHitPlayer(target, info);
-            SpawnImpact(new Vector2(1, 1));
-            SpawnImpact(new Vector2(1, -1));
-            SpawnImpact(new Vector2(-1, 1));
-            SpawnImpact(new Vector2(-1, -1));
+            // CANNOT SPAWN PROJECTILES HERE!
+            // THIS IS CALLED ON THE CLIENT TAKING DAMAGE!
+            //SpawnImpact(new Vector2(1, 1));
+            //SpawnImpact(new Vector2(1, -1));
+            //SpawnImpact(new Vector2(-1, 1));
+            //SpawnImpact(new Vector2(-1, -1));
         }
 
-        private void SpawnImpact(Vector2 direction) {
-            Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center + direction * 18, direction, ImpactProjectileType, Projectile.damage / 4, 0, Projectile.owner);
+        private void SpawnImpact(Vector2 direction, Vector2 targetCenter) {
+            Projectile.NewProjectile(Projectile.GetSource_FromAI(), targetCenter + direction * 18, direction, ImpactProjectileType, Projectile.damage / 4, 0, Projectile.owner);
         }
 
     }

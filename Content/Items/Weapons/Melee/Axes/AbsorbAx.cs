@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Delterra.Content.Projectiles.Weapons.Melee.RudeBuster;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Delterra.Content.Items.Weapons.Melee.Axes {
     internal class AbsorbAx : AbstractSusieAxe {
@@ -19,6 +21,7 @@ namespace Delterra.Content.Items.Weapons.Melee.Axes {
             Item.scale = 1f;
             Item.shootSpeed = 11;
             Item.scale = 1.1f;
+            Item.shoot = ModContent.ProjectileType<AbsorbBuster>();
         }
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone) {
