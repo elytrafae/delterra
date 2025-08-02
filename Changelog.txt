@@ -8,7 +8,7 @@
 - Made combination Ribbons incompatible with their downgrades
 - Fixed TP items being weird when it came to potion sickness
 - Fixed the Auto Ax and Toxic Ax being unobtainable due to unregistered recipes
-- Improved a lot of the engine behind the hood
+- Improved a lot of the engine under the hood, allowing more streamlined development later down the line
 
 - Balancing:
 	- White Ribbon: 25% reduced Potion Sickness from TP items -> TP items restore 25% more TP
