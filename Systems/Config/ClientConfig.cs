@@ -22,8 +22,12 @@ namespace Delterra.Systems.Config {
         [DefaultValue(true)]
         public bool AlwaysDisplayTPBar;
 
+        [Header("Audio")]
+        [DefaultValue(true)]
+        public bool NaturallyPlayCastleTownMusic;
 
-
+        [DefaultValue(true)]
+        public bool ThornRingReadySound;
 
         public static ClientConfig Get() { 
             return ModContent.GetInstance<ClientConfig>();

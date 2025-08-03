@@ -3,12 +3,20 @@
 	- Graze Noise
 	- Graze Hitbox
 	- TP bar being visible while a non-TP affecting item is held(?)
+	- Castle Town Music being naturally on or not
+	- Snowgrave cast noise toggle
 
 - Fixed an exploit where falling blocks generate TP
 - Made combination Ribbons incompatible with their downgrades
 - Fixed TP items being weird when it came to potion sickness
 - Fixed the Auto Ax and Toxic Ax being unobtainable due to unregistered recipes
+- Ralsei now sells the Castle Town Music Box due to the above config
+- Thorn Ring now mentions that Snowgrave costs a lot of Mana
 - Improved a lot of the engine under the hood, allowing more streamlined development later down the line
 
 - Balancing:
 	- White Ribbon: 25% reduced Potion Sickness from TP items -> TP items restore 25% more TP
+	- Buffed Susie's axes in various ways
+	- Each Axe now has a different Rude Buster
+
+

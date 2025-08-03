@@ -32,6 +32,7 @@ ThornRing: {
 	Tooltip:
 		'''
 		Reduces the [c/FF7F27:TP] cost of ice spells
-		Your potential is finally unlocked.
+		Your potential is finally unlocked,
+		though it costs lots of Mana to unlock it.
 		'''
 }

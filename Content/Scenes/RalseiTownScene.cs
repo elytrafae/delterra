@@ -1,4 +1,5 @@
 ﻿using Delterra.Content.NPCs;
+using Delterra.Systems.Config;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -15,6 +16,9 @@ namespace Delterra.Content.Scenes {
 
         // We have to make the radius of this a couple pixels longer so that the regular town theme doesn't start playing before this does!
         public override bool IsSceneEffectActive(Player player) {
+            if (!ClientConfig.Get().NaturallyPlayCastleTownMusic) {
+                return false;
+            }
             float npcSlots = 0;
             bool ralFound = false;
             int townWidth = NPC.sWidth + 10;

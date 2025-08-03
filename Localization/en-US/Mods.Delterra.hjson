@@ -43,7 +43,7 @@ Buffs: {
 
 	Zapped: {
 		DisplayName: Zapped
-		Description: Mods.Delterra.Buffs.Zapped.Description
+		Description: Brilliantly losing lots of life!
 	}
 }
 
@@ -80,13 +80,17 @@ NPCs: {
 		}
 	}
 
-	KRound.DisplayName: K Round
+	KRound.DisplayName: K. Round
 }
 
 Configs: {
 	ClientConfig: {
 		DisplayName: Client Config
-		Headers.TPBar: T P Bar Header
+
+		Headers: {
+			TPBar: TP Bar Header
+			Audio: Audio Header
+		}
 
 		ShowGrazeArea: {
 			Label: Show Graze Area
@@ -101,6 +105,16 @@ Configs: {
 		AlwaysDisplayTPBar: {
 			Label: Always Display TP Bar
 			Tooltip: If set to false, the TP bar is only shown while holding items that consume TP
+		}
+
+		NaturallyPlayCastleTownMusic: {
+			Label: Naturally Play Castle Town Music
+			Tooltip: If turned off, Ralsei being in a town will not cause special music to play
+		}
+
+		ThornRingReadySound: {
+			Label: Thorn Ring Ready Sound
+			Tooltip: If on, holding Thorn Ring while having enough TP to cast it whill play a warning
 		}
 	}
 }

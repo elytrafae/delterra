@@ -24,6 +24,7 @@ using Delterra.Content.Items;
 using Delterra.Content.Items.Spells.HealPrayer;
 using Delterra.Content.Items.Weapons.Melee.Axes;
 using Delterra.Content.Items.Consumables.TensionRestore;
+using Delterra.Content.Items.Placables;
 
 namespace Delterra.Content.NPCs {
 
@@ -214,7 +215,8 @@ namespace Delterra.Content.NPCs {
                 .Add<MaliusHammer>(Condition.DownedSkeletron)
                 .Add<AbsorbAx>(Condition.Eclipse)
                 .Add(ItemID.SliceOfCake, Condition.BirthdayParty, Condition.Hardmode)
-                .Add(ItemID.Teacup, Condition.BirthdayParty, Condition.Hardmode);
+                .Add(ItemID.Teacup, Condition.BirthdayParty, Condition.Hardmode)
+                .Add<CastleTownMusicBoxItem>();
 
             npcShop.Register();
         }

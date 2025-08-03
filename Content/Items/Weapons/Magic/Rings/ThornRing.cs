@@ -1,4 +1,5 @@
 ﻿using Delterra.Systems;
+using Delterra.Systems.Config;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace Delterra.Content.Items.Weapons.Magic.Rings {
                 .Register();
         }
         public override void HoldItem(Player player) {
-            if (Main.myPlayer != player.whoAmI) {
+            if (Main.myPlayer != player.whoAmI || !ClientConfig.Get().ThornRingReadySound) {
                 return;
             }
             if (GrazingPlayer.Get(player).TP >= GlobalTensionConsumingItem.GetTensionCost(SnowGraveCost, player)) {
