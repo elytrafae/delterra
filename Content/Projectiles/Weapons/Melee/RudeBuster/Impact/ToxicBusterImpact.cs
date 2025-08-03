@@ -36,6 +36,7 @@ namespace Delterra.Content.Projectiles.Weapons.Melee.RudeBuster.Impact {
                     Projectile.frame = (Projectile.frame + 1) % 2;
                 }
             }
+            Projectile.velocity *= 0.95f;
             if (Main.rand.NextBool(2)) {
                 Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Venom);
                 dust.noGravity = true;
