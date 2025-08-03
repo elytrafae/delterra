@@ -14,12 +14,14 @@ namespace Delterra.Content.Projectiles.Weapons.Melee.RudeBuster.Impact {
         }
 
         public override void SetDefaults() {
+            Projectile.DamageType = DamageClass.Melee;
             Projectile.width = 64;
             Projectile.height = 64;
             Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = -1;
+            Projectile.scale = 4f;
         }
 
         int Timer { 
@@ -33,13 +35,13 @@ namespace Delterra.Content.Projectiles.Weapons.Melee.RudeBuster.Impact {
         }
 
         public override void AI() {
-            if (Timer == 0) {
-                InitialPosition = Projectile.position + new Vector2(Projectile.width/4, Projectile.height/4);
-            }
+            //if (Timer == 0) {
+            //    InitialPosition = Projectile.position + new Vector2(Projectile.width/4, Projectile.height/4);
+            //}
             Timer++;
-            Projectile.width = Projectile.height = 32 + Timer * 2;
-            Projectile.position = InitialPosition - new Vector2(Timer, Timer);
-            Projectile.scale = Projectile.width / 64f;
+            //Projectile.width = Projectile.height = 32 + Timer * 2;
+            //Projectile.position = InitialPosition - new Vector2(Timer, Timer);
+            //Projectile.scale = Projectile.width / 64f;
             Projectile.alpha = Math.Clamp(Timer * 4 - 50, 0, 255);
 
             Projectile.frameCounter++;

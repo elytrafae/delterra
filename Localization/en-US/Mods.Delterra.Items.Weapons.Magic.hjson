@@ -8,3 +8,8 @@ StarSpray: {
 		user must never skip leg day"
 		'''
 }
+
+Checkmate: {
+	DisplayName: Checkmate
+	Tooltip: ""
+}

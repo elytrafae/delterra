@@ -13,11 +13,13 @@ using Terraria.ModLoader.Config;
 namespace Delterra.Content.Items.Weapons.Melee.Axes {
     internal class JusticeAx : AbstractSusieAxe {
 
+        public override string SpellName => "DualBuster";
+
         public override void SetDefaults() {
             base.SetDefaults();
             Item.damage = 250;
             Item.knockBack = 5f;
-            Item.useTime = Item.useAnimation = 50;
+            Item.useTime = Item.useAnimation = 30;
             Item.rare = ItemRarityID.Yellow;
             Item.value = Item.buyPrice(1, 0, 0, 0);
             Item.scale = 2f;

@@ -21,7 +21,7 @@ namespace Delterra.Content.Items.Weapons.Melee.Axes {
             base.SetDefaults();
             Item.damage = 55;
             Item.knockBack = 3.5f;
-            Item.useTime = Item.useAnimation = 40;
+            Item.useTime = Item.useAnimation = 20;
             Item.rare = ItemRarityID.Orange;
             Item.value = Item.sellPrice(0, 1, 0, 0);
             Item.shoot = ModContent.ProjectileType<DevilBuster>();

@@ -6,7 +6,7 @@ using Terraria;
 namespace Delterra.Content.Projectiles.Weapons.Melee.RudeBuster {
     public class DevilBuster : AbstractRudeBuster {
 
-        public override Color BusterColor => new Color(0xAF, 0x3B, 0xFF);
+        public override Color BusterColor => new Color(0xA5, 0xB9, 0xFF);
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
             base.OnHitNPC(target, hit, damageDone);

@@ -6,7 +6,7 @@ TPRestoreText:
 	'''
 RudeBusterTooltip:
 	'''
-	Right-click to cast Rude Buster!
+	Right-click to cast {1}!
 	{0}
 	'''
 IceShockTooltip:
@@ -103,4 +103,9 @@ Configs: {
 			Tooltip: If set to false, the TP bar is only shown while holding items that consume TP
 		}
 	}
+}
+
+Spells: {
+	RudeBuster: Rude Buster
+	DualBuster: Dual Buster
 }

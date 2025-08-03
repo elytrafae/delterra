@@ -11,12 +11,12 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Delterra.Content.Items.Weapons.Magic {
-    public class StarSpray : ModItem {
+    public class Checkmate : ModItem {
 
         public override string LocalizationCategory => base.LocalizationCategory + ".Weapons.Magic";
 
         public override void SetDefaults() {
-            Item.DefaultToMagicWeapon(ModContent.ProjectileType<StarSprayProjectile>(), 40, 4f, true);
+            Item.DefaultToMagicWeapon(ModContent.ProjectileType<CheckmateProjectile>(), 40, 4f, true);
             Item.mana = 20;
             Item.damage = 12;
             Item.knockBack = 3f;

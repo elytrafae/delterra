@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Delterra.Content.Projectiles.Weapons.Melee.RudeBuster;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Delterra.Content.Items.Weapons.Melee.Axes {
     internal class ToxicAx : AbstractSusieAxe {
@@ -13,11 +10,12 @@ namespace Delterra.Content.Items.Weapons.Melee.Axes {
             base.SetDefaults();
             Item.damage = 190;
             Item.knockBack = 3f;
-            Item.useTime = Item.useAnimation = 50;
+            Item.useTime = Item.useAnimation = 30;
             Item.rare = ItemRarityID.Lime;
             Item.value = Item.sellPrice(0, 0, 30, 0);
             Item.scale = 1.25f;
             Item.shootSpeed = 10;
+            Item.shoot = ModContent.ProjectileType<ToxicBuster>();
         }
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone) {

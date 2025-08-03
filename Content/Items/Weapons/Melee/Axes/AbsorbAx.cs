@@ -13,9 +13,9 @@ namespace Delterra.Content.Items.Weapons.Melee.Axes {
 
         public override void SetDefaults() {
             base.SetDefaults();
-            Item.damage = 120;
+            Item.damage = 130;
             Item.knockBack = 3f;
-            Item.useTime = Item.useAnimation = 50;
+            Item.useTime = Item.useAnimation = 40;
             Item.rare = ItemRarityID.LightPurple;
             Item.value = Item.buyPrice(0, 0, 30, 0);
             Item.scale = 1f;

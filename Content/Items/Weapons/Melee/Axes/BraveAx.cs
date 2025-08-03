@@ -20,7 +20,7 @@ namespace Delterra.Content.Items.Weapons.Melee.Axes {
             base.SetDefaults();
             Item.damage = 50;
             Item.knockBack = 3.5f;
-            Item.useTime = Item.useAnimation = 50;
+            Item.useTime = Item.useAnimation = 30;
             Item.rare = ItemRarityID.Green;
             Item.value = Item.sellPrice(0, 0, 40, 0);
             Item.shoot = ModContent.ProjectileType<BraveBuster>();

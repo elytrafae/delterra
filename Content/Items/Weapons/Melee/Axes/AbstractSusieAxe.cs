@@ -16,9 +16,11 @@ namespace Delterra.Content.Items.Weapons.Melee.Axes {
     public abstract class AbstractSusieAxe : ModItem, ITensionConsumingItem {
 
         public LocalizedText RudeBusterTooltip => Language.GetOrRegister("Mods." + nameof(Delterra) + ".RudeBusterTooltip");
-        public override LocalizedText Tooltip => RudeBusterTooltip.WithFormatArgs(base.Tooltip);
+        public override LocalizedText Tooltip => RudeBusterTooltip.WithFormatArgs(base.Tooltip, Mod.GetLocalization("Spells." + SpellName));
         public virtual double RudeBusterCost => 50;
+        public virtual string SpellName => "RudeBuster";
         public override string LocalizationCategory => base.LocalizationCategory + ".Weapons.Melee.SusieAxes";
+        
 
         public override void SetDefaults() {
             Item.DamageType = DamageClass.Melee;

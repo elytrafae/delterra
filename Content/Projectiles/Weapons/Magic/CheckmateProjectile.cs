@@ -11,7 +11,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Delterra.Content.Projectiles.Weapons.Magic {
-    public class StarSprayProjectile : ModProjectile {
+    public class CheckmateProjectile : ModProjectile {
 
         private int LifeTime => 3 * 60;
         private int BlueStartTime => 2 * 60 + 30;

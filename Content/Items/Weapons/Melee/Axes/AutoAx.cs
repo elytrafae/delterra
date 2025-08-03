@@ -1,4 +1,5 @@
-﻿using Delterra.Systems;
+﻿using Delterra.Content.Projectiles.Weapons.Melee.RudeBuster;
+using Delterra.Systems;
 using Delterra.Systems.TPSources;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Delterra.Content.Items.Weapons.Melee.Axes {
     public class AutoAx : AbstractSusieAxe {
@@ -15,9 +17,10 @@ namespace Delterra.Content.Items.Weapons.Melee.Axes {
             base.SetDefaults();
             Item.damage = 95;
             Item.knockBack = 5f;
-            Item.useTime = Item.useAnimation = 50;
+            Item.useTime = Item.useAnimation = 30;
             Item.rare = ItemRarityID.LightRed;
             Item.value = Item.sellPrice(0, 3, 0, 0);
+            Item.shoot = ModContent.ProjectileType<AutoBuster>();
             Item.shootSpeed = 10;
             Item.scale = 1.1f;
         }
