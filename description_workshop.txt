@@ -20,6 +20,7 @@ Credits:
 [*]Zeb & mythic apex: ASGORE trap remix
 [/list]
 
+Wanna keep up with development or report issues? Join our [url=https://discord.gg/43xeQHmy28]Discord Server[/url]!
 The project also has a [url=https://github.com/elytrafae/tmodloader-jam-one/]Github Repository[/url]!
 
 The current version of the mod was created during the first tModLoader modjam.
