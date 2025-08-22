@@ -15,6 +15,7 @@
 	<ItemGroup>
 	  <Folder Include="Assets\AmbientSounds\" />
 	  <Folder Include="Assets\SoundEffects\" />
+	  <Folder Include="Content\Items\Placables\NewFolder\" />
 	</ItemGroup>
 
 	<!-- References -->

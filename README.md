@@ -1,2 +1,4 @@
-# tmodloader-jam-one
-Our submission for the first ever tModLoader modjam
+# Delterra
+
+A Deltarune-inspired Terraria mod
+Check out our Steam Workshop page!
